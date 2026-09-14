@@ -375,7 +375,7 @@ export default function ProjectModal({ project, onClose }: ProjectModalProps) {
             <span className="text-offWhite font-semibold break-words">{project.client}</span>
           </div>
           <div>
-            <span className="text-neutral-500 uppercase block text-[11px] mb-1">Camera Pipeline</span>
+            <span className="text-neutral-500 uppercase block text-[11px] mb-1">Camera System</span>
             <span className="text-offWhite font-semibold break-words">{project.camera}</span>
           </div>
           <div>

@@ -39,7 +39,7 @@ export default function Services({ onOpenContact }: ServicesProps) {
               Services
             </h2>
             <p className="mt-2 text-sm sm:text-base text-neutral-400 max-w-lg">
-              Full-pipeline video editing, pacing, color grading, and sound design tailored for high-end results.
+              End-to-end video editing, pacing, color grading, and sound design tailored for high-end results.
             </p>
           </div>
 

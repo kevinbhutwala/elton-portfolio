@@ -13,7 +13,7 @@ export default function CreativeProcess() {
         <div className="flex items-center gap-4 mb-8">
           <div className="w-12 h-[1px] bg-amber-gold" />
           <span className="font-mono text-[10px] tracking-[0.5em] text-amber-gold uppercase">
-            FILM PRODUCTION PIPELINE
+            FILM PRODUCTION WORKFLOW
           </span>
           <div className="flex-1 h-[1px] bg-borderDark/40" />
           <span className="font-mono text-[10px] tracking-[0.3em] text-muted">PROCESS</span>

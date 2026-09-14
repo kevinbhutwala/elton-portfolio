@@ -214,7 +214,7 @@ export default function Showreel() {
           <div>Directed, edited, and finished by Elton D’Mello</div>
           <div className="flex items-center gap-2">
             <Sparkles className="w-3.5 h-3.5 text-amber-400" />
-            <span>DaVinci Resolve Studio & Premiere Pro Pipeline</span>
+            <span>Premiere Pro & CapCut Pro Workflow · AI Enhanced</span>
           </div>
         </div>
       </div>

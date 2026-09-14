@@ -93,7 +93,7 @@ export default function TheEditTimeline() {
               </button>
             </div>
             <p className="text-neutral-300 leading-relaxed font-sans sm:text-sm">
-              In professional video editing (using <strong>Adobe Premiere Pro</strong>, <strong>CapCut Pro</strong>, and <strong>After Effects</strong>), the <strong>Timeline</strong> is the multi-layered canvas where raw takes are stacked, trimmed, sync-cut to music, color-graded, and layered with sound effects.
+              In professional video editing (using <strong>Adobe Premiere Pro</strong>, <strong>CapCut Pro</strong>, <strong>After Effects</strong>, and <strong>AI Enhancement Tools</strong>), the <strong>Timeline</strong> is the multi-layered canvas where raw takes are stacked, trimmed, sync-cut to music, stylized with <strong>custom Premiere Pro LUTs</strong> & <strong>CapCut Pro color grading</strong>, and polished with neural AI tools.
             </p>
             <div className="grid grid-cols-1 sm:grid-cols-3 gap-3 pt-2 text-[11px] text-neutral-400 border-t border-white/[0.06]">
               <div>

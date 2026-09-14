@@ -89,15 +89,23 @@ export default function About() {
                   'CapCut Pro',
                   'Adobe Premiere Pro',
                   'After Effects',
+                  'LUTs in Premiere Pro',
+                  'Color Grading in CapCut Pro',
+                  'Topaz Video AI',
+                  'AI Speech & Voice Isolation',
                   'DaVinci Resolve (In Progress)',
                   'Sound Design',
-                  'Speed Ramping',
                   'High-Retention Reels',
                 ].map((spec) => (
                   <span
                     key={spec}
                     className={`px-3.5 py-1.5 border rounded-full font-medium transition-colors ${
-                      spec.includes('CapCut') || spec.includes('Premiere') || spec.includes('After Effects')
+                      spec.includes('CapCut') ||
+                      spec.includes('Premiere') ||
+                      spec.includes('After Effects') ||
+                      spec.includes('LUTs') ||
+                      spec.includes('Color Grading') ||
+                      spec.includes('AI')
                         ? 'bg-amber-400/10 border-amber-400/40 text-amber-300 font-semibold'
                         : spec.includes('DaVinci')
                         ? 'bg-white/[0.04] border-white/15 text-neutral-300'
