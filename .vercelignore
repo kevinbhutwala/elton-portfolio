@@ -1,4 +1,3 @@
-public/videos
-public/videos/*
 src/videos
 src/videos/**
+.git

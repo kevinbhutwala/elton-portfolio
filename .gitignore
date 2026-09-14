@@ -4,9 +4,7 @@ out
 .env*.local
 .DS_Store
 *.log
-public/videos
-public/videos/
-public/videos/**
 src/videos
 src/videos/
 src/videos/**
+.vercel
