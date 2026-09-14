@@ -21,7 +21,7 @@ export default function Hero({ onPlayReel }: HeroProps) {
   };
 
   return (
-    <section className="relative min-h-[92vh] w-full flex items-center justify-center overflow-hidden bg-obsidian pt-24 pb-16">
+    <section id="hero" className="relative min-h-[92vh] w-full flex items-center justify-center overflow-hidden bg-obsidian pt-24 pb-16">
       {/* Background Real Wayanad Video */}
       <div className="absolute inset-0 z-0 pointer-events-none">
         <video

@@ -63,7 +63,8 @@ export default function Header({ onOpenContact }: HeaderProps) {
           {/* Small, Clean, Visually Refined Brand Title */}
           {/* Iconic E Monogram Brand Logo */}
           <a
-            href="#"
+            href="#hero"
+            aria-label="Elton D'Mello - Home"
             className="flex items-center gap-3 group"
             onMouseEnter={() => audioEngine.playHoverTick()}
             onClick={() => audioEngine.playMechanicalClick()}
