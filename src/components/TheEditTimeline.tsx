@@ -1,41 +1,73 @@
 'use client';
 
-import React, { useState } from 'react';
+import React, { useState, useRef } from 'react';
 import Image from 'next/image';
 import { editTimelineStages } from '@/data/portfolioData';
 import { audioEngine } from '@/lib/audioEngine';
-import { Sliders, Activity, Film, Music, Eye } from 'lucide-react';
+import { Sliders, Activity, Film, Music, Eye, Play, Pause, Layers, HelpCircle, CheckCircle2, ChevronRight, Sparkles } from 'lucide-react';
 
 export default function TheEditTimeline() {
   const [activeStageIndex, setActiveStageIndex] = useState(2); // default to Rhythm & Pacing
+  const [isPlayingPreview, setIsPlayingPreview] = useState(false);
+  const [showExplanationModal, setShowExplanationModal] = useState(false);
 
+  const videoRef = useRef<HTMLVideoElement>(null);
   const currentStage = editTimelineStages[activeStageIndex];
 
+  const handleStageChange = (idx: number) => {
+    audioEngine.playMechanicalClick();
+    setActiveStageIndex(idx);
+    setIsPlayingPreview(false);
+  };
+
+  const toggleVideoPlayback = () => {
+    audioEngine.playMechanicalClick();
+    if (videoRef.current) {
+      if (isPlayingPreview) {
+        videoRef.current.pause();
+        setIsPlayingPreview(false);
+      } else {
+        videoRef.current.play().catch(() => {});
+        setIsPlayingPreview(true);
+      }
+    }
+  };
+
   return (
-    <section id="timeline" className="relative py-16 sm:py-24 md:py-32 bg-obsidian overflow-hidden border-t border-white/[0.06]">
-      {/* Decorative Large Number */}
-      <div className="absolute top-10 left-6 md:left-12 text-[10rem] md:text-[16rem] font-display font-light text-white/[0.015] leading-none pointer-events-none select-none">
+    <section id="timeline" className="relative py-20 sm:py-28 md:py-36 bg-obsidian overflow-hidden border-t border-white/[0.06]">
+      {/* Decorative Large Watermark */}
+      <div className="absolute top-10 left-6 md:left-12 text-[10rem] md:text-[18rem] font-display font-black text-white/[0.012] leading-none pointer-events-none select-none tracking-tighter">
         04
       </div>
 
       <div className="relative z-10 max-w-7xl mx-auto px-4 sm:px-6 md:px-12">
-        {/* Section Tag Badge */}
-        <div className="flex items-center gap-3 mb-4">
+        {/* Section Tag Badge & Educational Explainer Toggle */}
+        <div className="flex flex-wrap items-center justify-between gap-3 mb-4">
           <div className="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-white/[0.04] border border-white/10 text-xs font-medium text-amber-400">
             <span className="w-1.5 h-1.5 rounded-full bg-amber-400" />
-            <span>Editing Architecture</span>
+            <span>Behind The Cuts · Editing Architecture</span>
           </div>
-          <div className="flex-1 h-[1px] bg-white/[0.06]" />
+
+          <button
+            onClick={() => {
+              audioEngine.playHoverTick();
+              setShowExplanationModal(!showExplanationModal);
+            }}
+            className="inline-flex items-center gap-1.5 px-3 py-1 rounded-full bg-white/[0.03] hover:bg-white/[0.08] border border-white/10 text-xs text-neutral-300 hover:text-offWhite transition-all"
+          >
+            <HelpCircle className="w-3.5 h-3.5 text-amber-400" />
+            <span>What is an Edit Timeline?</span>
+          </button>
         </div>
 
-        {/* Section Heading */}
+        {/* Section Heading & Core Mission */}
         <div className="flex flex-col md:flex-row md:items-end justify-between gap-6 mb-8 sm:mb-12">
           <div>
             <h2 className="text-3xl sm:text-4xl md:text-5xl lg:text-6xl font-display font-bold text-offWhite tracking-tight">
               The Edit Timeline
             </h2>
-            <p className="mt-2 text-sm sm:text-base text-neutral-400 max-w-lg">
-              Explore the multi-track NLE pipeline from raw camera rushes to final master delivery.
+            <p className="mt-2 text-sm sm:text-base text-neutral-400 max-w-xl leading-relaxed font-sans">
+              An interactive simulation of Elton&apos;s non-linear editing (NLE) timeline. Slide the playhead below to trace footage from raw rushes through sound design to master export.
             </p>
           </div>
 
@@ -45,6 +77,41 @@ export default function TheEditTimeline() {
           </div>
         </div>
 
+        {/* Educational Explainer Banner (Collapsible / Informative) */}
+        {showExplanationModal && (
+          <div className="mb-8 p-5 sm:p-6 rounded-2xl bg-[#0f0f15] border border-amber-400/30 text-xs space-y-3 animate-fade-in shadow-2xl">
+            <div className="flex items-center justify-between">
+              <span className="font-semibold text-sm text-amber-300 flex items-center gap-2">
+                <Sparkles className="w-4 h-4 text-amber-400" />
+                <span>What Is An Edit Timeline & Why Does It Matter?</span>
+              </span>
+              <button
+                onClick={() => setShowExplanationModal(false)}
+                className="text-neutral-400 hover:text-white text-xs font-mono"
+              >
+                [Dismiss]
+              </button>
+            </div>
+            <p className="text-neutral-300 leading-relaxed font-sans sm:text-sm">
+              In professional video editing (using <strong>Adobe Premiere Pro</strong>, <strong>CapCut Pro</strong>, and <strong>After Effects</strong>), the <strong>Timeline</strong> is the multi-layered canvas where raw takes are stacked, trimmed, sync-cut to music, color-graded, and layered with sound effects.
+            </p>
+            <div className="grid grid-cols-1 sm:grid-cols-3 gap-3 pt-2 text-[11px] text-neutral-400 border-t border-white/[0.06]">
+              <div>
+                <strong className="text-offWhite block">1. Video Tracks (V1, V2)</strong>
+                V1 holds primary story shots; V2 holds B-roll, VFX overlays, graphics, and kinetic titles.
+              </div>
+              <div>
+                <strong className="text-offWhite block">2. Audio Tracks (A1, A2, A3)</strong>
+                Separates dialogue/voiceovers from impact whooshes, riser foley, and orchestral sub-bass.
+              </div>
+              <div>
+                <strong className="text-offWhite block">3. Playhead (Timecode)</strong>
+                The cursor that travels across time, dictating pacing, match cuts, and emotional momentum.
+              </div>
+            </div>
+          </div>
+        )}
+
         {/* Interactive Timeline Stepper Header */}
         <div className="grid grid-cols-2 sm:grid-cols-3 lg:grid-cols-6 gap-2 sm:gap-2.5 mb-8">
           {editTimelineStages.map((stage, idx) => {
@@ -52,25 +119,28 @@ export default function TheEditTimeline() {
             return (
               <button
                 key={stage.stage}
-                onClick={() => {
-                  audioEngine.playMechanicalClick();
-                  setActiveStageIndex(idx);
-                }}
+                onClick={() => handleStageChange(idx)}
                 onMouseEnter={() => audioEngine.playHoverTick()}
-                className={`p-3 sm:p-3.5 text-left rounded-xl border transition-all duration-200 ${
+                className={`p-3 sm:p-3.5 text-left rounded-xl border transition-all duration-200 relative overflow-hidden ${
                   isActive
-                    ? 'bg-white/[0.08] border-amber-400/80 shadow-lg'
-                    : 'bg-carbon/40 border-white/[0.06] hover:border-white/20 text-neutral-400'
+                    ? 'bg-white/[0.08] border-amber-400/80 shadow-[0_10px_30px_rgba(229,168,83,0.15)]'
+                    : 'bg-carbon/50 border-white/[0.06] hover:border-white/20 text-neutral-400 hover:bg-carbon'
                 }`}
               >
+                {isActive && (
+                  <div className="absolute top-0 left-0 right-0 h-[2px] bg-amber-400" />
+                )}
                 <div className="flex items-center justify-between text-xs mb-1">
                   <span className={isActive ? 'text-amber-400 font-bold' : 'text-neutral-500 font-medium'}>
-                    {stage.stage}
+                    STAGE {stage.stage}
                   </span>
-                  {isActive && <span className="w-1.5 h-1.5 rounded-full bg-amber-400 animate-ping" />}
+                  {isActive && <span className="w-1.5 h-1.5 rounded-full bg-amber-400 animate-pulse" />}
                 </div>
-                <div className={`text-xs font-semibold tracking-wide ${isActive ? 'text-offWhite' : 'text-neutral-300'}`}>
+                <div className={`text-xs font-semibold tracking-wide truncate ${isActive ? 'text-offWhite' : 'text-neutral-300'}`}>
                   {stage.name}
+                </div>
+                <div className="text-[10px] text-neutral-500 truncate mt-1">
+                  {stage.software.split('&')[0]}
                 </div>
               </button>
             );
@@ -80,20 +150,23 @@ export default function TheEditTimeline() {
         {/* The NLE Interface Simulator Container */}
         <div className="bg-carbon border border-white/[0.08] rounded-2xl p-5 sm:p-7 md:p-8 shadow-2xl relative">
           {/* NLE Window Header */}
-          <div className="flex items-center justify-between border-b border-white/[0.08] pb-4 mb-6 text-xs">
+          <div className="flex flex-wrap items-center justify-between border-b border-white/[0.08] pb-4 mb-6 text-xs gap-3">
             <div className="flex items-center gap-3">
               <div className="flex gap-1.5">
                 <span className="w-2.5 h-2.5 rounded-full bg-red-500/80" />
                 <span className="w-2.5 h-2.5 rounded-full bg-yellow-500/80" />
                 <span className="w-2.5 h-2.5 rounded-full bg-green-500/80" />
               </div>
-              <span className="text-offWhite font-semibold tracking-wide text-xs">
-                DAVINCI_TIMELINE_ELTON_STUDIO.DRP
+              <span className="text-offWhite font-semibold tracking-wide text-xs font-mono">
+                PROJECT_ELTON_STUDIO_TIMELINE.PRPROJ
               </span>
             </div>
+
             <div className="flex items-center gap-3 text-neutral-400 text-xs font-medium">
-              <span>LUT: <span className="text-amber-400">{currentStage.lut}</span></span>
-              <span className="hidden sm:inline">· 48.0 kHz</span>
+              <span className="bg-amber-400/10 text-amber-300 px-2.5 py-0.5 rounded-md border border-amber-400/20 font-mono text-[11px]">
+                {currentStage.software}
+              </span>
+              <span className="text-neutral-500 hidden sm:inline">· 48.0 kHz 32-Bit Float</span>
             </div>
           </div>
 
@@ -101,127 +174,153 @@ export default function TheEditTimeline() {
             {/* Live Program Monitor Preview (Left / Center) */}
             <div className="lg:col-span-5 flex flex-col gap-3">
               <div className="relative aspect-video w-full bg-obsidian border border-white/[0.08] rounded-xl overflow-hidden group">
-                <Image
-                  src={currentStage.previewImg}
-                  alt={currentStage.name}
-                  fill
-                  className="object-cover transition-all duration-500 filter contrast-105"
+                {/* Live Video Switcher */}
+                <video
+                  ref={videoRef}
+                  src={currentStage.previewVideo}
+                  poster={currentStage.previewImg}
+                  loop
+                  muted
+                  playsInline
+                  className="w-full h-full object-cover filter contrast-105"
                 />
 
-                <div className="absolute top-2.5 left-2.5 bg-black/75 backdrop-blur-md px-2.5 py-0.5 rounded-md text-xs font-medium text-amber-400 border border-white/10">
-                  Program: {currentStage.name}
+                {/* Program Monitor Badges */}
+                <div className="absolute top-2.5 left-2.5 bg-black/80 backdrop-blur-md px-2.5 py-1 rounded-md text-[11px] font-semibold text-amber-400 border border-white/10 flex items-center gap-1.5">
+                  <span className="w-1.5 h-1.5 rounded-full bg-amber-400" />
+                  <span>Program: {currentStage.name}</span>
                 </div>
 
-                <div className="absolute bottom-2.5 right-2.5 bg-black/75 backdrop-blur-md px-2.5 py-0.5 rounded-md text-xs font-medium text-neutral-300 border border-white/10">
-                  TC 01:00:{activeStageIndex * 15}:00
+                <div className="absolute bottom-2.5 right-2.5 bg-black/80 backdrop-blur-md px-2 py-0.5 rounded-md text-[10px] font-mono text-neutral-300 border border-white/10">
+                  TC 01:00:{String(activeStageIndex * 15).padStart(2, '0')}:00
                 </div>
+
+                {/* Play/Pause Center Overlay */}
+                <button
+                  onClick={toggleVideoPlayback}
+                  className="absolute inset-0 m-auto w-12 h-12 rounded-full bg-black/60 hover:bg-black/80 backdrop-blur-md border border-white/20 text-white flex items-center justify-center transition-all opacity-80 hover:opacity-100 hover:scale-105 shadow-2xl"
+                  title={isPlayingPreview ? 'Pause Monitor' : 'Play Monitor'}
+                >
+                  {isPlayingPreview ? (
+                    <Pause className="w-5 h-5 text-amber-400" />
+                  ) : (
+                    <Play className="w-5 h-5 fill-current ml-0.5 text-offWhite" />
+                  )}
+                </button>
 
                 {/* Viewfinder crosshairs */}
                 <div className="absolute inset-0 border border-white/5 pointer-events-none" />
               </div>
 
-              {/* Stage Description text */}
-              <div className="bg-obsidian/80 p-3.5 rounded-xl border border-white/[0.06] text-xs">
-                <span className="text-amber-400 font-semibold block mb-0.5">
-                  Stage Objective
-                </span>
-                <span className="text-neutral-300 leading-relaxed">
+              {/* Stage Objective text */}
+              <div className="bg-obsidian/90 p-4 rounded-xl border border-white/[0.06] text-xs space-y-1.5">
+                <div className="flex items-center justify-between text-amber-400 font-semibold text-[11px]">
+                  <span>STAGE {currentStage.stage} OBJECTIVE</span>
+                  <span className="text-neutral-500 font-mono text-[10px]">{currentStage.lut}</span>
+                </div>
+                <p className="text-neutral-200 leading-relaxed font-sans text-xs">
                   {currentStage.desc}
-                </span>
+                </p>
+                <div className="text-[11px] text-emerald-400 font-medium pt-1 flex items-center gap-1.5 border-t border-white/[0.04]">
+                  <CheckCircle2 className="w-3 h-3 shrink-0" />
+                  <span>{currentStage.actionNote}</span>
+                </div>
               </div>
             </div>
 
             {/* NLE Multi-Track Timeline View (Right) */}
-            <div className="lg:col-span-7 flex flex-col gap-2 text-xs select-none">
-              {/* Timeline Header Ruler */}
-              <div className="flex items-center justify-between border-b border-white/[0.08] pb-2 text-xs text-neutral-400 font-medium">
-                <span>TRACK</span>
-                <div className="flex gap-8 sm:gap-16">
-                  <span>00:00</span>
-                  <span>00:15</span>
-                  <span>00:30</span>
-                  <span>00:45</span>
-                  <span>01:00</span>
+            <div className="lg:col-span-7 flex flex-col gap-2.5 text-xs select-none">
+              {/* Timeline Header Ruler with Real TC markers */}
+              <div className="flex items-center justify-between border-b border-white/[0.08] pb-2 text-xs text-neutral-400 font-mono">
+                <span className="font-semibold text-neutral-300">NLE TRACK STACK</span>
+                <div className="flex gap-6 sm:gap-12 text-[10px] text-neutral-500">
+                  <span>00:00:00</span>
+                  <span>00:15:00</span>
+                  <span>00:30:00</span>
+                  <span>00:45:00</span>
+                  <span>01:00:00</span>
                 </div>
               </div>
 
-              {/* Track V2 */}
+              {/* Track V2 - Overlays, Graphics, Titles */}
               <div className="flex items-center gap-3 bg-obsidian/70 p-2 rounded-lg border border-white/[0.06]">
-                <div className="w-10 text-xs text-amber-400 font-semibold flex items-center gap-1">
+                <div className="w-12 text-xs text-amber-400 font-semibold flex items-center gap-1 shrink-0">
                   <Film className="w-3 h-3" />
                   <span>V2</span>
                 </div>
                 <div className="flex-1 h-7 bg-white/[0.04] rounded-md flex items-center px-3 text-xs text-offWhite/90 relative overflow-hidden border border-white/[0.06]">
-                  <div className="absolute inset-0 bg-amber-400/10 w-3/4" />
-                  <span className="relative z-10 truncate">{currentStage.v2}</span>
+                  <div className="absolute inset-0 bg-amber-400/15 w-3/4" />
+                  <span className="relative z-10 truncate font-mono text-[11px]">{currentStage.v2}</span>
                 </div>
               </div>
 
-              {/* Track V1 */}
+              {/* Track V1 - Primary Picture Story Spine */}
               <div className="flex items-center gap-3 bg-obsidian/70 p-2 rounded-lg border border-white/[0.06]">
-                <div className="w-10 text-xs text-crimson font-semibold flex items-center gap-1">
+                <div className="w-12 text-xs text-crimson font-semibold flex items-center gap-1 shrink-0">
                   <Film className="w-3 h-3" />
                   <span>V1</span>
                 </div>
                 <div className="flex-1 h-7 bg-white/[0.04] rounded-md flex items-center px-3 text-xs text-offWhite/90 relative overflow-hidden border border-white/[0.06]">
-                  <div className="absolute inset-0 bg-crimson/15 w-full" />
-                  <span className="relative z-10 truncate">{currentStage.v1}</span>
+                  <div className="absolute inset-0 bg-crimson/20 w-full" />
+                  <span className="relative z-10 truncate font-mono text-[11px]">{currentStage.v1}</span>
                 </div>
               </div>
 
-              {/* Track A1 Dialogue */}
+              {/* Track A1 - Primary Dialogue & Voiceover */}
               <div className="flex items-center gap-3 bg-obsidian/70 p-2 rounded-lg border border-white/[0.06]">
-                <div className="w-10 text-xs text-blue-400 font-semibold flex items-center gap-1">
+                <div className="w-12 text-xs text-blue-400 font-semibold flex items-center gap-1 shrink-0">
                   <Music className="w-3 h-3" />
                   <span>A1</span>
                 </div>
                 <div className="flex-1 h-7 bg-white/[0.04] rounded-md flex items-center px-3 text-xs text-offWhite/90 relative overflow-hidden border border-white/[0.06]">
-                  <div className="absolute inset-0 bg-blue-500/10 w-5/6" />
-                  <span className="relative z-10 truncate">{currentStage.a1}</span>
+                  <div className="absolute inset-0 bg-blue-500/15 w-5/6" />
+                  <span className="relative z-10 truncate font-mono text-[11px]">{currentStage.a1}</span>
                 </div>
               </div>
 
-              {/* Track A2 SFX & Foley */}
+              {/* Track A2 - SFX, Whooshes & Kinetic Foley */}
               <div className="flex items-center gap-3 bg-obsidian/70 p-2 rounded-lg border border-white/[0.06]">
-                <div className="w-10 text-xs text-emerald-400 font-semibold flex items-center gap-1">
+                <div className="w-12 text-xs text-emerald-400 font-semibold flex items-center gap-1 shrink-0">
                   <Activity className="w-3 h-3" />
                   <span>A2</span>
                 </div>
                 <div className="flex-1 h-7 bg-white/[0.04] rounded-md flex items-center px-3 text-xs text-offWhite/90 relative overflow-hidden border border-white/[0.06]">
-                  <div className="absolute inset-0 bg-emerald-500/10 w-2/3" />
-                  <span className="relative z-10 truncate">{currentStage.a2}</span>
+                  <div className="absolute inset-0 bg-emerald-500/15 w-2/3" />
+                  <span className="relative z-10 truncate font-mono text-[11px]">{currentStage.a2}</span>
                 </div>
               </div>
 
-              {/* Track A3 Music & Sub */}
+              {/* Track A3 - Music Score, Beat Drops & Sub Atmos */}
               <div className="flex items-center gap-3 bg-obsidian/70 p-2 rounded-lg border border-white/[0.06]">
-                <div className="w-10 text-xs text-purple-400 font-semibold flex items-center gap-1">
+                <div className="w-12 text-xs text-purple-400 font-semibold flex items-center gap-1 shrink-0">
                   <Music className="w-3 h-3" />
                   <span>A3</span>
                 </div>
                 <div className="flex-1 h-7 bg-white/[0.04] rounded-md flex items-center px-3 text-xs text-offWhite/90 relative overflow-hidden border border-white/[0.06]">
-                  <div className="absolute inset-0 bg-purple-500/10 w-4/5" />
-                  <span className="relative z-10 truncate">{currentStage.a3}</span>
+                  <div className="absolute inset-0 bg-purple-500/15 w-4/5" />
+                  <span className="relative z-10 truncate font-mono text-[11px]">{currentStage.a3}</span>
                 </div>
               </div>
 
-              {/* Playhead Scrub Slider */}
-              <div className="mt-4 pt-4 border-t border-white/[0.08] flex items-center gap-4">
-                <span className="text-xs text-neutral-400 font-medium">Playhead:</span>
-                <input
-                  type="range"
-                  min="0"
-                  max="5"
-                  value={activeStageIndex}
-                  onChange={(e) => {
-                    audioEngine.playHoverTick();
-                    setActiveStageIndex(Number(e.target.value));
-                  }}
-                  className="flex-1 accent-amber-400 cursor-pointer"
-                />
-                <span className="text-amber-400 font-semibold text-xs">
-                  Stage {currentStage.stage} of 06
-                </span>
+              {/* Interactive Playhead Scrub Slider */}
+              <div className="mt-4 pt-4 border-t border-white/[0.08] flex flex-col sm:flex-row sm:items-center justify-between gap-3">
+                <div className="flex items-center gap-3 flex-1">
+                  <span className="text-xs text-neutral-400 font-medium">Scrub Playhead:</span>
+                  <input
+                    type="range"
+                    min="0"
+                    max="5"
+                    value={activeStageIndex}
+                    onChange={(e) => handleStageChange(Number(e.target.value))}
+                    className="flex-1 accent-amber-400 cursor-pointer"
+                  />
+                </div>
+                <div className="flex items-center gap-2 justify-between sm:justify-end text-xs">
+                  <span className="text-neutral-500 font-mono text-[11px]">SCRUBBER STEP</span>
+                  <span className="text-amber-400 font-semibold">
+                    Stage {currentStage.stage} of 06
+                  </span>
+                </div>
               </div>
             </div>
           </div>
@@ -230,3 +329,4 @@ export default function TheEditTimeline() {
     </section>
   );
 }
+
