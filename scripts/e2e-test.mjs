@@ -1,6 +1,4 @@
 import puppeteer from 'puppeteer-core';
-import { existsSync, statSync } from 'fs';
-import path from 'path';
 
 const CHROME_PATH = '/Applications/Google Chrome.app/Contents/MacOS/Google Chrome';
 const TARGET_URL = process.env.TEST_URL || 'https://elton-portfolio-two.vercel.app';
@@ -68,6 +66,9 @@ async function runE2E() {
     console.log(`\n--- 1. Page Load & Initial Health ---`);
     const response = await page.goto(TARGET_URL, { waitUntil: 'networkidle2', timeout: 30000 });
     record('Page responds with HTTP 200', response.status() === 200, `Status: ${response.status()}`);
+
+    // Wait for preloader animation to complete and fade away
+    await new Promise(r => setTimeout(r, 2200));
 
     const title = await page.title();
     record('Page Title verification', title.includes('ELTON') && title.includes('Video Editor'), `Title: "${title}"`);
@@ -158,7 +159,6 @@ async function runE2E() {
     const filterButtons = await page.$$('#work button');
     record('Work category filter tabs rendered', filterButtons.length >= 5, `Found ${filterButtons.length} filters`);
 
-    // Test filter tabs: Commercial, Documentary, Music Video, All
     const categoriesToTest = ['Commercial', 'Documentary', 'All'];
     for (const cat of categoriesToTest) {
       const clicked = await page.evaluate((category) => {
@@ -178,19 +178,27 @@ async function runE2E() {
     }
 
     // ----------------------------------------------------
-    // TEST 7: 9:16 Vertical Cinema Showcase
+    // TEST 7: 9:16 Vertical Cinema Showcase & Project Modal
     // ----------------------------------------------------
-    console.log(`\n--- 7. Vertical Cinema (9:16) Showcase ---`);
+    console.log(`\n--- 7. Vertical Cinema (9:16) Showcase & Project Modal ---`);
     const verticalSection = await page.$('#vertical-cinema');
     record('Vertical Cinema section #vertical-cinema rendered', !!verticalSection);
 
     const verticalCards = await page.$$('#vertical-cinema .group');
     record('Vertical reel cards rendered', verticalCards.length >= 3, `Found ${verticalCards.length} vertical projects`);
 
-    // Open first vertical reel into ProjectModal
-    if (verticalCards.length > 0) {
-      await verticalCards[0].click();
-      await new Promise(r => setTimeout(r, 600));
+    // Click first card via evaluate to ensure clean synthetic click
+    const cardClicked = await page.evaluate(() => {
+      const card = document.querySelector('#vertical-cinema .group');
+      if (card) {
+        card.dispatchEvent(new MouseEvent('click', { bubbles: true, cancelable: true }));
+        return true;
+      }
+      return false;
+    });
+
+    if (cardClicked) {
+      await new Promise(r => setTimeout(r, 800));
 
       const modalOpen = await page.$('div[role="dialog"]') !== null;
       record('9:16 Reel modal opens on card click', modalOpen);
@@ -203,9 +211,11 @@ async function runE2E() {
 
       // Close modal with Escape key
       await page.keyboard.press('Escape');
-      await new Promise(r => setTimeout(r, 400));
+      await new Promise(r => setTimeout(r, 500));
       const modalClosed = await page.$('div[role="dialog"]') === null;
       record('Modal closes cleanly via Escape key', modalClosed);
+    } else {
+      record('9:16 Reel modal opens on card click', false, 'Card element not found');
     }
 
     // ----------------------------------------------------
@@ -215,8 +225,11 @@ async function runE2E() {
     const timelineSection = await page.$('#timeline');
     record('The Edit Timeline section #timeline rendered', !!timelineSection);
 
-    const stageButtons = await page.$$('#timeline button:has(div:has-text("STAGE"))');
-    record('All 6 edit timeline stages detected', stageButtons.length >= 6, `Found ${stageButtons.length} stages`);
+    const stageCount = await page.evaluate(() => {
+      const buttons = Array.from(document.querySelectorAll('#timeline button'));
+      return buttons.filter(b => b.textContent?.includes('STAGE')).length;
+    });
+    record('All 6 edit timeline stages detected', stageCount >= 6, `Found ${stageCount} stages`);
 
     // Click Stage 3: Premiere Pro LUTs & CapCut Color Grading
     const switchedToStage3 = await page.evaluate(() => {
@@ -252,8 +265,12 @@ async function runE2E() {
     record('Visual Archive photo frames rendered', photoCards.length >= 10, `Found ${photoCards.length} photos`);
 
     if (photoCards.length > 0) {
-      await photoCards[0].click();
-      await new Promise(r => setTimeout(r, 500));
+      // Click first photo card
+      await page.evaluate(() => {
+        const photo = document.querySelector('#archive .group');
+        photo?.dispatchEvent(new MouseEvent('click', { bubbles: true, cancelable: true }));
+      });
+      await new Promise(r => setTimeout(r, 600));
 
       const lightboxImg = await page.$('div.fixed.inset-0 img');
       record('Visual Archive full-resolution lightbox opens', !!lightboxImg);
@@ -276,7 +293,7 @@ async function runE2E() {
     }
 
     // ----------------------------------------------------
-    // TEST 10: Contact Channels & Collaboration Inquiries
+    // TEST 10: Contact Channels & Direct Priority Links
     // ----------------------------------------------------
     console.log(`\n--- 10. Contact Section & Direct Communication ---`);
     const contactSection = await page.$('#contact');
@@ -297,7 +314,7 @@ async function runE2E() {
     console.log(`\n--- 11. Mobile Viewport (iPhone 14: 390x844) ---`);
     await page.setViewport({ width: 390, height: 844, isMobile: true, hasTouch: true });
     await page.reload({ waitUntil: 'networkidle2' });
-    await new Promise(r => setTimeout(r, 500));
+    await new Promise(r => setTimeout(r, 2200)); // wait for preloader on mobile reload
 
     // Zero horizontal layout blowout
     const isOverflowClean = await page.evaluate(() => {

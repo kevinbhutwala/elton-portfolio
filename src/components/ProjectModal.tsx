@@ -154,6 +154,9 @@ export default function ProjectModal({ project, onClose }: ProjectModalProps) {
 
   return (
     <div
+      role="dialog"
+      aria-modal="true"
+      aria-label={`Project: ${project.title}`}
       data-lenis-prevent
       className="fixed inset-0 z-[1000] bg-obsidian/98 backdrop-blur-2xl overflow-y-auto overscroll-contain touch-pan-y"
       style={{ WebkitOverflowScrolling: 'touch' }}
