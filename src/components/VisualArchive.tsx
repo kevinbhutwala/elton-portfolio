@@ -16,180 +16,208 @@ interface ArchivePhoto {
   location: string;
   aspect: string;
   colorGrade: string;
+  originalFileName: string;
 }
 
 const archivePhotos: ArchivePhoto[] = [
   {
     id: 'c1',
     src: '/clicks/IMG_2580.jpg',
-    title: 'Neon Drift & Night Pacing',
-    category: 'Night Still',
-    iso: 'ISO 1250',
-    shutter: '1/50s',
+    title: 'Solitary Fishing Boat at Dusk',
+    category: 'Coastal Twilight',
+    iso: 'ISO 200',
+    shutter: '1/160s',
     focal: '35mm Cine',
-    location: 'Bangalore, IN',
-    aspect: '9:16 Frame',
-    colorGrade: 'Halation Teal & Amber',
+    location: 'Goa Coastline',
+    aspect: '9:16 Scope',
+    colorGrade: 'Sunset Amber & Teal Wave',
+    originalFileName: 'IMG_2580',
   },
   {
     id: 'c2',
     src: '/clicks/IMG_2536.jpg',
-    title: 'Celluloid Grain Study 01',
-    category: 'Cinematics',
-    iso: 'ISO 400',
-    shutter: '1/48s',
-    focal: '50mm Anamorphic',
-    location: 'Goa Coast',
+    title: 'Vidhana Soudha Fireworks Celebration',
+    category: 'Night Still',
+    iso: 'ISO 1250',
+    shutter: '1/50s',
+    focal: '28mm Prime',
+    location: 'Bangalore, Karnataka',
     aspect: '9:16 Scope',
-    colorGrade: 'Kodak 5219 500T',
+    colorGrade: 'Pyrotechnic Crimson & Gold',
+    originalFileName: 'IMG_2536',
   },
   {
     id: 'c3',
-    src: '/clicks/IMG_2539.jpg',
-    title: 'Shadow Depth & Contrast Ratio',
-    category: 'Lighting Rig',
-    iso: 'ISO 800',
-    shutter: '1/60s',
-    focal: '28mm Prime',
-    location: 'Studio Stage A',
-    aspect: '3:4 Aspect',
-    colorGrade: 'Monochrome Low-Key',
+    src: '/clicks/IMG_2595.jpg',
+    title: 'Live DJ Performance at Social',
+    category: 'Night Still',
+    iso: 'ISO 3200',
+    shutter: '1/30s',
+    focal: '24mm Wide Prime',
+    location: 'Social Club, Bangalore',
+    aspect: '9:16 Frame',
+    colorGrade: 'Neon Red & Club Motion Flare',
+    originalFileName: 'IMG_2595',
   },
   {
     id: 'c4',
-    src: '/clicks/IMG_2540.jpg',
-    title: 'Golden Hour Flare Timing',
-    category: 'Outdoor Cut',
-    iso: 'ISO 200',
-    shutter: '1/120s',
-    focal: '85mm T1.5',
-    location: 'Western Ghats',
-    aspect: '3:4 Aspect',
-    colorGrade: 'Warm Honey Highlights',
+    src: '/clicks/IMG_2591.jpg',
+    title: 'Concert Pyro Explosion & Vocal Duet',
+    category: 'Live Stage',
+    iso: 'ISO 1600',
+    shutter: '1/250s',
+    focal: '50mm Cine',
+    location: 'Open Air Music Arena',
+    aspect: '9:16 Frame',
+    colorGrade: 'Fire Orange & Smoke Haze',
+    originalFileName: 'IMG_2591',
   },
   {
     id: 'c5',
-    src: '/clicks/IMG_2541.jpg',
-    title: 'Atmospheric Fog & Diffusion',
-    category: 'Location Scout',
-    iso: 'ISO 640',
-    shutter: '1/50s',
-    focal: '35mm T2.0',
-    location: 'Wayanad Highlands',
+    src: '/clicks/IMG_2593.jpg',
+    title: 'BMW M2 Coupe Street Motion Blur',
+    category: 'Automotive Motion',
+    iso: 'ISO 400',
+    shutter: '1/20s Panning',
+    focal: '85mm Portrait Cine',
+    location: 'Bangalore City Traffic',
     aspect: '3:4 Aspect',
-    colorGrade: 'Muted Forest Green',
+    colorGrade: 'Warm Tungsten Motion Tracking',
+    originalFileName: 'IMG_2593',
   },
   {
     id: 'c6',
     src: '/clicks/IMG_2556.jpg',
-    title: 'Architectural Symmetry Frame',
-    category: 'Composition',
-    iso: 'ISO 320',
-    shutter: '1/100s',
-    focal: '24mm Ultra-Wide',
-    location: 'Metro Terminal',
+    title: 'Golden Sunset Silhouette by the Shore',
+    category: 'Golden Hour',
+    iso: 'ISO 100',
+    shutter: '1/500s',
+    focal: '50mm Prime',
+    location: 'Goa Beach',
     aspect: '9:16 Frame',
-    colorGrade: 'Industrial Bleach Bypass',
+    colorGrade: 'Amber Sunburst & Deep Black Silhouettes',
+    originalFileName: 'IMG_2556',
   },
   {
     id: 'c7',
     src: '/clicks/IMG_2581.jpg',
-    title: 'Motion Blur Kinetic Texture',
-    category: 'Speed Ramp',
-    iso: 'ISO 1600',
-    shutter: '1/24s',
-    focal: '40mm Anamorphic',
-    location: 'Expressway Route',
-    aspect: '9:16 Scope',
-    colorGrade: 'Tungsten Electric Red',
+    title: 'Gilded Sunlight on Ocean Waves',
+    category: 'Nature Texture',
+    iso: 'ISO 160',
+    shutter: '1/800s',
+    focal: '70mm Telephoto',
+    location: 'Arabian Sea Shore',
+    aspect: '9:16 Frame',
+    colorGrade: 'Liquid Gold Highlights & Deep Indigo',
+    originalFileName: 'IMG_2581',
   },
   {
     id: 'c8',
-    src: '/clicks/IMG_2589.jpg',
-    title: 'Editorial Portrait Silhouette',
-    category: 'Subject Cut',
-    iso: 'ISO 500',
-    shutter: '1/80s',
-    focal: '50mm Cine',
-    location: 'Backstage',
-    aspect: '2:3 Vertical',
-    colorGrade: 'Rich Deep Obsidian',
+    src: '/clicks/IMG_2592.jpg',
+    title: 'Mist-Veiled Mountain Peak',
+    category: 'Cinematics',
+    iso: 'ISO 250',
+    shutter: '1/125s',
+    focal: '85mm Landscape Cine',
+    location: 'Wayanad Highlands, Kerala',
+    aspect: '3:4 Aspect',
+    colorGrade: 'Moody Forest Green & Cloud Diffusion',
+    originalFileName: 'IMG_2592',
   },
   {
     id: 'c9',
-    src: '/clicks/IMG_2591.jpg',
-    title: 'Prism Refraction & Optics',
-    category: 'VFX Element',
-    iso: 'ISO 800',
-    shutter: '1/50s',
-    focal: '65mm Macro',
-    location: 'Color Suite BLR',
-    aspect: '1:2 Cinematic Strip',
-    colorGrade: 'Spectrum Flare Split',
+    src: '/clicks/IMG_2589.jpg',
+    title: 'Wave One Skyscraper at Twilight Glow',
+    category: 'Architectural',
+    iso: 'ISO 320',
+    shutter: '1/80s',
+    focal: '35mm T2.0',
+    location: 'Urban Skyline',
+    aspect: '2:3 Vertical',
+    colorGrade: 'Purple Sunset & Glass Blue Reflex',
+    originalFileName: 'IMG_2589',
   },
   {
     id: 'c10',
-    src: '/clicks/IMG_2592.jpg',
-    title: 'Nightclub Bass Vibration',
-    category: 'Music Visual',
-    iso: 'ISO 3200',
-    shutter: '1/40s',
-    focal: '24mm F1.4',
-    location: 'Club 21A BLR',
+    src: '/clicks/IMG_2541.jpg',
+    title: 'Canopy of Coconut Palms over Rocky Cove',
+    category: 'Cinematics',
+    iso: 'ISO 200',
+    shutter: '1/250s',
+    focal: '16mm Ultra-Wide',
+    location: 'Vagator / Anjuna Shore, Goa',
     aspect: '3:4 Aspect',
-    colorGrade: 'Magenta Neon Saturation',
+    colorGrade: 'Tropical Emerald & Sky Cyan',
+    originalFileName: 'IMG_2541',
   },
   {
     id: 'c11',
-    src: '/clicks/IMG_2593.jpg',
-    title: 'Minimal Negative Space Balance',
-    category: 'Framing',
+    src: '/clicks/IMG_0010.jpg',
+    title: 'Curved Palm on Clear Turquoise Waters',
+    category: 'Cinematics',
     iso: 'ISO 100',
-    shutter: '1/250s',
-    focal: '50mm Prime',
-    location: 'Coastline Sand Bar',
+    shutter: '1/640s',
+    focal: '24mm Wide Prime',
+    location: 'Island Shoreline',
     aspect: '3:4 Aspect',
-    colorGrade: 'Clean Celluloid Neutral',
+    colorGrade: 'Clean Aqua Cyan & Coastal White',
+    originalFileName: 'IMG_0010',
   },
   {
     id: 'c12',
-    src: '/clicks/IMG_2594.jpg',
-    title: 'Raw Tape Cassette Aesthetic',
-    category: 'Finishing',
-    iso: 'ISO 1000',
-    shutter: '1/50s',
-    focal: '35mm Vintage Glass',
-    location: 'Sound Stage',
-    aspect: '2:3 Vertical',
-    colorGrade: 'Fuji Reala Emulsion',
+    src: '/clicks/IMG_0108.jpg',
+    title: 'Portuguese Heritage Baroque Church',
+    category: 'Architectural',
+    iso: 'ISO 160',
+    shutter: '1/400s',
+    focal: '35mm Cine',
+    location: 'Old Goa Heritage Basilica',
+    aspect: '3:4 Aspect',
+    colorGrade: 'Whitewash Stucco & Deep Teal Sky',
+    originalFileName: 'IMG_0108',
   },
   {
     id: 'c13',
-    src: '/clicks/IMG_0010.jpg',
-    title: 'Goa Dusk Marine Horizon',
-    category: 'Landscape',
+    src: '/clicks/IMG_2594.jpg',
+    title: 'Pamban Sea Bridge & Railway Cabin',
+    category: 'Cinematics',
     iso: 'ISO 250',
-    shutter: '1/60s',
-    focal: '28mm T1.9',
-    location: 'North Goa Shore',
-    aspect: '3:4 Aspect',
-    colorGrade: 'Indigo Twilight Fade',
+    shutter: '1/200s',
+    focal: '50mm Vintage Prime',
+    location: 'Pamban Bridge, Rameshwaram',
+    aspect: '2:3 Vertical',
+    colorGrade: 'Ocean Cerulean & Vintage Ochre',
+    originalFileName: 'IMG_2594',
   },
   {
     id: 'c14',
-    src: '/clicks/IMG_0108.jpg',
-    title: 'Chiaroscuro Form & Texture',
-    category: 'Cinematics',
+    src: '/clicks/IMG_2540.jpg',
+    title: 'Artisan Cafe Still Life with Matcha & Croissant',
+    category: 'Lifestyle Still',
     iso: 'ISO 400',
-    shutter: '1/100s',
-    focal: '50mm Cine',
-    location: 'Heritage Studio',
+    shutter: '1/120s',
+    focal: '50mm F1.8 Prime',
+    location: 'Boutique Roastery, Bangalore',
     aspect: '3:4 Aspect',
-    colorGrade: 'Golden Film Highlight',
+    colorGrade: 'Warm Coffee Brown & Matcha Green',
+    originalFileName: 'IMG_2540',
+  },
+  {
+    id: 'c15',
+    src: '/clicks/IMG_2539.jpg',
+    title: 'Luxury Courtyard Pool & Cloudscape',
+    category: 'Architectural',
+    iso: 'ISO 125',
+    shutter: '1/500s',
+    focal: '18mm Ultra-Wide',
+    location: 'Boutique Resort Lounge',
+    aspect: '3:4 Aspect',
+    colorGrade: 'Sunlit Azure & Sandstone Ochre',
+    originalFileName: 'IMG_2539',
   },
 ];
 
-type LensFilter = 'all' | 'film-grain' | 'anamorphic' | 'cinematic' | 'night';
+type LensFilter = 'all' | 'cinematic' | 'night' | 'architecture' | 'nature';
 
 export default function VisualArchive() {
   const [activeFilter, setActiveFilter] = useState<LensFilter>('all');
@@ -203,10 +231,10 @@ export default function VisualArchive() {
 
   const filteredPhotos = archivePhotos.filter((p) => {
     if (activeFilter === 'all') return true;
-    if (activeFilter === 'night') return p.category.includes('Night') || p.category.includes('Music');
-    if (activeFilter === 'anamorphic') return p.focal.includes('Anamorphic') || p.aspect.includes('Scope');
-    if (activeFilter === 'film-grain') return p.colorGrade.includes('Kodak') || p.colorGrade.includes('Grain') || p.colorGrade.includes('Fuji');
-    if (activeFilter === 'cinematic') return p.category.includes('Cinematics') || p.category.includes('Lighting');
+    if (activeFilter === 'night') return p.category.includes('Night') || p.category.includes('Live Stage');
+    if (activeFilter === 'cinematic') return p.category.includes('Cinematics') || p.category.includes('Automotive');
+    if (activeFilter === 'architecture') return p.category.includes('Architectural') || p.category.includes('Lifestyle');
+    if (activeFilter === 'nature') return p.category.includes('Nature') || p.category.includes('Coastal') || p.category.includes('Golden Hour');
     return true;
   });
 
@@ -267,36 +295,42 @@ export default function VisualArchive() {
               Every cinematic cut begins with light, frame composition, and optical texture. A curated contact sheet of raw captures, framing studies, and lighting textures by Elton.
             </p>
           </div>
+        </div>
 
-          {/* Filter Pills */}
-          <div className="flex items-center gap-2 overflow-x-auto pb-2 lg:pb-0 scrollbar-none -mx-4 px-4 sm:mx-0 sm:px-0">
+        {/* Lens / Aesthetic Controls */}
+        <div className="flex flex-wrap items-center justify-between gap-3 mb-8">
+          <div className="flex items-center gap-1.5 p-1 rounded-xl bg-carbon border border-white/[0.08] overflow-x-auto max-w-full text-xs">
             {[
-              { key: 'all', label: 'All Frames (14)' },
-              { key: 'cinematic', label: 'Cinematics' },
-              { key: 'film-grain', label: 'Film Stock' },
-              { key: 'anamorphic', label: 'Anamorphic' },
-              { key: 'night', label: 'Night / Neon' },
+              { id: 'all', label: 'All Clicks (15)' },
+              { id: 'cinematic', label: 'Cinematics & Motion' },
+              { id: 'night', label: 'Concert & Night' },
+              { id: 'nature', label: 'Nature & Shore' },
+              { id: 'architecture', label: 'Architecture & Stills' },
             ].map((tab) => (
               <button
-                key={tab.key}
+                key={tab.id}
                 onClick={() => {
-                  audioEngine.playMechanicalClick();
-                  setActiveFilter(tab.key as LensFilter);
+                  audioEngine.playHoverTick();
+                  setActiveFilter(tab.id as LensFilter);
                 }}
-                onMouseEnter={() => audioEngine.playHoverTick()}
-                className={`px-3.5 py-1.5 rounded-full text-xs font-medium transition-all shrink-0 border ${
-                  activeFilter === tab.key
-                    ? 'bg-amber-400 text-obsidian border-amber-400 font-semibold shadow-[0_0_20px_rgba(229,168,83,0.3)]'
-                    : 'bg-white/[0.03] text-neutral-400 border-white/[0.08] hover:border-white/20 hover:text-offWhite'
+                className={`px-3.5 py-1.5 rounded-lg font-medium transition-all whitespace-nowrap ${
+                  activeFilter === tab.id
+                    ? 'bg-amber-400 text-obsidian font-semibold shadow-md'
+                    : 'text-neutral-400 hover:text-offWhite hover:bg-white/[0.04]'
                 }`}
               >
                 {tab.label}
               </button>
             ))}
           </div>
+
+          <div className="hidden sm:flex items-center gap-2 text-xs text-neutral-400 font-mono">
+            <Film className="w-3.5 h-3.5 text-amber-400" />
+            <span>35MM STAGE ARCHIVE · RAW COLOR TIMED</span>
+          </div>
         </div>
 
-        {/* Interactive Film Contact Sheet Grid */}
+        {/* The Grid: 35mm Celluloid Contact Sheet */}
         <div className="grid grid-cols-2 sm:grid-cols-3 lg:grid-cols-4 gap-3 sm:gap-4 md:gap-5">
           {filteredPhotos.map((photo, idx) => (
             <div
@@ -308,7 +342,7 @@ export default function VisualArchive() {
               {/* Negative Film Strip Header Details */}
               <div className="px-3 py-2 bg-black/60 border-b border-white/[0.06] flex items-center justify-between text-[10px] font-mono text-neutral-400">
                 <span className="text-amber-400/90 font-bold">EXP_{String(idx + 1).padStart(2, '0')}</span>
-                <span className="text-neutral-500">{photo.aspect}</span>
+                <span className="text-neutral-300 font-mono text-[9px] bg-white/[0.05] px-1.5 py-0.5 rounded border border-white/10">{photo.originalFileName}</span>
                 <span className="text-neutral-400 hidden xs:inline">{photo.iso}</span>
               </div>
 
@@ -335,21 +369,21 @@ export default function VisualArchive() {
                 <div className="absolute inset-0 flex items-center justify-center opacity-0 group-hover:opacity-100 transition-all duration-200 pointer-events-none">
                   <div className="px-3 py-1.5 rounded-full bg-black/80 backdrop-blur-md border border-white/20 text-[11px] font-semibold text-offWhite flex items-center gap-1.5 shadow-2xl">
                     <Eye className="w-3 h-3 text-amber-400" />
-                    <span>Inspect Frame</span>
+                    <span>Inspect Click</span>
                   </div>
                 </div>
 
                 {/* Bottom Overlay Info */}
-                <div className="absolute bottom-2 left-2 right-2 p-2 rounded-lg bg-black/70 backdrop-blur-sm border border-white/[0.08] transition-transform duration-300">
+                <div className="absolute bottom-2 left-2 right-2 p-2 rounded-lg bg-black/75 backdrop-blur-sm border border-white/[0.08] transition-transform duration-300">
                   <div className="flex items-center justify-between text-[10px] text-amber-400 font-semibold mb-0.5">
                     <span>{photo.category}</span>
                     <span className="text-neutral-400 font-mono text-[9px]">{photo.focal}</span>
                   </div>
-                  <h4 className="text-xs font-semibold text-offWhite truncate">
+                  <h4 className="text-xs font-semibold text-offWhite truncate" title={photo.title}>
                     {photo.title}
                   </h4>
-                  <div className="text-[10px] text-neutral-400 truncate mt-0.5">
-                    {photo.location}
+                  <div className="text-[10px] text-neutral-400 truncate mt-0.5 flex items-center justify-between">
+                    <span>{photo.location}</span>
                   </div>
                 </div>
               </div>
@@ -363,7 +397,7 @@ export default function VisualArchive() {
             <Film className="w-4 h-4 text-amber-400" />
             <span>Click any still frame to open high-precision inspector with 2.5x Loupe and color profile controls.</span>
           </div>
-          <span className="text-[11px] text-neutral-500 font-mono">14 FRAMES IN LAB ARCHIVE</span>
+          <span className="text-[11px] text-neutral-500 font-mono">15 FRAMES IN LAB ARCHIVE</span>
         </div>
       </div>
 
@@ -378,6 +412,9 @@ export default function VisualArchive() {
             <div className="flex items-center gap-3 min-w-0">
               <span className="px-2.5 py-0.5 rounded-full bg-amber-400 text-obsidian text-[11px] font-bold">
                 FRAME_{String(inspectIndex + 1).padStart(2, '0')} / {String(filteredPhotos.length).padStart(2, '0')}
+              </span>
+              <span className="text-neutral-400 font-mono text-[10px] bg-white/[0.08] px-2 py-0.5 rounded border border-white/10">
+                {activePhoto.originalFileName}
               </span>
               <span className="text-offWhite font-semibold truncate text-sm">
                 {activePhoto.title}

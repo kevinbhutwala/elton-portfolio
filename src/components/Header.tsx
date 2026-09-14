@@ -138,36 +138,61 @@ export default function Header({ onOpenContact }: HeaderProps) {
         </div>
       </header>
 
-      {/* Clean Mobile Navigation Overlay */}
+      {/* High-End Cinematic Slide-Over Drawer Menu for Mobile & Tablet */}
+      {/* Backdrop */}
       <div
-        className={`fixed inset-0 z-[99] bg-obsidian/98 backdrop-blur-xl flex flex-col justify-between p-8 md:hidden transition-all duration-300 ${
+        onClick={() => {
+          audioEngine.playMechanicalClick();
+          setIsMobileMenuOpen(false);
+        }}
+        className={`fixed inset-0 z-[120] bg-black/80 backdrop-blur-md transition-opacity duration-300 md:hidden ${
           isMobileMenuOpen ? 'opacity-100 pointer-events-auto' : 'opacity-0 pointer-events-none'
         }`}
+      />
+
+      {/* Drawer Panel */}
+      <aside
+        className={`fixed top-0 right-0 bottom-0 z-[130] w-[88vw] max-w-sm bg-[#0a0a0d] border-l border-white/10 shadow-[-20px_0_60px_rgba(0,0,0,0.95)] flex flex-col justify-between p-6 transition-transform duration-300 ease-out md:hidden ${
+          isMobileMenuOpen ? 'translate-x-0' : 'translate-x-full'
+        }`}
       >
-        <div className="flex items-center justify-between pt-4 border-b border-white/[0.08] pb-5">
-          <div className="flex items-center gap-2.5">
-            <div className="relative w-7 h-7 rounded-full overflow-hidden border border-white/10">
-              <Image
-                src="/images/elton-dmello.jpg"
-                alt="Elton D'Mello"
-                fill
-                className="object-cover"
-              />
+        {/* Drawer Header */}
+        <div className="flex items-center justify-between pb-5 border-b border-white/[0.08]">
+          <div className="flex items-center gap-3">
+            <div className="relative w-9 h-9 rounded-lg bg-gradient-to-br from-[#1c1c22] to-[#0d0d10] border border-amber-400/40 flex items-center justify-center shadow-lg">
+              <span className="font-display text-sm font-black text-amber-400">
+                E
+              </span>
+              <span className="absolute -top-0.5 -right-0.5 w-1.5 h-1.5 rounded-full bg-crimson" />
             </div>
-            <span className="text-sm font-semibold text-offWhite">
-              Elton D&apos;Mello
-            </span>
+            <div>
+              <div className="text-sm font-semibold text-offWhite tracking-tight">
+                Elton D&apos;Mello
+              </div>
+              <div className="text-[11px] text-neutral-400">
+                Video Editor · Storyteller
+              </div>
+            </div>
           </div>
+
           <button
-            onClick={() => setIsMobileMenuOpen(false)}
-            className="p-1 text-muted hover:text-offWhite"
+            onClick={() => {
+              audioEngine.playMechanicalClick();
+              setIsMobileMenuOpen(false);
+            }}
+            className="w-8 h-8 rounded-full bg-white/[0.05] hover:bg-white/[0.1] border border-white/10 flex items-center justify-center text-neutral-400 hover:text-offWhite transition-colors"
+            aria-label="Close Menu"
           >
-            <X className="w-5 h-5" />
+            <X className="w-4 h-4" />
           </button>
         </div>
 
-        <nav className="flex flex-col gap-5 my-auto">
-          {navLinks.map((link) => (
+        {/* Drawer Nav Links */}
+        <nav className="flex flex-col gap-1.5 my-auto py-6 overflow-y-auto">
+          <span className="text-[10px] font-mono uppercase tracking-widest text-neutral-500 mb-2 px-3">
+            Portfolio Navigation
+          </span>
+          {navLinks.map((link, idx) => (
             <a
               key={link.label}
               href={link.href}
@@ -175,26 +200,61 @@ export default function Header({ onOpenContact }: HeaderProps) {
                 audioEngine.playMechanicalClick();
                 setIsMobileMenuOpen(false);
               }}
-              className="text-2xl font-display font-semibold text-offWhite hover:text-amber-gold transition-colors"
+              onMouseEnter={() => audioEngine.playHoverTick()}
+              className="flex items-center justify-between px-3 py-2.5 rounded-xl hover:bg-white/[0.04] text-offWhite hover:text-amber-400 font-medium text-base transition-all group"
             >
-              {link.label}
+              <div className="flex items-center gap-3">
+                <span className="text-[10px] font-mono text-neutral-500 group-hover:text-amber-400/80">
+                  0{idx + 1}
+                </span>
+                <span>{link.label}</span>
+              </div>
+              <ArrowUpRight className="w-3.5 h-3.5 text-neutral-500 group-hover:text-amber-400 transition-all opacity-0 group-hover:opacity-100 group-hover:translate-x-0.5 group-hover:-translate-y-0.5" />
             </a>
           ))}
         </nav>
 
-        <div className="flex flex-col gap-3 border-t border-white/[0.08] pt-6">
+        {/* Drawer Footer Actions */}
+        <div className="space-y-3 pt-5 border-t border-white/[0.08]">
+          {/* Quick Audio Switcher */}
+          <div className="flex items-center justify-between px-3 py-2 rounded-xl bg-white/[0.03] border border-white/[0.08] text-xs">
+            <span className="text-neutral-400 flex items-center gap-2">
+              {isMuted ? <VolumeX className="w-3.5 h-3.5 text-neutral-500" /> : <Volume2 className="w-3.5 h-3.5 text-amber-400" />}
+              <span>Audio Soundscape</span>
+            </span>
+            <button
+              onClick={handleAudioToggle}
+              className={`px-2.5 py-1 rounded-md text-[11px] font-semibold transition-all ${
+                !isMuted ? 'bg-amber-400 text-obsidian font-bold' : 'bg-white/10 text-neutral-300'
+              }`}
+            >
+              {!isMuted ? 'Active' : 'Muted'}
+            </button>
+          </div>
+
+          {/* Direct CTA */}
           <button
             onClick={() => {
               audioEngine.playMechanicalClick();
               setIsMobileMenuOpen(false);
               onOpenContact();
             }}
-            className="w-full py-3 bg-offWhite text-obsidian font-semibold text-xs rounded-full uppercase tracking-wider shadow-lg"
+            className="w-full py-3 bg-offWhite text-obsidian hover:bg-amber-400 font-semibold text-xs rounded-full uppercase tracking-wider transition-all duration-200 shadow-xl flex items-center justify-center gap-2"
           >
-            Get in Touch
+            <span>Start a Project</span>
+            <ArrowUpRight className="w-4 h-4" />
           </button>
-          <div className="flex justify-between items-center text-xs text-neutral-400">
-            <span>Goa & Bangalore, India</span>
+
+          {/* Social Direct Links */}
+          <div className="flex items-center justify-between text-[11px] text-neutral-400 pt-1 px-1">
+            <a
+              href="https://wa.me/918310826860"
+              target="_blank"
+              rel="noopener noreferrer"
+              className="hover:text-emerald-400 transition-colors"
+            >
+              WhatsApp (+91 83108 26860)
+            </a>
             <a
               href="https://www.instagram.com/_elton.dmello___/"
               target="_blank"
@@ -205,7 +265,7 @@ export default function Header({ onOpenContact }: HeaderProps) {
             </a>
           </div>
         </div>
-      </div>
+      </aside>
     </>
   );
 }
