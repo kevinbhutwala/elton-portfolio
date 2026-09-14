@@ -2,7 +2,7 @@
 
 import React, { useState } from 'react';
 import Image from 'next/image';
-import { btsFramesData } from '@/data/portfolioData';
+import { btsFramesData, bioData } from '@/data/portfolioData';
 import { audioEngine } from '@/lib/audioEngine';
 import { Instagram, Film, ExternalLink, Camera } from 'lucide-react';
 
@@ -34,14 +34,14 @@ export default function BehindTheTimeline() {
           </div>
 
           <a
-            href="https://instagram.com"
+            href={bioData.instagramUrl}
             target="_blank"
             rel="noopener noreferrer"
             onMouseEnter={() => audioEngine.playHoverTick()}
             className="flex items-center gap-2 font-mono text-xs text-amber-gold hover:text-offWhite transition-colors"
           >
             <Instagram className="w-4 h-4" />
-            <span>FOLLOW ON INSTAGRAM @ELTON.CUTS</span>
+            <span>FOLLOW ON INSTAGRAM {bioData.instagramHandle.toUpperCase()}</span>
             <ExternalLink className="w-3.5 h-3.5" />
           </a>
         </div>
