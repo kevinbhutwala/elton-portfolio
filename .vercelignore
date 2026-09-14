@@ -1,3 +1,5 @@
 src/videos
 src/videos/**
 .git
+src/imgs
+src/imgs/**

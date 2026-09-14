@@ -8,3 +8,6 @@ src/videos
 src/videos/
 src/videos/**
 .vercel
+src/imgs
+src/imgs/
+src/imgs/**

@@ -13,6 +13,7 @@ import ProjectModal from '@/components/ProjectModal';
 import Showreel from '@/components/Showreel';
 import TheEditTimeline from '@/components/TheEditTimeline';
 import About from '@/components/About';
+import VisualArchive from '@/components/VisualArchive';
 import Services from '@/components/Services';
 import MarqueeTrust from '@/components/MarqueeTrust';
 import Stats from '@/components/Stats';
@@ -91,6 +92,9 @@ export default function Home() {
 
       {/* About Elton - The Person Behind the Cut */}
       <About />
+
+      {/* Visual Archive - Stills, Optics & Contact Sheet */}
+      <VisualArchive />
 
       {/* Creative Services & Capabilities */}
       <Services onOpenContact={handleOpenContact} />

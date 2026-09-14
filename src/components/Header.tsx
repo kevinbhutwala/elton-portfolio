@@ -31,6 +31,7 @@ export default function Header({ onOpenContact }: HeaderProps) {
     { label: 'Work', href: '#work' },
     { label: 'Vertical Reels', href: '#vertical-cinema' },
     { label: 'Showreel', href: '#reel' },
+    { label: 'Archive', href: '#archive' },
     { label: 'The Edit', href: '#timeline' },
     { label: 'About', href: '#about' },
     { label: 'Contact', href: '#contact' },
