@@ -49,7 +49,7 @@ const archivePhotos: ArchivePhoto[] = [
   {
     id: 'c3',
     src: '/clicks/IMG_2595.jpg',
-    title: 'Live DJ Performance at Social',
+    title: 'Lewis Afterparty',
     category: 'Night Still',
     iso: 'ISO 3200',
     shutter: '1/30s',
