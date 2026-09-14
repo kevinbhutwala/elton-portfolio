@@ -33,6 +33,15 @@ export default function TheEditTimeline() {
     }
   };
 
+  React.useEffect(() => {
+    if (videoRef.current) {
+      videoRef.current.pause();
+      videoRef.current.currentTime = 0;
+      videoRef.current.load();
+      setIsPlayingPreview(false);
+    }
+  }, [activeStageIndex]);
+
   return (
     <section id="timeline" className="relative py-20 sm:py-28 md:py-36 bg-obsidian overflow-hidden border-t border-white/[0.06]">
       {/* Decorative Large Watermark */}

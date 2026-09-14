@@ -27,6 +27,19 @@ export default function Header({ onOpenContact }: HeaderProps) {
     setIsMuted(muted);
   };
 
+  const handleNavClick = (e: React.MouseEvent<HTMLAnchorElement>, href: string) => {
+    e.preventDefault();
+    audioEngine.playMechanicalClick();
+    setIsMobileMenuOpen(false);
+    const lenis = (window as unknown as { __lenis?: { scrollTo: (target: string, opts?: object) => void } }).__lenis;
+    if (lenis) {
+      lenis.scrollTo(href, { duration: 1.2 });
+    } else {
+      const el = document.querySelector(href);
+      el?.scrollIntoView({ behavior: 'smooth' });
+    }
+  };
+
   const navLinks = [
     { label: 'Work', href: '#work' },
     { label: 'Vertical Reels', href: '#vertical-cinema' },
@@ -83,7 +96,7 @@ export default function Header({ onOpenContact }: HeaderProps) {
                 href={link.href}
                 className="text-xs font-medium text-muted hover:text-offWhite transition-colors"
                 onMouseEnter={() => audioEngine.playHoverTick()}
-                onClick={() => audioEngine.playMechanicalClick()}
+                onClick={(e) => handleNavClick(e, link.href)}
               >
                 {link.label}
               </a>
@@ -196,10 +209,7 @@ export default function Header({ onOpenContact }: HeaderProps) {
             <a
               key={link.label}
               href={link.href}
-              onClick={() => {
-                audioEngine.playMechanicalClick();
-                setIsMobileMenuOpen(false);
-              }}
+              onClick={(e) => handleNavClick(e, link.href)}
               onMouseEnter={() => audioEngine.playHoverTick()}
               className="flex items-center justify-between px-3 py-2.5 rounded-xl hover:bg-white/[0.04] text-offWhite hover:text-amber-400 font-medium text-base transition-all group"
             >

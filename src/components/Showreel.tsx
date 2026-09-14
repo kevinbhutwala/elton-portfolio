@@ -73,12 +73,16 @@ export default function Showreel() {
     }
   };
 
-  const handleSeek = (e: React.MouseEvent<HTMLDivElement>) => {
+  const seekToClientX = (clientX: number, target: HTMLDivElement) => {
     if (!videoRef.current || !videoRef.current.duration) return;
-    const rect = e.currentTarget.getBoundingClientRect();
-    const percent = (e.clientX - rect.left) / rect.width;
+    const rect = target.getBoundingClientRect();
+    const percent = Math.max(0, Math.min(1, (clientX - rect.left) / rect.width));
     videoRef.current.currentTime = percent * videoRef.current.duration;
     setProgress(percent * 100);
+  };
+
+  const handleSeek = (e: React.MouseEvent<HTMLDivElement>) => {
+    seekToClientX(e.clientX, e.currentTarget);
   };
 
   return (
@@ -177,7 +181,13 @@ export default function Showreel() {
               {/* Scrubber track */}
               <div
                 onClick={handleSeek}
-                className="flex-1 mx-3 sm:mx-6 h-1.5 sm:h-2 bg-neutral-800 cursor-pointer relative overflow-hidden group/track rounded-full"
+                onTouchStart={(e) => {
+                  if (e.touches[0]) seekToClientX(e.touches[0].clientX, e.currentTarget);
+                }}
+                onTouchMove={(e) => {
+                  if (e.touches[0]) seekToClientX(e.touches[0].clientX, e.currentTarget);
+                }}
+                className="flex-1 mx-3 sm:mx-6 h-1.5 sm:h-2 bg-neutral-800 cursor-pointer relative overflow-hidden group/track rounded-full touch-none"
               >
                 <div
                   className="h-full bg-gradient-to-r from-crimson via-amber-gold to-offWhite relative transition-all duration-100"

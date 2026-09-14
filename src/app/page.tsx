@@ -51,16 +51,22 @@ export default function Home() {
   }, []);
 
   const handleOpenContact = () => {
-    const contactSection = document.getElementById('contact');
-    if (contactSection) {
-      contactSection.scrollIntoView({ behavior: 'smooth' });
+    const lenis = (window as unknown as { __lenis?: { scrollTo: (target: string, opts?: object) => void } }).__lenis;
+    if (lenis) {
+      lenis.scrollTo('#contact', { duration: 1.2 });
+    } else {
+      const contactSection = document.getElementById('contact');
+      contactSection?.scrollIntoView({ behavior: 'smooth' });
     }
   };
 
   const handlePlayReel = () => {
-    const reelSection = document.getElementById('reel');
-    if (reelSection) {
-      reelSection.scrollIntoView({ behavior: 'smooth' });
+    const lenis = (window as unknown as { __lenis?: { scrollTo: (target: string, opts?: object) => void } }).__lenis;
+    if (lenis) {
+      lenis.scrollTo('#reel', { duration: 1.2 });
+    } else {
+      const reelSection = document.getElementById('reel');
+      reelSection?.scrollIntoView({ behavior: 'smooth' });
     }
   };
 

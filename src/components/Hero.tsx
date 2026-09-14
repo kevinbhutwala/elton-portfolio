@@ -42,7 +42,7 @@ export default function Hero({ onPlayReel }: HeroProps) {
         <div className="inline-flex items-center gap-2 px-3.5 py-1.5 rounded-full border border-white/10 bg-white/[0.04] backdrop-blur-md mb-8">
           <span className="w-2 h-2 rounded-full bg-emerald-400 animate-pulse" />
           <span className="text-xs font-medium text-neutral-200">
-            Available for Projects · 2025–2026
+            Available for Projects · Worldwide Remote
           </span>
         </div>
 

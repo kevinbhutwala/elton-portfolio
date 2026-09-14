@@ -17,7 +17,7 @@ export default function Contact() {
         <div className="flex items-center gap-3 mb-4">
           <div className="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-white/[0.04] border border-white/10 text-xs font-medium text-amber-400">
             <span className="w-1.5 h-1.5 rounded-full bg-emerald-400 animate-pulse" />
-            <span>Initiate Collaboration · Available 2025–2026</span>
+            <span>Initiate Collaboration · Worldwide Remote</span>
           </div>
           <div className="flex-1 h-[1px] bg-white/[0.06]" />
         </div>

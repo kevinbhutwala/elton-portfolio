@@ -233,14 +233,41 @@ export default function ProjectModal({ project, onClose }: ProjectModalProps) {
                 )}
 
                 {/* Vertical Scrubber Footer */}
-                <div className="absolute bottom-0 left-0 right-0 p-3 bg-black/80 backdrop-blur-md flex items-center justify-between text-xs font-medium text-neutral-300">
-                  <button onClick={togglePlay} className="text-offWhite hover:text-amber-400 p-1">
-                    {isPlaying ? <Pause className="w-3.5 h-3.5" /> : <Play className="w-3.5 h-3.5 fill-current" />}
-                  </button>
-                  <span className="tabular-nums text-offWhite">{currentTimeStr} / {durationStr}</span>
-                  <button onClick={toggleMute} className="text-offWhite hover:text-amber-400 p-1">
-                    {isAudioMuted ? <VolumeX className="w-3.5 h-3.5 text-neutral-400" /> : <Volume2 className="w-3.5 h-3.5 text-amber-400" />}
-                  </button>
+                <div className="absolute bottom-0 left-0 right-0 p-3 bg-black/85 backdrop-blur-md flex flex-col gap-2 text-xs font-medium text-neutral-300">
+                  {/* Progress scrubber bar */}
+                  <div
+                    onClick={handleSeek}
+                    onTouchStart={(e) => {
+                      if (!videoRef.current || !videoRef.current.duration || !e.touches[0]) return;
+                      const rect = e.currentTarget.getBoundingClientRect();
+                      const percent = Math.max(0, Math.min(1, (e.touches[0].clientX - rect.left) / rect.width));
+                      videoRef.current.currentTime = percent * videoRef.current.duration;
+                      setProgress(percent * 100);
+                    }}
+                    onTouchMove={(e) => {
+                      if (!videoRef.current || !videoRef.current.duration || !e.touches[0]) return;
+                      const rect = e.currentTarget.getBoundingClientRect();
+                      const percent = Math.max(0, Math.min(1, (e.touches[0].clientX - rect.left) / rect.width));
+                      videoRef.current.currentTime = percent * videoRef.current.duration;
+                      setProgress(percent * 100);
+                    }}
+                    className="w-full h-1.5 bg-neutral-800 rounded-full overflow-hidden relative cursor-pointer touch-none"
+                  >
+                    <div
+                      className="h-full bg-gradient-to-r from-crimson to-amber-gold transition-all duration-100"
+                      style={{ width: `${progress}%` }}
+                    />
+                  </div>
+
+                  <div className="flex items-center justify-between">
+                    <button onClick={togglePlay} className="text-offWhite hover:text-amber-400 p-1" aria-label="Play/Pause">
+                      {isPlaying ? <Pause className="w-3.5 h-3.5" /> : <Play className="w-3.5 h-3.5 fill-current" />}
+                    </button>
+                    <span className="tabular-nums text-offWhite text-[11px]">{currentTimeStr} / {durationStr}</span>
+                    <button onClick={toggleMute} className="text-offWhite hover:text-amber-400 p-1" aria-label="Mute/Unmute">
+                      {isAudioMuted ? <VolumeX className="w-3.5 h-3.5 text-neutral-400" /> : <Volume2 className="w-3.5 h-3.5 text-amber-400" />}
+                    </button>
+                  </div>
                 </div>
               </div>
             </div>
@@ -530,8 +557,13 @@ export default function ProjectModal({ project, onClose }: ProjectModalProps) {
             onClick={() => {
               audioEngine.playMechanicalClick();
               onClose();
-              const contactEl = document.getElementById('contact');
-              contactEl?.scrollIntoView({ behavior: 'smooth' });
+              const lenis = (window as unknown as { __lenis?: { scrollTo: (target: string, opts?: object) => void } }).__lenis;
+              if (lenis) {
+                lenis.scrollTo('#contact');
+              } else {
+                const contactEl = document.getElementById('contact');
+                contactEl?.scrollIntoView({ behavior: 'smooth' });
+              }
             }}
             className="w-full sm:w-auto px-5 sm:px-6 py-3 bg-offWhite hover:bg-amber-gold text-obsidian text-xs font-semibold rounded-full transition-all flex items-center justify-center gap-2 shrink-0 shadow-lg"
           >

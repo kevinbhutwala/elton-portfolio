@@ -7,7 +7,12 @@ import { ArrowUp } from 'lucide-react';
 export default function Footer() {
   const scrollToTop = () => {
     audioEngine.playMechanicalClick();
-    window.scrollTo({ top: 0, behavior: 'smooth' });
+    const lenis = (window as unknown as { __lenis?: { scrollTo: (target: number | string, opts?: object) => void } }).__lenis;
+    if (lenis) {
+      lenis.scrollTo(0, { duration: 1.2 });
+    } else {
+      window.scrollTo({ top: 0, behavior: 'smooth' });
+    }
   };
 
   return (
