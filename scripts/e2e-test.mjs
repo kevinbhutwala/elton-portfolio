@@ -24,6 +24,15 @@ function record(name, pass, details = '') {
   results.tests.push({ name, pass, details });
 }
 
+async function checkAssetHttp(url) {
+  try {
+    const res = await fetch(url, { method: 'HEAD' });
+    return res.status === 200 || res.status === 206 || res.status === 304;
+  } catch {
+    return false;
+  }
+}
+
 async function runE2E() {
   const browser = await puppeteer.launch({
     executablePath: CHROME_PATH,
@@ -47,9 +56,12 @@ async function runE2E() {
   });
 
   page.on('requestfailed', req => {
+    const failure = req.failure()?.errorText || '';
+    // Chromium cancels video streaming requests when headers are buffered (net::ERR_ABORTED)
+    if (failure.includes('ERR_ABORTED')) return;
     const url = req.url();
     if (!url.includes('favicon') && !url.includes('analytics')) {
-      networkErrors.push(`${req.method()} ${url} - ${req.failure()?.errorText}`);
+      networkErrors.push(`${req.method()} ${url} - ${failure}`);
     }
   });
 
@@ -90,9 +102,9 @@ async function runE2E() {
     record('All 7 primary navigation anchors verified', navLinks.length === 7, navLinks.map(l => l.text).join(' | '));
 
     // ----------------------------------------------------
-    // TEST 3: Sound Engine Toggle
+    // TEST 3: Sound Engine Toggle (Web Audio API)
     // ----------------------------------------------------
-    console.log(`\n--- 3. Sound Engine Audio Toggle ---`);
+    console.log(`\n--- 3. Sound Engine Audio Toggle (Web Audio API) ---`);
     const soundButton = await page.$('header button[title*="Sound" i], header button:has(span)');
     if (soundButton) {
       const initialText = await page.evaluate(el => el.textContent, soundButton);
@@ -187,7 +199,7 @@ async function runE2E() {
     const verticalCards = await page.$$('#vertical-cinema .group');
     record('Vertical reel cards rendered', verticalCards.length >= 3, `Found ${verticalCards.length} vertical projects`);
 
-    // Click first card via evaluate to ensure clean synthetic click
+    // Click first card via synthetic click
     const cardClicked = await page.evaluate(() => {
       const card = document.querySelector('#vertical-cinema .group');
       if (card) {
@@ -265,7 +277,6 @@ async function runE2E() {
     record('Visual Archive photo frames rendered', photoCards.length >= 10, `Found ${photoCards.length} photos`);
 
     if (photoCards.length > 0) {
-      // Click first photo card
       await page.evaluate(() => {
         const photo = document.querySelector('#archive .group');
         photo?.dispatchEvent(new MouseEvent('click', { bubbles: true, cancelable: true }));
@@ -275,17 +286,14 @@ async function runE2E() {
       const lightboxImg = await page.$('div.fixed.inset-0 img');
       record('Visual Archive full-resolution lightbox opens', !!lightboxImg);
 
-      // ArrowRight to next photo
       await page.keyboard.press('ArrowRight');
       await new Promise(r => setTimeout(r, 400));
       record('Keyboard ArrowRight navigates to next photo', true);
 
-      // ArrowLeft to previous photo
       await page.keyboard.press('ArrowLeft');
       await new Promise(r => setTimeout(r, 400));
       record('Keyboard ArrowLeft navigates to previous photo', true);
 
-      // Escape to close
       await page.keyboard.press('Escape');
       await new Promise(r => setTimeout(r, 400));
       const lightboxClosed = await page.$('div.fixed.inset-0.z-50') === null;
@@ -314,15 +322,13 @@ async function runE2E() {
     console.log(`\n--- 11. Mobile Viewport (iPhone 14: 390x844) ---`);
     await page.setViewport({ width: 390, height: 844, isMobile: true, hasTouch: true });
     await page.reload({ waitUntil: 'networkidle2' });
-    await new Promise(r => setTimeout(r, 2200)); // wait for preloader on mobile reload
+    await new Promise(r => setTimeout(r, 2200));
 
-    // Zero horizontal layout blowout
     const isOverflowClean = await page.evaluate(() => {
       return document.documentElement.scrollWidth <= window.innerWidth;
     });
     record('Zero horizontal overflow on mobile viewport', isOverflowClean, `scrollWidth <= ${390}`);
 
-    // Mobile hamburger menu toggle
     const hamburgerBtn = await page.$('header button[aria-label="Toggle Menu"]');
     record('Mobile drawer menu button present', !!hamburgerBtn);
 
@@ -338,7 +344,6 @@ async function runE2E() {
       }, drawerAside);
       record('Mobile slide-over drawer opens smoothly', isDrawerVisible);
 
-      // Close drawer
       const closeDrawerBtn = await page.$('aside button[aria-label="Close Menu"]');
       if (closeDrawerBtn) {
         await closeDrawerBtn.click();
@@ -353,6 +358,41 @@ async function runE2E() {
     console.log(`\n--- 12. Network & Console Error Audit ---`);
     record('Zero JavaScript runtime console errors', consoleErrors.length === 0, consoleErrors.length ? consoleErrors.join(', ') : 'Clean');
     record('Zero broken network requests (404/500)', networkErrors.length === 0, networkErrors.length ? networkErrors.join(', ') : 'All assets loaded 200 OK');
+
+    // ----------------------------------------------------
+    // TEST 13: Core Media Asset HTTP 200 Audit
+    // ----------------------------------------------------
+    console.log(`\n--- 13. Core Media Asset HTTP 200 Direct Audit ---`);
+    const criticalAssets = [
+      '/videos/wayanad-cinematics.mov',
+      '/videos/dj-doel-blr.mp4',
+      '/videos/flake-house.mov',
+      '/videos/goa-auto-expo.mp4',
+      '/videos/goa-cinematics.mp4',
+      '/videos/hair-salon-work.mov',
+      '/videos/supercars-dubai.mp4',
+      '/videos/turtle-matcha-cafe.mov',
+      '/thumbnails/wayanad-cinematics.jpg',
+      '/thumbnails/dj-doel-blr.jpg',
+      '/thumbnails/flake-house.jpg',
+      '/thumbnails/goa-auto-expo.jpg',
+      '/thumbnails/goa-cinematics.jpg',
+      '/thumbnails/hair-salon-work.jpg',
+      '/thumbnails/supercars-dubai.jpg',
+      '/thumbnails/turtle-matcha-cafe.jpg'
+    ];
+
+    let allAssetsPassed = true;
+    for (const asset of criticalAssets) {
+      const ok = await checkAssetHttp(`${TARGET_URL}${asset}`);
+      if (!ok) {
+        allAssetsPassed = false;
+        record(`Asset reachable: ${asset}`, false, 'HTTP check failed');
+      }
+    }
+    if (allAssetsPassed) {
+      record(`All 16 video & thumbnail assets return HTTP 200 OK`, true, '16/16 verified');
+    }
 
   } catch (err) {
     console.error('Fatal Test Exception:', err);
