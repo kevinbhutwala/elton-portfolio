@@ -204,8 +204,8 @@ async function runE2E() {
     });
     await new Promise(r => setTimeout(r, 400));
 
-    const verticalCards = await page.$('#work .group');
-    record('Vertical reel cards rendered', verticalCards.length >= 3, `Found ${verticalCards.length} vertical projects`);
+    const verticalCardsCount = await page.$$eval('#work .group', els => els.length);
+    record('Vertical reel cards rendered', verticalCardsCount >= 3, `Found ${verticalCardsCount} vertical projects`);
 
     // Click first card via synthetic click
     const cardClicked = await page.evaluate(() => {
