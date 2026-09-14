@@ -82,13 +82,27 @@ export default function About() {
             {/* Specialization Pills */}
             <div className="mb-8">
               <span className="text-xs font-semibold text-neutral-400 uppercase tracking-wider block mb-3">
-                Core Specializations
+                Software Arsenal & Core Workflow
               </span>
               <div className="flex flex-wrap gap-2 text-xs">
-                {['Commercial Films', 'Music Visuals', '9:16 Social Reels', 'Color Grading', 'Sound Design', 'Speed Ramping'].map((spec) => (
+                {[
+                  'CapCut Pro',
+                  'Adobe Premiere Pro',
+                  'After Effects',
+                  'DaVinci Resolve (In Progress)',
+                  'Sound Design',
+                  'Speed Ramping',
+                  'High-Retention Reels',
+                ].map((spec) => (
                   <span
                     key={spec}
-                    className="px-3.5 py-1.5 bg-white/[0.04] border border-white/10 text-neutral-200 rounded-full font-medium hover:border-white/20 transition-colors"
+                    className={`px-3.5 py-1.5 border rounded-full font-medium transition-colors ${
+                      spec.includes('CapCut') || spec.includes('Premiere') || spec.includes('After Effects')
+                        ? 'bg-amber-400/10 border-amber-400/40 text-amber-300 font-semibold'
+                        : spec.includes('DaVinci')
+                        ? 'bg-white/[0.04] border-white/15 text-neutral-300'
+                        : 'bg-white/[0.03] border-white/10 text-neutral-300'
+                    }`}
                   >
                     {spec}
                   </span>

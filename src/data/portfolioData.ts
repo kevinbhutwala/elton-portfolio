@@ -3,10 +3,12 @@ import { Project, Service, ProcessStage, Testimonial, StatItem, BTSFrame } from 
 export const bioData = {
   name: "Elton D'Mello",
   primaryTitle: 'Video Editor & Visual Storyteller',
-  secondaryTitles: ['Video Editor', 'Visual Storyteller', 'Colorist'],
+  secondaryTitles: ['Video Editor', 'Visual Storyteller', 'Motion Creative'],
   tagline: 'Cutting moments. Shaping rhythm. Creating emotion.',
   supportingLine: 'Goa & Bangalore, India · Available Globally',
   location: 'GOA / BLR, INDIA',
+  email: 'eltonjohndmello@gmail.com',
+  phone: '+91 83108 26860',
   instagramUrl: 'https://www.instagram.com/_elton.dmello___/',
   instagramHandle: '@_elton.dmello___',
   photo: '/images/elton-dmello.jpg',
@@ -16,9 +18,10 @@ export const bioData = {
     'Elton D’Mello is a professional video editor and visual storyteller based in Goa and Bangalore, India. Specializing in high-impact commercial films, music visuals, luxury automotive reels, and high-retention vertical content, he shapes raw footage into polished, rhythm-driven stories that captivate audiences.',
   quote: 'Editing isn’t about joining shots. It’s about dictating how people feel between the cuts.',
   specs: [
-    { label: 'Primary Focus', value: 'Commercial Films · Music Videos · 9:16 Reels' },
-    { label: 'Software Suites', value: 'DaVinci Resolve Studio · Adobe Premiere Pro' },
-    { label: 'Finishing Craft', value: 'Color Grading · Sound Design · Pacing' },
+    { label: 'Primary Focus', value: 'Commercial Films · Music Videos · High-Retention Reels' },
+    { label: 'Primary Software', value: 'CapCut · Adobe Premiere Pro · After Effects' },
+    { label: 'Exploring / Color', value: 'DaVinci Resolve Studio (Currently Advancing)' },
+    { label: 'Finishing Craft', value: 'Dynamic Transitions · Sound Design · Pacing' },
     { label: 'Location & Base', value: 'Goa · Bangalore · Global Remote' },
   ],
 };
@@ -36,7 +39,7 @@ export const projectsData: Project[] = [
     aspect: '16:9 / 2.39:1 Horizontal',
     fps: '24.000 FPS',
     camera: 'Sony FX3 + Cine Primes',
-    software: ['Premiere Pro', 'DaVinci Resolve Studio'],
+    software: ['Premiere Pro', 'CapCut Pro'],
     videoUrl: '/videos/wayanad-cinematics.mov',
     isVertical: false,
     synopsis:
@@ -71,7 +74,7 @@ export const projectsData: Project[] = [
     aspect: '9:16 Vertical',
     fps: '60.000 / 24.000 FPS',
     camera: 'Sony FX3 + G Master Lenses',
-    software: ['Premiere Pro', 'After Effects', 'DaVinci Resolve'],
+    software: ['Premiere Pro', 'After Effects', 'CapCut Pro'],
     videoUrl: '/videos/supercars-dubai.mp4',
     isVertical: true,
     synopsis:
@@ -105,7 +108,7 @@ export const projectsData: Project[] = [
     aspect: '9:16 Vertical',
     fps: '50.000 / 25.000 FPS',
     camera: 'Blackmagic Pocket Cinema 6K',
-    software: ['Premiere Pro', 'DaVinci Resolve'],
+    software: ['Premiere Pro', 'CapCut Pro'],
     videoUrl: '/videos/goa-auto-expo.mp4',
     isVertical: true,
     synopsis:
@@ -173,7 +176,7 @@ export const projectsData: Project[] = [
     aspect: '9:16 Vertical',
     fps: '24.000 FPS',
     camera: 'Sony FX3',
-    software: ['Premiere Pro', 'DaVinci Resolve'],
+    software: ['Premiere Pro', 'CapCut Pro'],
     videoUrl: '/videos/goa-cinematics.mp4',
     isVertical: true,
     synopsis:
@@ -207,7 +210,7 @@ export const projectsData: Project[] = [
     aspect: '9:16 Vertical',
     fps: '60.000 / 24.000 FPS Slow-Mo',
     camera: 'Sony A7S III + Macro 90mm',
-    software: ['Premiere Pro', 'DaVinci Resolve'],
+    software: ['Premiere Pro', 'CapCut Pro'],
     videoUrl: '/videos/turtle-matcha-cafe.mov',
     isVertical: true,
     synopsis:
@@ -241,7 +244,7 @@ export const projectsData: Project[] = [
     aspect: '9:16 Vertical',
     fps: '24.000 FPS',
     camera: 'Canon C70 + Vintage Glass',
-    software: ['Premiere Pro', 'After Effects'],
+    software: ['Premiere Pro', 'After Effects', 'CapCut Pro'],
     videoUrl: '/videos/flake-house.mov',
     isVertical: true,
     synopsis:
@@ -275,7 +278,7 @@ export const projectsData: Project[] = [
     aspect: '9:16 Vertical',
     fps: '60.000 / 24.000 FPS',
     camera: 'Sony A7S III',
-    software: ['Premiere Pro', 'DaVinci Resolve'],
+    software: ['Premiere Pro', 'CapCut Pro'],
     videoUrl: '/videos/hair-salon-work.mov',
     isVertical: true,
     synopsis:
@@ -400,7 +403,7 @@ export const processStages: ProcessStage[] = [
     duration: 'Day 1–2',
     description:
       'Reviewing every frame of raw footage, building select reels, logging emotional beats, and understanding the director’s core vision.',
-    tools: ['DaVinci Resolve', 'Kyno', 'Premiere Pro'],
+    tools: ['Premiere Pro', 'CapCut Pro', 'Shot Logger'],
   },
   {
     step: '02',
@@ -409,7 +412,7 @@ export const processStages: ProcessStage[] = [
     duration: 'Day 3–5',
     description:
       'Constructing the skeleton of the narrative. No music crutches—making sure the story holds up on visual momentum and pure dialogue pacing alone.',
-    tools: ['Dual Monitor NLE Setup', 'Pacing Deck'],
+    tools: ['Premiere Pro Timeline', 'CapCut High-Velocity Edit'],
   },
   {
     step: '03',
@@ -418,7 +421,7 @@ export const processStages: ProcessStage[] = [
     duration: 'Day 6–8',
     description:
       'Trimming redundant frames, introducing kinetic match cuts, pacing pauses, and establishing the exact heartbeat of the project.',
-    tools: ['Speed Ramps', 'Jump Cuts', 'Rhythm Maps'],
+    tools: ['Speed Ramps', 'After Effects GFX', 'Rhythm Maps'],
   },
   {
     step: '04',
@@ -427,7 +430,7 @@ export const processStages: ProcessStage[] = [
     duration: 'Day 9–11',
     description:
       'Color grading for cinematic mood, sculpting multi-layered sound design, and adding analog grain textures for a rich filmic finish.',
-    tools: ['DaVinci Color Nodes', 'Logic Pro Audio', 'Dehancer Pro'],
+    tools: ['Premiere Lumetri', 'CapCut Color & Audio', 'DaVinci Resolve (Studying)'],
   },
   {
     step: '05',
@@ -592,8 +595,8 @@ export const editTimelineStages = [
   },
   {
     stage: '04',
-    name: 'COLOR GRADE',
-    desc: 'DaVinci Resolve node tree: Kodak 2383 film print emulation & rich greens',
+    name: 'COLOR GRADE & FINISHING',
+    desc: 'Crafted in Premiere Pro Lumetri & CapCut curve grading; currently advancing in DaVinci Resolve node pipelines',
     color: '#D4AF37',
     v1: 'COLOR_MANAGED_ACES.MOV',
     v2: 'FILM_GRAIN_OVERLAY.MOV',

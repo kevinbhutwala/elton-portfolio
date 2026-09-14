@@ -61,24 +61,24 @@ export default function Contact() {
               <div>
                 <span className="text-neutral-500 font-medium uppercase tracking-wider block text-[11px] mb-1">Direct Inquiries</span>
                 <a
-                  href="mailto:elton.editor@example.com"
-                  className="text-base font-semibold text-offWhite hover:text-amber-400 transition-colors block"
+                  href="mailto:eltonjohndmello@gmail.com"
+                  className="text-base font-semibold text-offWhite hover:text-amber-400 transition-colors block break-all"
                   onMouseEnter={() => audioEngine.playHoverTick()}
                 >
-                  elton.editor@example.com
+                  eltonjohndmello@gmail.com
                 </a>
               </div>
 
               <div className="border-t border-white/[0.08] pt-4">
-                <span className="text-neutral-500 font-medium uppercase tracking-wider block text-[11px] mb-1">WhatsApp / Phone</span>
+                <span className="text-neutral-500 font-medium uppercase tracking-wider block text-[11px] mb-1">WhatsApp & Call</span>
                 <a
-                  href="https://wa.me/"
+                  href="https://wa.me/918310826860?text=Hi%20Elton%2C%20I%20saw%20your%20portfolio%20and%20would%20love%20to%20discuss%20an%20editing%20project."
                   target="_blank"
                   rel="noopener noreferrer"
                   className="text-sm font-medium text-neutral-300 hover:text-amber-400 transition-colors block"
                   onMouseEnter={() => audioEngine.playHoverTick()}
                 >
-                  +91 (0) 98765 43210
+                  +91 83108 26860
                 </a>
               </div>
 
