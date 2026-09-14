@@ -451,6 +451,7 @@ export default function ProjectModal({ project, onClose }: ProjectModalProps) {
               src={project.gradeImage}
               alt="Graded Final"
               fill
+              quality={95}
               className="object-cover"
             />
             <div className="absolute top-3 sm:top-4 right-3 sm:right-4 bg-black/75 backdrop-blur-md px-3 py-1 rounded-full text-xs font-medium text-amber-400 border border-white/10">
@@ -467,6 +468,7 @@ export default function ProjectModal({ project, onClose }: ProjectModalProps) {
                   src={project.rawImage}
                   alt="Raw Camera Log"
                   fill
+                  quality={95}
                   className="object-cover filter contrast-75 brightness-110 saturate-50"
                 />
               </div>
@@ -538,6 +540,7 @@ export default function ProjectModal({ project, onClose }: ProjectModalProps) {
                     src={imgUrl}
                     alt={`Production Still ${i + 1}`}
                     fill
+                    quality={95}
                     className="object-cover transition-transform duration-500 group-hover:scale-105"
                   />
                 </div>

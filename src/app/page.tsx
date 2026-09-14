@@ -8,7 +8,6 @@ import Header from '@/components/Header';
 import Hero from '@/components/Hero';
 import Manifesto from '@/components/Manifesto';
 import FeaturedWork from '@/components/FeaturedWork';
-import VerticalReels from '@/components/VerticalReels';
 import ProjectModal from '@/components/ProjectModal';
 import Showreel from '@/components/Showreel';
 import TheEditTimeline from '@/components/TheEditTimeline';
@@ -81,17 +80,14 @@ export default function Home() {
       {/* Fullscreen Hero */}
       <Hero onPlayReel={handlePlayReel} />
 
+      {/* Dedicated Master Showreel 2026 */}
+      <Showreel />
+
       {/* Manifesto & Philosophy */}
       <Manifesto />
 
-      {/* Selected Featured Work */}
+      {/* Selected Featured Work - Unified Multi-Format Showcase (Zero Repetition) */}
       <FeaturedWork onSelectProject={(p) => setSelectedProject(p)} />
-
-      {/* Dedicated 9:16 Vertical Cinema & Reels */}
-      <VerticalReels onSelectProject={(p) => setSelectedProject(p)} />
-
-      {/* Dedicated Showreel 2026 */}
-      <Showreel />
 
       {/* Signature "THE EDIT" Interactive Timeline */}
       <TheEditTimeline />

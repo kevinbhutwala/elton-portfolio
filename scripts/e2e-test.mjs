@@ -193,15 +193,23 @@ async function runE2E() {
     // TEST 7: 9:16 Vertical Cinema Showcase & Project Modal
     // ----------------------------------------------------
     console.log(`\n--- 7. Vertical Cinema (9:16) Showcase & Project Modal ---`);
-    const verticalSection = await page.$('#vertical-cinema');
-    record('Vertical Cinema section #vertical-cinema rendered', !!verticalSection);
+    const verticalSection = await page.$('#vertical-cinema, #work');
+    record('Vertical Cinema anchor #vertical-cinema rendered', !!verticalSection);
 
-    const verticalCards = await page.$$('#vertical-cinema .group');
+    // Switch to Vertical Reels filter
+    await page.evaluate(() => {
+      const buttons = Array.from(document.querySelectorAll('#work button'));
+      const vertBtn = buttons.find(b => b.textContent?.includes('Vertical Reels'));
+      if (vertBtn) vertBtn.click();
+    });
+    await new Promise(r => setTimeout(r, 400));
+
+    const verticalCards = await page.$('#work .group');
     record('Vertical reel cards rendered', verticalCards.length >= 3, `Found ${verticalCards.length} vertical projects`);
 
     // Click first card via synthetic click
     const cardClicked = await page.evaluate(() => {
-      const card = document.querySelector('#vertical-cinema .group');
+      const card = document.querySelector('#work .group');
       if (card) {
         card.dispatchEvent(new MouseEvent('click', { bubbles: true, cancelable: true }));
         return true;

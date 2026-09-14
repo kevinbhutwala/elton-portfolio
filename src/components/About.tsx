@@ -18,6 +18,7 @@ export default function About() {
                   src={bioData.photo}
                   alt="Elton D'Mello - Video Editor"
                   fill
+                  quality={95}
                   priority
                   className="object-cover object-center"
                 />
