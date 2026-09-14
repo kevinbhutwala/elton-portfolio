@@ -120,10 +120,11 @@ export default function Showreel() {
           ref={videoContainerRef}
           className="relative aspect-video sm:aspect-[2.39/1] w-full bg-obsidian border border-white/[0.08] rounded-xl sm:rounded-2xl overflow-hidden group shadow-[0_25px_70px_rgba(0,0,0,0.9)]"
         >
-          {/* Actual Video Element */}
+          {/* Actual Video Element with Cinematic High-Res Poster */}
           <video
             ref={videoRef}
             src="/videos/wayanad-cinematics.mov"
+            poster="https://images.unsplash.com/photo-1511497584788-87676104235f?auto=format&fit=crop&w=1920&q=85"
             playsInline
             muted={isMuted}
             onClick={togglePlay}

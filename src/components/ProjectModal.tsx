@@ -212,6 +212,7 @@ export default function ProjectModal({ project, onClose }: ProjectModalProps) {
                 <video
                   ref={videoRef}
                   src={project.videoUrl}
+                  poster={project.heroImage}
                   playsInline
                   loop
                   muted={isAudioMuted}
@@ -306,6 +307,7 @@ export default function ProjectModal({ project, onClose }: ProjectModalProps) {
             <video
               ref={videoRef}
               src={project.videoUrl}
+              poster={project.heroImage}
               playsInline
               loop
               muted={isAudioMuted}

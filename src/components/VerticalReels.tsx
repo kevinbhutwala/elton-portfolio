@@ -104,6 +104,7 @@ export default function VerticalReels({ onSelectProject }: VerticalReelsProps) {
                     videoRefs.current[project.id] = el;
                   }}
                   src={project.videoUrl}
+                  poster={project.heroImage}
                   playsInline
                   loop
                   muted={!isSoundOn}
