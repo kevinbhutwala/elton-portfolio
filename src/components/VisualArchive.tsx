@@ -309,7 +309,7 @@ export default function VisualArchive() {
   };
 
   return (
-    <section id="archive" className="relative py-20 sm:py-28 md:py-36 bg-obsidian overflow-hidden border-t border-white/[0.06]">
+    <section id="archive" className="relative py-20 sm:py-28 md:py-36 bg-transparent overflow-hidden border-t border-white/[0.06]">
       {/* Background Studio Grid Lines */}
       <div className="absolute inset-0 bg-[linear-gradient(to_right,rgba(255,255,255,0.015)_1px,transparent_1px),linear-gradient(to_bottom,rgba(255,255,255,0.015)_1px,transparent_1px)] bg-[size:4rem_4rem] [mask-image:radial-gradient(ellipse_60%_50%_at_50%_50%,#000_70%,transparent_100%)] pointer-events-none" />
 

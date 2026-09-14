@@ -7,7 +7,7 @@ import { MapPin, Globe, Instagram, ArrowUpRight } from 'lucide-react';
 
 export default function About() {
   return (
-    <section id="about" className="py-24 md:py-32 bg-carbon border-t border-borderDark/40">
+    <section id="about" className="py-24 md:py-32 bg-carbon/40 backdrop-blur-[2px] border-t border-borderDark/40">
       <div className="max-w-7xl mx-auto px-6 md:px-12">
         <div className="grid grid-cols-1 lg:grid-cols-12 gap-12 lg:gap-16 items-center">
           {/* Portrait Column (Left) */}

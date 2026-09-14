@@ -18,6 +18,7 @@ import MarqueeTrust from '@/components/MarqueeTrust';
 import Stats from '@/components/Stats';
 import Contact from '@/components/Contact';
 import Footer from '@/components/Footer';
+import AmbientNeonGlow from '@/components/AmbientNeonGlow';
 
 export default function Home() {
   const [loading, setLoading] = useState(true);
@@ -70,7 +71,10 @@ export default function Home() {
   };
 
   return (
-    <main className="relative min-h-screen bg-obsidian text-offWhite selection:bg-crimson selection:text-white">
+    <main className="relative min-h-screen bg-transparent text-offWhite selection:bg-crimson selection:text-white">
+      {/* Background Ambient Neon Glow (Black + Light Neon Atmosphere) */}
+      <AmbientNeonGlow />
+
       {/* Opening Preloader Film Clapper */}
       {loading && <Preloader onComplete={() => setLoading(false)} />}
 

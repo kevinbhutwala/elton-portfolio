@@ -89,7 +89,7 @@ export default function FeaturedWork({ onSelectProject }: FeaturedWorkProps) {
   });
 
   return (
-    <section id="work" className="relative py-16 sm:py-24 md:py-32 bg-obsidian overflow-hidden border-t border-white/[0.06]">
+    <section id="work" className="relative py-16 sm:py-24 md:py-32 bg-transparent overflow-hidden border-t border-white/[0.06]">
       {/* Anchor for direct jump to Vertical Cinema */}
       <div id="vertical-cinema" className="absolute -top-24 pointer-events-none" />
 

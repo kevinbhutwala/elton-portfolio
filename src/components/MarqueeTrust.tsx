@@ -5,7 +5,7 @@ import { clientLogos } from '@/data/portfolioData';
 
 export default function MarqueeTrust() {
   return (
-    <section className="py-14 bg-obsidian border-t border-b border-white/[0.06] overflow-hidden select-none">
+    <section className="py-14 bg-obsidian/40 backdrop-blur-[2px] border-t border-b border-white/[0.06] overflow-hidden select-none">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 md:px-12 mb-6 flex items-center justify-between">
         <span className="text-xs font-semibold text-neutral-400 uppercase tracking-wider">
           Selected Collaborations & Studios

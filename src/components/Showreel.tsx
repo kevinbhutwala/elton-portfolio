@@ -86,7 +86,7 @@ export default function Showreel() {
   };
 
   return (
-    <section id="reel" className="relative py-16 sm:py-24 md:py-32 bg-carbon overflow-hidden border-t border-white/[0.06]">
+    <section id="reel" className="relative py-16 sm:py-24 md:py-32 bg-carbon/40 backdrop-blur-[2px] overflow-hidden border-t border-white/[0.06]">
       {/* Decorative Large Number */}
       <div className="absolute top-10 right-6 md:right-12 text-[10rem] md:text-[16rem] font-display font-light text-white/[0.015] leading-none pointer-events-none select-none">
         03

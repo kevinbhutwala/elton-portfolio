@@ -16,7 +16,7 @@ export default function Services({ onOpenContact }: ServicesProps) {
   const activeService = servicesData[hoveredServiceIndex] || servicesData[0];
 
   return (
-    <section id="services" className="relative py-16 sm:py-24 md:py-32 bg-obsidian overflow-hidden border-t border-white/[0.06]">
+    <section id="services" className="relative py-16 sm:py-24 md:py-32 bg-transparent overflow-hidden border-t border-white/[0.06]">
       {/* Decorative Large Number */}
       <div className="absolute top-10 left-6 md:left-12 text-[10rem] md:text-[16rem] font-display font-light text-white/[0.015] leading-none pointer-events-none select-none">
         06

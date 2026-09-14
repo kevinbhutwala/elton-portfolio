@@ -48,6 +48,9 @@ module.exports = {
         "marquee-reverse": "marqueeReverse 35s linear infinite",
         "pulse-glow": "pulseGlow 3s ease-in-out infinite",
         "float": "float 6s ease-in-out infinite",
+        "ambient-drift-1": "ambientDrift1 24s ease-in-out infinite alternate",
+        "ambient-drift-2": "ambientDrift2 30s ease-in-out infinite alternate",
+        "ambient-drift-3": "ambientDrift3 26s ease-in-out infinite alternate",
       },
       keyframes: {
         marquee: {
@@ -65,6 +68,21 @@ module.exports = {
         float: {
           "0%, 100%": { transform: "translateY(0px)" },
           "50%": { transform: "translateY(-10px)" },
+        },
+        ambientDrift1: {
+          "0%": { transform: "translate(0px, 0px) scale(1)" },
+          "50%": { transform: "translate(35px, -25px) scale(1.08)" },
+          "100%": { transform: "translate(-20px, 20px) scale(0.96)" },
+        },
+        ambientDrift2: {
+          "0%": { transform: "translate(0px, 0px) scale(1)" },
+          "50%": { transform: "translate(-30px, 30px) scale(1.06)" },
+          "100%": { transform: "translate(25px, -15px) scale(0.94)" },
+        },
+        ambientDrift3: {
+          "0%": { transform: "translate(0px, 0px) scale(1)" },
+          "50%": { transform: "translate(20px, 35px) scale(1.05)" },
+          "100%": { transform: "translate(-25px, -20px) scale(0.97)" },
         },
       },
     },

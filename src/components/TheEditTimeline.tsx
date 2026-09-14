@@ -43,7 +43,7 @@ export default function TheEditTimeline() {
   }, [activeStageIndex]);
 
   return (
-    <section id="timeline" className="relative py-20 sm:py-28 md:py-36 bg-obsidian overflow-hidden border-t border-white/[0.06]">
+    <section id="timeline" className="relative py-20 sm:py-28 md:py-36 bg-transparent overflow-hidden border-t border-white/[0.06]">
       {/* Decorative Large Watermark */}
       <div className="absolute top-10 left-6 md:left-12 text-[10rem] md:text-[18rem] font-display font-black text-white/[0.012] leading-none pointer-events-none select-none tracking-tighter">
         04

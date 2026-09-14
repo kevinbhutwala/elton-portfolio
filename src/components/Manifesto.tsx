@@ -4,7 +4,7 @@ import React from 'react';
 
 export default function Manifesto() {
   return (
-    <section className="py-16 sm:py-20 md:py-24 bg-carbon border-t border-b border-white/[0.06]">
+    <section className="py-16 sm:py-20 md:py-24 bg-carbon/40 backdrop-blur-[2px] border-t border-b border-white/[0.06]">
       <div className="max-w-4xl mx-auto px-4 sm:px-6 text-center">
         <div className="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-white/[0.04] border border-white/10 text-xs font-medium text-amber-400 mb-4">
           <span className="w-1.5 h-1.5 rounded-full bg-amber-400" />

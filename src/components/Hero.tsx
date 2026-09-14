@@ -21,7 +21,7 @@ export default function Hero({ onPlayReel }: HeroProps) {
   };
 
   return (
-    <section id="hero" className="relative min-h-[92vh] w-full flex items-center justify-center overflow-hidden bg-obsidian pt-24 pb-16">
+    <section id="hero" className="relative min-h-[92vh] w-full flex items-center justify-center overflow-hidden bg-transparent pt-24 pb-16">
       {/* Background Cinematic Video Loop */}
       <div className="absolute inset-0 z-0 pointer-events-none">
         <video
@@ -33,7 +33,7 @@ export default function Hero({ onPlayReel }: HeroProps) {
           playsInline
           className="w-full h-full object-cover opacity-45 filter contrast-110 brightness-90"
         />
-        <div className="absolute inset-0 bg-gradient-to-t from-obsidian via-obsidian/40 to-obsidian/80" />
+        <div className="absolute inset-0 bg-gradient-to-t from-[#050507] via-[#050507]/30 to-[#050507]/75" />
       </div>
 
       {/* Main Hero Content */}

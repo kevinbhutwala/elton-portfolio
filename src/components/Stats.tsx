@@ -5,7 +5,7 @@ import { statsData } from '@/data/portfolioData';
 
 export default function Stats() {
   return (
-    <section className="py-16 sm:py-24 md:py-32 bg-obsidian border-t border-white/[0.06]">
+    <section className="py-16 sm:py-24 md:py-32 bg-transparent border-t border-white/[0.06]">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 md:px-12">
         <div className="grid grid-cols-2 lg:grid-cols-4 gap-6 sm:gap-8 md:gap-12">
           {statsData.map((stat, idx) => (
