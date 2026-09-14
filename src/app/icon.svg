@@ -1,0 +1,44 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 64 64" width="64" height="64">
+  <defs>
+    <linearGradient id="brandGrad" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#E5383B" />
+      <stop offset="50%" stop-color="#E5A853" />
+      <stop offset="100%" stop-color="#D4AF37" />
+    </linearGradient>
+    <linearGradient id="bgGrad" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#18181D" />
+      <stop offset="100%" stop-color="#08080A" />
+    </linearGradient>
+  </defs>
+
+  <!-- Squircle Background with border -->
+  <rect x="2" y="2" width="60" height="60" rx="16" fill="url(#bgGrad)" stroke="rgba(255,255,255,0.15)" stroke-width="2"/>
+
+  <!-- Subtle Film Sprockets / Perforations at Top and Bottom -->
+  <rect x="12" y="7" width="5" height="4" rx="1" fill="#E5A853" opacity="0.85"/>
+  <rect x="23" y="7" width="5" height="4" rx="1" fill="#E5A853" opacity="0.85"/>
+  <rect x="36" y="7" width="5" height="4" rx="1" fill="#E5A853" opacity="0.85"/>
+  <rect x="47" y="7" width="5" height="4" rx="1" fill="#E5A853" opacity="0.85"/>
+
+  <rect x="12" y="53" width="5" height="4" rx="1" fill="#E5A853" opacity="0.85"/>
+  <rect x="23" y="53" width="5" height="4" rx="1" fill="#E5A853" opacity="0.85"/>
+  <rect x="36" y="53" width="5" height="4" rx="1" fill="#E5A853" opacity="0.85"/>
+  <rect x="47" y="53" width="5" height="4" rx="1" fill="#E5A853" opacity="0.85"/>
+
+  <!-- Stylized Cinematic 'E' Monogram with Playhead Accent -->
+  <!-- Vertical Stem -->
+  <rect x="18" y="18" width="6" height="28" rx="3" fill="url(#brandGrad)"/>
+
+  <!-- Top Bar -->
+  <rect x="18" y="18" width="25" height="5.5" rx="2.75" fill="url(#brandGrad)"/>
+
+  <!-- Middle Bar -->
+  <rect x="18" y="29.25" width="17" height="5" rx="2.5" fill="url(#brandGrad)"/>
+
+  <!-- Bottom Bar -->
+  <rect x="18" y="40.5" width="25" height="5.5" rx="2.75" fill="url(#brandGrad)"/>
+
+  <!-- Playhead Red Dot Accent -->
+  <circle cx="47" cy="31.75" r="3.5" fill="#E5383B" />
+  <circle cx="47" cy="31.75" r="5" fill="none" stroke="#E5383B" stroke-width="1.2" opacity="0.8"/>
+</svg>

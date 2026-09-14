@@ -1,0 +1,128 @@
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=JetBrains+Mono:wght@400;500;600&family=Plus+Jakarta+Sans:wght@400;500;600;700;800&display=swap');
+
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+:root {
+  --font-sans: 'Inter', -apple-system, BlinkMacSystemFont, sans-serif;
+  --font-display: 'Plus Jakarta Sans', -apple-system, BlinkMacSystemFont, sans-serif;
+  --font-mono: 'JetBrains Mono', monospace;
+  --bg-obsidian: #08080A;
+  --accent-crimson: #E5383B;
+  --accent-amber: #E5A853;
+  --accent-gold: #D4AF37;
+}
+
+* {
+  box-sizing: border-box;
+}
+
+html {
+  background-color: #08080A;
+  color: #F5F5F7;
+  scroll-behavior: smooth;
+  font-family: var(--font-sans);
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+body {
+  background-color: #08080A;
+  overflow-x: hidden;
+  margin: 0;
+  padding: 0;
+}
+
+a, button, [role="button"], input[type="submit"] {
+  cursor: pointer;
+}
+
+/* Film Grain Overlay */
+.film-grain {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100vw;
+  height: 100vh;
+  pointer-events: none;
+  z-index: 9999;
+  opacity: 0.038;
+  background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 200 200' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noiseFilter'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.85' numOctaves='3' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noiseFilter)'/%3E%3C/svg%3E");
+}
+
+/* Custom Scrollbar */
+::-webkit-scrollbar {
+  width: 5px;
+  height: 5px;
+}
+::-webkit-scrollbar-track {
+  background: #08080A;
+}
+::-webkit-scrollbar-thumb {
+  background: #252533;
+  border-radius: 2px;
+}
+::-webkit-scrollbar-thumb:hover {
+  background: #E5A853;
+}
+
+::selection {
+  background-color: #E5383B;
+  color: #FFFFFF;
+}
+
+/* Cinema Letterboxing */
+.letterbox-top {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  height: 0px;
+  background: #000;
+  z-index: 900;
+  transition: height 0.6s cubic-bezier(0.16, 1, 0.3, 1);
+}
+.letterbox-bottom {
+  position: fixed;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  height: 0px;
+  background: #000;
+  z-index: 900;
+  transition: height 0.6s cubic-bezier(0.16, 1, 0.3, 1);
+}
+.cinema-mode .letterbox-top,
+.cinema-mode .letterbox-bottom {
+  height: 36px;
+}
+
+/* Subtle glowing text and border utilities */
+.text-stroke {
+  -webkit-text-stroke: 1px rgba(245, 245, 247, 0.2);
+  color: transparent;
+}
+.text-stroke-hover:hover {
+  -webkit-text-stroke: 1px #E5A853;
+  color: #E5A853;
+}
+
+/* Subtle crosshair grid line */
+.film-grid-line {
+  background-image: linear-gradient(to right, rgba(255, 255, 255, 0.05) 1px, transparent 1px),
+                    linear-gradient(to bottom, rgba(255, 255, 255, 0.05) 1px, transparent 1px);
+  background-size: 80px 80px;
+}
+
+/* Custom transitions */
+.transition-luxury {
+  transition: all 0.5s cubic-bezier(0.25, 1, 0.5, 1);
+}
+
+@media (max-width: 768px) {
+  .cinema-mode .letterbox-top,
+  .cinema-mode .letterbox-bottom {
+    height: 18px;
+  }
+}

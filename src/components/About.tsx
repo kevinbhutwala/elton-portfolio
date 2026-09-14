@@ -1,0 +1,113 @@
+'use client';
+
+import React from 'react';
+import Image from 'next/image';
+import { bioData } from '@/data/portfolioData';
+import { MapPin, Globe, Instagram, ArrowUpRight } from 'lucide-react';
+
+export default function About() {
+  return (
+    <section id="about" className="py-24 md:py-32 bg-carbon border-t border-borderDark/40">
+      <div className="max-w-7xl mx-auto px-6 md:px-12">
+        <div className="grid grid-cols-1 lg:grid-cols-12 gap-12 lg:gap-16 items-center">
+          {/* Portrait Column (Left) */}
+          <div className="lg:col-span-5 flex flex-col items-center">
+            <div className="relative aspect-[3/4] w-full max-w-[340px] bg-obsidian border border-borderDark rounded-xl overflow-hidden shadow-2xl p-2">
+              <div className="relative w-full h-full rounded-lg overflow-hidden">
+                <Image
+                  src={bioData.photo}
+                  alt="Elton D'Mello - Video Editor"
+                  fill
+                  priority
+                  className="object-cover object-center"
+                />
+                <div className="absolute inset-0 bg-gradient-to-t from-obsidian/80 via-transparent to-transparent" />
+
+                <div className="absolute bottom-3 left-3 right-3 bg-obsidian/90 backdrop-blur-md p-3 rounded border border-borderDark/80 flex items-center justify-between">
+                  <div>
+                    <span className="text-xs font-semibold text-offWhite block">{bioData.name}</span>
+                    <span className="text-[11px] text-muted">Video Editor & Visual Storyteller</span>
+                  </div>
+                  <span className="w-2 h-2 rounded-full bg-emerald-500" />
+                </div>
+              </div>
+            </div>
+
+            {/* Direct Instagram Profile Link */}
+            <a
+              href={bioData.instagramUrl}
+              target="_blank"
+              rel="noopener noreferrer"
+              className="mt-4 flex items-center justify-center gap-2 py-2 px-5 bg-obsidian border border-borderDark hover:border-amber-gold text-xs text-muted hover:text-offWhite transition-all rounded-full w-full max-w-[340px]"
+            >
+              <Instagram className="w-3.5 h-3.5 text-crimson" />
+              <span>Follow on Instagram {bioData.instagramHandle}</span>
+              <ArrowUpRight className="w-3 h-3" />
+            </a>
+
+            {/* Location & Status */}
+            <div className="mt-3 flex items-center justify-between text-xs text-neutral-400 w-full max-w-[340px] px-2 font-medium">
+              <div className="flex items-center gap-1.5">
+                <MapPin className="w-3.5 h-3.5 text-crimson" />
+                <span>{bioData.location}</span>
+              </div>
+              <div className="flex items-center gap-1.5 text-amber-400">
+                <Globe className="w-3.5 h-3.5" />
+                <span>{bioData.availability}</span>
+              </div>
+            </div>
+          </div>
+
+          {/* Biography & Skills (Right) */}
+          <div className="lg:col-span-7 flex flex-col justify-center">
+            <div className="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-white/[0.04] border border-white/10 text-xs font-medium text-amber-400 mb-3 w-fit">
+              <span className="w-1.5 h-1.5 rounded-full bg-amber-400" />
+              <span>About the Editor</span>
+            </div>
+            <h2 className="text-3xl sm:text-5xl font-display font-bold text-offWhite tracking-tight mb-5">
+              Elton D&apos;Mello
+            </h2>
+
+            {/* Main Bio Paragraph */}
+            <p className="text-base sm:text-lg text-neutral-200 leading-relaxed mb-6 font-sans">
+              {bioData.aboutBio}
+            </p>
+
+            <div className="border-l-2 border-amber-400 pl-5 py-1 mb-8">
+              <p className="text-sm md:text-base text-neutral-400 font-normal italic">
+                “{bioData.quote}”
+              </p>
+            </div>
+
+            {/* Specialization Pills */}
+            <div className="mb-8">
+              <span className="text-xs font-semibold text-neutral-400 uppercase tracking-wider block mb-3">
+                Core Specializations
+              </span>
+              <div className="flex flex-wrap gap-2 text-xs">
+                {['Commercial Films', 'Music Visuals', '9:16 Social Reels', 'Color Grading', 'Sound Design', 'Speed Ramping'].map((spec) => (
+                  <span
+                    key={spec}
+                    className="px-3.5 py-1.5 bg-white/[0.04] border border-white/10 text-neutral-200 rounded-full font-medium hover:border-white/20 transition-colors"
+                  >
+                    {spec}
+                  </span>
+                ))}
+              </div>
+            </div>
+
+            {/* Tech Specs Table */}
+            <div className="border-t border-white/[0.08] pt-6 space-y-3 text-xs">
+              {bioData.specs.map((item, idx) => (
+                <div key={idx} className="flex flex-col sm:flex-row sm:items-center justify-between gap-1 text-neutral-400">
+                  <span className="text-neutral-500 font-medium">{item.label}</span>
+                  <span className="text-offWhite font-semibold">{item.value}</span>
+                </div>
+              ))}
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+  );
+}
