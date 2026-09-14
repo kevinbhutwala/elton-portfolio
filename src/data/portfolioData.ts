@@ -485,7 +485,7 @@ export const statsData: StatItem[] = [
   },
   {
     label: 'AUDIENCE REACH',
-    value: 20,
+    value: 4,
     suffix: 'M+',
     description: 'Organic views across broadcast and social campaigns',
   },

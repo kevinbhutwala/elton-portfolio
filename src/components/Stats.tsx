@@ -14,7 +14,9 @@ export default function Stats() {
               className="flex flex-col border-l border-white/[0.1] pl-4 sm:pl-6 group hover:border-amber-400 transition-colors"
             >
               <div className="text-3xl sm:text-5xl md:text-6xl font-display font-bold text-offWhite tracking-tight mb-2 group-hover:text-amber-400 transition-colors">
-                {stat.value < 10 && stat.value > 0 ? `0${stat.value}` : stat.value}
+                {stat.value < 10 && stat.value > 0 && !stat.suffix.toUpperCase().includes('M')
+                  ? `0${stat.value}`
+                  : stat.value}
                 <span className="text-crimson font-light ml-0.5">{stat.suffix}</span>
               </div>
               <div className="text-xs sm:text-sm font-semibold text-offWhite tracking-wide mb-1">
