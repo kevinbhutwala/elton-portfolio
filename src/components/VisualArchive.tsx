@@ -62,14 +62,14 @@ const archivePhotos: ArchivePhoto[] = [
   {
     id: 'c4',
     src: '/clicks/IMG_2591.jpg',
-    title: 'Concert Pyro Explosion & Vocal Duet',
+    title: 'Sachet Parampara Live Concert',
     category: 'Live Stage',
     iso: 'ISO 1600',
     shutter: '1/250s',
     focal: '50mm Cine',
-    location: 'Open Air Music Arena',
+    location: 'Live Arena Concert',
     aspect: '9:16 Frame',
-    colorGrade: 'Fire Orange & Smoke Haze',
+    colorGrade: 'Stage Pyro & Amber Haze',
     originalFileName: 'IMG_2591',
   },
   {
