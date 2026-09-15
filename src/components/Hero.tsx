@@ -5,7 +5,7 @@ import { Play, Volume2, VolumeX, ArrowDown, Sparkles } from 'lucide-react';
 import { audioEngine } from '@/lib/audioEngine';
 
 interface HeroProps {
-  onPlayReel: () => void;
+  onPlayReel?: () => void;
 }
 
 export default function Hero({ onPlayReel }: HeroProps) {
@@ -81,23 +81,23 @@ export default function Hero({ onPlayReel }: HeroProps) {
 
         {/* Magnetic Hero CTA Actions */}
         <div className="flex flex-wrap items-center justify-center gap-3.5 sm:gap-4 mt-8 sm:mt-10">
-          <button
+          <a
+            href="#work"
             onClick={() => {
               audioEngine.playMechanicalClick();
-              onPlayReel();
             }}
             className="group relative px-7 py-3.5 bg-offWhite text-obsidian hover:bg-amber-gold font-sans font-semibold text-xs tracking-wider uppercase transition-all duration-300 flex items-center gap-2.5 rounded-full shadow-[0_10px_30px_rgba(255,255,255,0.15)] hover:shadow-[0_15px_40px_rgba(229,168,83,0.3)] hover:scale-105 active:scale-95"
           >
             <Play className="w-3.5 h-3.5 fill-current transition-transform duration-300 group-hover:scale-110" />
-            <span>Watch Showreel</span>
-          </button>
+            <span>Explore Works</span>
+          </a>
 
           <a
-            href="#work"
+            href="#vertical-cinema"
             onClick={() => audioEngine.playMechanicalClick()}
             className="px-7 py-3.5 border border-white/15 hover:border-amber-400/50 text-offWhite hover:text-amber-300 font-sans font-medium text-xs tracking-wider uppercase transition-all duration-300 bg-white/[0.04] hover:bg-white/[0.08] backdrop-blur-xl rounded-full shadow-lg hover:scale-105 active:scale-95"
           >
-            View Projects
+            Vertical Reels
           </a>
 
           {/* Sound Toggle with Live Equalizer Visualizer */}
