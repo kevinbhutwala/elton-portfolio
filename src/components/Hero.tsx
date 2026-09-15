@@ -35,11 +35,11 @@ export default function Hero({ onPlayReel }: HeroProps) {
           loop
           muted={isVideoMuted}
           playsInline
-          className="w-full h-full object-cover opacity-60 filter contrast-125 brightness-100 transition-all duration-1000"
+          className="w-full h-full object-cover opacity-100 transition-opacity duration-1000"
         />
-        {/* Balanced Vignette: Maintains Dark UI Contrast While Leaving Center Video Crystal Clear */}
-        <div className="absolute inset-0 bg-gradient-to-t from-[#050507] via-transparent to-[#050507]/60" />
-        <div className="absolute inset-0 bg-[radial-gradient(ellipse_at_center,transparent_45%,#050507_95%)] opacity-80" />
+        {/* Balanced Vignette: Maintains Dark UI Contrast While Leaving Center Video Crystal Clear & Raw */}
+        <div className="absolute inset-0 bg-gradient-to-t from-[#050507] via-transparent to-[#050507]/60 pointer-events-none" />
+        <div className="absolute inset-0 bg-[radial-gradient(ellipse_at_center,transparent_60%,#050507_95%)] opacity-60 pointer-events-none" />
       </div>
 
       {/* Main Hero Content */}
@@ -55,10 +55,8 @@ export default function Hero({ onPlayReel }: HeroProps) {
           </span>
         </div>
 
-        {/* Hero Title with Subtle Neon Backlight & Directorial Tracking */}
+        {/* Hero Title with Directorial Tracking */}
         <div className="relative select-none my-2">
-          {/* Ambient Glow Behind Name */}
-          <div className="absolute -inset-4 bg-gradient-to-r from-cyan-500/10 via-crimson/10 to-amber-500/10 blur-3xl opacity-60 pointer-events-none" />
 
           <h1 className="relative text-7xl sm:text-9xl md:text-[10.5rem] lg:text-[12rem] font-display font-black tracking-tighter text-offWhite uppercase leading-[0.88] drop-shadow-[0_20px_50px_rgba(0,0,0,0.8)]">
             ELTON

@@ -134,7 +134,7 @@ export default function Contact() {
         </div>
 
         {/* Social Ecosystem & Verification Badges */}
-        <div className="grid grid-cols-2 sm:grid-cols-4 gap-3 sm:gap-4 mb-8">
+        <div className="grid grid-cols-2 sm:grid-cols-4 gap-3 sm:gap-4 mb-12">
           <a
             href="https://www.instagram.com/_elton.dmello___/"
             target="_blank"
@@ -196,6 +196,68 @@ export default function Contact() {
               <span className="text-xs font-semibold text-offWhite">
                 Full NDA Protection
               </span>
+            </div>
+          </div>
+        </div>
+
+        {/* Studio Production Finale Banner - Eliminates Dead Gap & Drives Bookings */}
+        <div className="relative rounded-3xl overflow-hidden border border-white/[0.12] bg-gradient-to-b from-[#131318] via-[#0e0e12] to-[#09090c] p-6 sm:p-10 md:p-14 shadow-2xl">
+          {/* Subtle Ambient Glow Effect */}
+          <div className="absolute -top-24 -right-24 w-96 h-96 bg-amber-500/10 rounded-full blur-3xl pointer-events-none" />
+          <div className="absolute -bottom-24 -left-24 w-96 h-96 bg-emerald-500/10 rounded-full blur-3xl pointer-events-none" />
+          
+          <div className="relative z-10 flex flex-col lg:flex-row items-start lg:items-center justify-between gap-8">
+            <div className="max-w-2xl">
+              <div className="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-amber-400/10 border border-amber-400/25 text-xs font-mono text-amber-400 mb-4">
+                <span className="w-2 h-2 rounded-full bg-emerald-400 animate-pulse" />
+                <span>NOW ACCEPTING COMMISSIONS · 2026 CALENDAR OPEN</span>
+              </div>
+              <h3 className="text-2xl sm:text-4xl md:text-5xl font-display font-bold text-offWhite tracking-tight mb-4">
+                Have a vision in mind? Let&apos;s craft something unforgettable.
+              </h3>
+              <p className="text-sm sm:text-base text-neutral-400 leading-relaxed font-light mb-6">
+                From high-octane commercial automotive edits to cinematic travel reels, luxury café showcases, and festival stage visuals — every project is tuned with surgical rhythm, custom sound foley, and theater-grade color grading.
+              </p>
+
+              {/* Slate Tags */}
+              <div className="flex flex-wrap gap-2 text-[11px] font-mono text-neutral-400">
+                <span className="px-2.5 py-1 rounded-md bg-white/[0.04] border border-white/[0.08]">
+                  ✦ 4K UHD Master Delivery
+                </span>
+                <span className="px-2.5 py-1 rounded-md bg-white/[0.04] border border-white/[0.08]">
+                  ✦ 9:16 Vertical High-Retention
+                </span>
+                <span className="px-2.5 py-1 rounded-md bg-white/[0.04] border border-white/[0.08]">
+                  ✦ DaVinci Color Mastery
+                </span>
+                <span className="px-2.5 py-1 rounded-md bg-white/[0.04] border border-white/[0.08]">
+                  ✦ Fast 48-Hour Turnaround
+                </span>
+              </div>
+            </div>
+
+            {/* Direct Action Hub */}
+            <div className="flex flex-col sm:flex-row lg:flex-col gap-3 w-full lg:w-auto shrink-0">
+              <a
+                href="mailto:eltonjohndmello@gmail.com?subject=New%20Project%20Inquiry%20-%20Elton%20D'Mello"
+                onMouseEnter={() => audioEngine.playHoverTick()}
+                onClick={() => audioEngine.playMechanicalClick()}
+                className="inline-flex items-center justify-center gap-2.5 px-6 py-3.5 rounded-xl bg-amber-400 hover:bg-amber-300 text-black font-semibold text-sm transition-all hover:scale-[1.02] shadow-lg shadow-amber-400/20 text-center"
+              >
+                <span>Start a Project Brief</span>
+                <ArrowUpRight className="w-4 h-4" />
+              </a>
+              <a
+                href="https://wa.me/918310826860?text=Hi%20Elton%2C%20let's%20discuss%20a%20new%20video%20project."
+                target="_blank"
+                rel="noopener noreferrer"
+                onMouseEnter={() => audioEngine.playHoverTick()}
+                onClick={() => audioEngine.playMechanicalClick()}
+                className="inline-flex items-center justify-center gap-2.5 px-6 py-3.5 rounded-xl bg-white/[0.06] hover:bg-white/[0.12] border border-white/15 text-offWhite font-semibold text-sm transition-all text-center"
+              >
+                <MessageSquare className="w-4 h-4 text-emerald-400" />
+                <span>Quick WhatsApp Chat</span>
+              </a>
             </div>
           </div>
         </div>

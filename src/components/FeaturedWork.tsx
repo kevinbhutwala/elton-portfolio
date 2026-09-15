@@ -271,12 +271,11 @@ export default function FeaturedWork({ onSelectProject }: FeaturedWorkProps) {
                         src={project.videoUrl}
                         poster={project.heroImage}
                         playsInline
+                        autoPlay
                         loop
                         muted={!isSoundOn}
-                        preload="metadata"
-                        className={`absolute inset-0 w-full h-full object-cover filter contrast-[1.12] brightness-[1.02] saturate-[1.05] transition-opacity duration-300 ${
-                          isPlaying ? 'opacity-100' : 'opacity-0 pointer-events-none'
-                        }`}
+                        preload="auto"
+                        className="absolute inset-0 w-full h-full object-cover transition-opacity duration-300"
                       />
                     )}
 
@@ -369,7 +368,7 @@ export default function FeaturedWork({ onSelectProject }: FeaturedWorkProps) {
                   className="object-cover transition-transform duration-700 ease-out group-hover:scale-105"
                 />
 
-                {/* Smooth Video Loop on Hover / Touch */}
+                {/* Smooth Video Loop in Full Master HD */}
                 {project.videoUrl && (
                   <video
                     ref={(el) => {
@@ -378,12 +377,11 @@ export default function FeaturedWork({ onSelectProject }: FeaturedWorkProps) {
                     src={project.videoUrl}
                     poster={project.heroImage}
                     playsInline
+                    autoPlay
                     loop
                     muted={!isSoundOn}
-                    preload="metadata"
-                    className={`absolute inset-0 w-full h-full object-cover filter contrast-[1.12] brightness-[1.02] saturate-[1.05] transition-opacity duration-300 ${
-                      isPlaying ? 'opacity-100' : 'opacity-0 pointer-events-none'
-                    }`}
+                    preload="auto"
+                    className="absolute inset-0 w-full h-full object-cover transition-opacity duration-300"
                   />
                 )}
 
