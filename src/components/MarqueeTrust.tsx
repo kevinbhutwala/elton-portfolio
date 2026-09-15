@@ -15,8 +15,8 @@ export default function MarqueeTrust() {
         </span>
       </div>
 
-      {/* Marquee Row 1 */}
-      <div className="flex w-full overflow-hidden whitespace-nowrap mb-4">
+      {/* Marquee Row 1 with smooth gradient edge fade */}
+      <div className="flex w-full overflow-hidden whitespace-nowrap mb-4 [mask-image:linear-gradient(to_right,transparent,black_12%,black_88%,transparent)]">
         <div className="flex animate-marquee shrink-0 items-center gap-10 sm:gap-16">
           {clientLogos.concat(clientLogos).map((client, idx) => (
             <div key={idx} className="flex items-center gap-3 group cursor-default">
@@ -32,8 +32,8 @@ export default function MarqueeTrust() {
         </div>
       </div>
 
-      {/* Marquee Row 2 (Reverse) */}
-      <div className="flex w-full overflow-hidden whitespace-nowrap">
+      {/* Marquee Row 2 (Reverse) with smooth gradient edge fade */}
+      <div className="flex w-full overflow-hidden whitespace-nowrap [mask-image:linear-gradient(to_right,transparent,black_12%,black_88%,transparent)]">
         <div className="flex animate-marquee-reverse shrink-0 items-center gap-10 sm:gap-16">
           {clientLogos.concat(clientLogos).reverse().map((client, idx) => (
             <div key={idx} className="flex items-center gap-3 group cursor-default">

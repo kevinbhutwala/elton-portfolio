@@ -51,7 +51,7 @@ export default function RootLayout({
   children: React.ReactNode;
 }) {
   return (
-    <html lang="en" className="dark scroll-smooth">
+    <html lang="en" className="dark">
       <body className="bg-obsidian text-offWhite antialiased selection:bg-crimson selection:text-white">
         {/* Subtle Film Grain Noise Texture */}
         <div className="film-grain" />

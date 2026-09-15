@@ -331,6 +331,17 @@ export default function TheEditTimeline() {
                   </span>
                 </div>
               </div>
+
+              {/* NLE Studio Hotkeys Ribbon */}
+              <div className="mt-3 pt-3 border-t border-white/[0.04] hidden sm:flex items-center justify-between text-[10px] font-mono text-neutral-500">
+                <span className="text-neutral-400">NLE HOTKEYS:</span>
+                <div className="flex items-center gap-3">
+                  <span><kbd className="px-1.5 py-0.5 rounded bg-white/[0.06] border border-white/10 text-neutral-300">C</kbd> Razor Cut</span>
+                  <span><kbd className="px-1.5 py-0.5 rounded bg-white/[0.06] border border-white/10 text-neutral-300">V</kbd> Selection</span>
+                  <span><kbd className="px-1.5 py-0.5 rounded bg-white/[0.06] border border-white/10 text-neutral-300">B</kbd> Ripple Edit</span>
+                  <span><kbd className="px-1.5 py-0.5 rounded bg-white/[0.06] border border-white/10 text-neutral-300">Space</kbd> Play/Pause</span>
+                </div>
+              </div>
             </div>
           </div>
         </div>

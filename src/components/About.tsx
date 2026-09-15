@@ -12,7 +12,7 @@ export default function About() {
         <div className="grid grid-cols-1 lg:grid-cols-12 gap-12 lg:gap-16 items-center">
           {/* Portrait Column (Left) */}
           <div className="lg:col-span-5 flex flex-col items-center">
-            <div className="relative aspect-[3/4] w-full max-w-[340px] bg-obsidian border border-borderDark rounded-xl overflow-hidden shadow-2xl p-2">
+            <div className="relative aspect-[3/4] w-full max-w-[340px] bg-obsidian border border-borderDark hover:border-amber-400/50 rounded-xl overflow-hidden shadow-[0_20px_50px_rgba(0,0,0,0.8),0_0_30px_rgba(245,158,11,0.08)] transition-all duration-500 p-2 group">
               <div className="relative w-full h-full rounded-lg overflow-hidden">
                 <Image
                   src={bioData.photo}
@@ -119,14 +119,22 @@ export default function About() {
               </div>
             </div>
 
-            {/* Tech Specs Table */}
-            <div className="border-t border-white/[0.08] pt-6 space-y-3 text-xs">
-              {bioData.specs.map((item, idx) => (
-                <div key={idx} className="flex flex-col sm:flex-row sm:items-center justify-between gap-1 text-neutral-400">
-                  <span className="text-neutral-500 font-medium">{item.label}</span>
-                  <span className="text-offWhite font-semibold">{item.value}</span>
-                </div>
-              ))}
+            {/* Tech Specs Studio Rack */}
+            <div className="border-t border-white/[0.08] pt-6 space-y-2 text-xs">
+              <span className="text-[10px] font-mono text-neutral-500 uppercase tracking-widest block mb-2">
+                Studio Workstation & Calibration
+              </span>
+              <div className="grid grid-cols-1 sm:grid-cols-2 gap-2">
+                {bioData.specs.map((item, idx) => (
+                  <div
+                    key={idx}
+                    className="p-3 rounded-xl bg-white/[0.02] border border-white/[0.06] hover:border-white/15 transition-colors flex flex-col justify-between"
+                  >
+                    <span className="text-neutral-500 font-mono text-[10px] uppercase">{item.label}</span>
+                    <span className="text-offWhite font-semibold mt-1 text-xs">{item.value}</span>
+                  </div>
+                ))}
+              </div>
             </div>
           </div>
         </div>

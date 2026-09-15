@@ -1,7 +1,7 @@
 'use client';
 
 import React, { useState, useRef } from 'react';
-import { Play, Film, Volume2, VolumeX, ArrowDown } from 'lucide-react';
+import { Play, Volume2, VolumeX, ArrowDown, Sparkles } from 'lucide-react';
 import { audioEngine } from '@/lib/audioEngine';
 
 interface HeroProps {
@@ -21,9 +21,12 @@ export default function Hero({ onPlayReel }: HeroProps) {
   };
 
   return (
-    <section id="hero" className="relative min-h-[92vh] w-full flex items-center justify-center overflow-hidden bg-transparent pt-24 pb-16">
-      {/* Background Cinematic Video Loop */}
-      <div className="absolute inset-0 z-0 pointer-events-none">
+    <section
+      id="hero"
+      className="relative min-h-[94vh] w-full flex items-center justify-center overflow-hidden bg-transparent pt-28 pb-20"
+    >
+      {/* Background Cinematic Video Loop with Multi-Stop Vignette */}
+      <div className="absolute inset-0 z-0 pointer-events-none overflow-hidden">
         <video
           ref={videoRef}
           src="/videos/goa-cinematics.mp4"
@@ -31,72 +34,116 @@ export default function Hero({ onPlayReel }: HeroProps) {
           loop
           muted={isVideoMuted}
           playsInline
-          className="w-full h-full object-cover opacity-45 filter contrast-110 brightness-90"
+          className="w-full h-full object-cover opacity-35 filter contrast-115 brightness-90 scale-105 transition-all duration-1000"
         />
-        <div className="absolute inset-0 bg-gradient-to-t from-[#050507] via-[#050507]/30 to-[#050507]/75" />
+        {/* Soft Multi-Layered Gradients */}
+        <div className="absolute inset-0 bg-gradient-to-t from-[#050507] via-[#050507]/25 to-[#050507]/80" />
+        <div className="absolute inset-0 bg-[radial-gradient(circle_at_50%_40%,transparent_30%,#050507_90%)] opacity-70" />
       </div>
 
       {/* Main Hero Content */}
-      <div className="relative z-20 w-full max-w-6xl mx-auto px-6 text-center flex flex-col items-center">
-        {/* Status Pill */}
-        <div className="inline-flex items-center gap-2 px-3.5 py-1.5 rounded-full border border-white/10 bg-white/[0.04] backdrop-blur-md mb-8">
-          <span className="w-2 h-2 rounded-full bg-emerald-400 animate-pulse" />
-          <span className="text-xs font-medium text-neutral-200">
+      <div className="relative z-20 w-full max-w-6xl mx-auto px-4 sm:px-6 text-center flex flex-col items-center">
+        {/* Top Status & Availability Pill */}
+        <div className="inline-flex items-center gap-2.5 px-4 py-1.5 rounded-full border border-white/10 bg-white/[0.04] backdrop-blur-xl mb-8 shadow-[0_4px_24px_rgba(0,0,0,0.5)] hover:border-white/20 transition-colors">
+          <span className="relative flex h-2 w-2">
+            <span className="animate-ping absolute inline-flex h-full w-full rounded-full bg-emerald-400 opacity-75" />
+            <span className="relative inline-flex rounded-full h-2 w-2 bg-emerald-500" />
+          </span>
+          <span className="text-xs font-medium text-neutral-200 tracking-wide">
             Available for Projects · Worldwide Remote
           </span>
+          <span className="text-neutral-500 text-xs">•</span>
+          <span className="text-amber-400/90 text-xs font-mono font-medium">Q3/Q4</span>
         </div>
 
-        {/* Brand Name */}
-        <h1 className="text-6xl sm:text-8xl md:text-9xl lg:text-[10rem] font-display font-extrabold tracking-tight text-offWhite uppercase leading-none select-none">
-          ELTON
-        </h1>
+        {/* Hero Title with Subtle Neon Backlight & Directorial Tracking */}
+        <div className="relative select-none my-2">
+          {/* Ambient Glow Behind Name */}
+          <div className="absolute -inset-4 bg-gradient-to-r from-cyan-500/10 via-crimson/10 to-amber-500/10 blur-3xl opacity-60 pointer-events-none" />
 
-        {/* Clean Subtitle */}
-        <p className="mt-6 text-base sm:text-xl md:text-2xl font-display font-medium tracking-wide text-offWhite/90 uppercase">
-          Video Editor <span className="text-crimson mx-2">/</span> Visual Storyteller
+          <h1 className="relative text-7xl sm:text-9xl md:text-[10.5rem] lg:text-[12rem] font-display font-black tracking-tighter text-offWhite uppercase leading-[0.88] drop-shadow-[0_20px_50px_rgba(0,0,0,0.8)]">
+            ELTON
+          </h1>
+        </div>
+
+        {/* Editorial Subtitle with Stylized Delimiters */}
+        <div className="mt-6 flex items-center justify-center gap-3 text-sm sm:text-xl md:text-2xl font-display font-medium tracking-wide uppercase text-neutral-200">
+          <span>Video Editor</span>
+          <span className="text-crimson font-light">/</span>
+          <span className="text-offWhite">Visual Storyteller</span>
+          <span className="text-crimson font-light">/</span>
+          <span className="text-amber-400">Colorist</span>
+        </div>
+
+        {/* Punchy Narrative Tagline */}
+        <p className="mt-4 text-sm sm:text-base md:text-lg text-neutral-400 max-w-2xl leading-relaxed font-normal">
+          Cutting moments. Shaping rhythm. Creating emotion through high-velocity editing, intentional pacing, and celluloid color grading.
         </p>
 
-        {/* Decent Punchy Tagline */}
-        <p className="mt-3 text-sm sm:text-base text-neutral-400 max-w-xl leading-relaxed">
-          Cutting moments. Shaping rhythm. Creating emotion through video.
-        </p>
+        {/* Technical Directorial Metadata Ribbon */}
+        <div className="mt-6 hidden sm:flex items-center gap-2 text-[11px] font-mono tracking-widest text-neutral-400 uppercase bg-white/[0.03] border border-white/[0.08] px-4 py-1.5 rounded-full backdrop-blur-md">
+          <Sparkles className="w-3 h-3 text-amber-400" />
+          <span>4K DCI</span>
+          <span className="text-neutral-600">·</span>
+          <span>24.000 FPS</span>
+          <span className="text-neutral-600">·</span>
+          <span>2.39:1 ANAMORPHIC</span>
+          <span className="text-neutral-600">·</span>
+          <span>PRORES 422 HQ</span>
+        </div>
 
-        {/* Actions */}
-        <div className="flex flex-wrap items-center justify-center gap-3.5 mt-8 sm:mt-10">
+        {/* Magnetic Hero CTA Actions */}
+        <div className="flex flex-wrap items-center justify-center gap-3.5 sm:gap-4 mt-8 sm:mt-10">
           <button
             onClick={() => {
               audioEngine.playMechanicalClick();
               onPlayReel();
             }}
-            className="px-6 py-3 bg-offWhite text-obsidian hover:bg-amber-gold font-sans font-semibold text-xs tracking-wide uppercase transition-all duration-200 flex items-center gap-2 rounded-full shadow-lg"
+            className="group relative px-7 py-3.5 bg-offWhite text-obsidian hover:bg-amber-gold font-sans font-semibold text-xs tracking-wider uppercase transition-all duration-300 flex items-center gap-2.5 rounded-full shadow-[0_10px_30px_rgba(255,255,255,0.15)] hover:shadow-[0_15px_40px_rgba(229,168,83,0.3)] hover:scale-105 active:scale-95"
           >
-            <Play className="w-3.5 h-3.5 fill-current" />
+            <Play className="w-3.5 h-3.5 fill-current transition-transform duration-300 group-hover:scale-110" />
             <span>Watch Showreel</span>
           </button>
 
           <a
             href="#work"
             onClick={() => audioEngine.playMechanicalClick()}
-            className="px-6 py-3 border border-white/10 hover:border-white/30 text-offWhite font-sans font-medium text-xs tracking-wide uppercase transition-all duration-200 bg-white/[0.03] rounded-full"
+            className="px-7 py-3.5 border border-white/15 hover:border-amber-400/50 text-offWhite hover:text-amber-300 font-sans font-medium text-xs tracking-wider uppercase transition-all duration-300 bg-white/[0.04] hover:bg-white/[0.08] backdrop-blur-xl rounded-full shadow-lg hover:scale-105 active:scale-95"
           >
             View Projects
           </a>
 
+          {/* Sound Toggle with Live Equalizer Visualizer */}
           <button
             onClick={toggleVideoSound}
-            className="p-3 border border-white/10 hover:border-white/30 text-neutral-400 hover:text-offWhite transition-colors rounded-full bg-white/[0.03]"
+            className="group flex items-center gap-2 px-4 py-3.5 border border-white/15 hover:border-white/30 text-neutral-300 hover:text-offWhite transition-all duration-200 rounded-full bg-white/[0.04] hover:bg-white/[0.08] backdrop-blur-xl"
             title={isVideoMuted ? 'Turn Sound On' : 'Turn Sound Off'}
+            aria-label={isVideoMuted ? 'Turn Sound On' : 'Turn Sound Off'}
           >
-            {isVideoMuted ? <VolumeX className="w-4 h-4" /> : <Volume2 className="w-4 h-4 text-amber-400" />}
+            {isVideoMuted ? (
+              <VolumeX className="w-4 h-4 text-neutral-400 group-hover:text-white" />
+            ) : (
+              <div className="flex items-center gap-2">
+                <Volume2 className="w-4 h-4 text-amber-400" />
+                <span className="flex items-center gap-0.5 h-3">
+                  <span className="w-0.5 h-2 bg-amber-400 animate-pulse" />
+                  <span className="w-0.5 h-3 bg-amber-300 animate-pulse delay-75" />
+                  <span className="w-0.5 h-1.5 bg-amber-400 animate-pulse delay-150" />
+                </span>
+              </div>
+            )}
+            <span className="text-[11px] font-mono font-medium">
+              {isVideoMuted ? 'MUTE' : 'AUDIO ON'}
+            </span>
           </button>
         </div>
       </div>
 
-      {/* Bottom subtle indicator */}
+      {/* Bottom Subtle Scroll Indicator */}
       <a
         href="#work"
         onClick={() => audioEngine.playHoverTick()}
-        className="absolute bottom-6 left-1/2 -translate-x-1/2 z-20 flex items-center gap-2 text-xs font-medium text-neutral-400 hover:text-offWhite transition-colors"
+        className="absolute bottom-6 left-1/2 -translate-x-1/2 z-20 flex items-center gap-2 text-xs font-medium text-neutral-400 hover:text-offWhite transition-colors py-2 px-4 rounded-full bg-white/[0.02] border border-white/5 backdrop-blur-md"
       >
         <span>Explore Work</span>
         <ArrowDown className="w-3.5 h-3.5 animate-bounce" />

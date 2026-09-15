@@ -1,10 +1,20 @@
 'use client';
 
-import React from 'react';
+import React, { useState } from 'react';
 import { audioEngine } from '@/lib/audioEngine';
-import { Mail, Phone, MessageSquare, Instagram, Globe, ArrowUpRight, Sparkles, Clock, ShieldCheck, MapPin } from 'lucide-react';
+import { Mail, Phone, MessageSquare, Instagram, Globe, ArrowUpRight, Sparkles, Clock, ShieldCheck, MapPin, Copy, Check } from 'lucide-react';
 
 export default function Contact() {
+  const [copiedEmail, setCopiedEmail] = useState(false);
+
+  const handleCopyEmail = (e: React.MouseEvent) => {
+    e.preventDefault();
+    e.stopPropagation();
+    audioEngine.playMechanicalClick();
+    navigator.clipboard.writeText('eltonjohndmello@gmail.com');
+    setCopiedEmail(true);
+    setTimeout(() => setCopiedEmail(false), 2500);
+  };
   return (
     <section id="contact" className="relative py-20 sm:py-28 md:py-36 bg-transparent overflow-hidden border-t border-white/[0.06]">
       {/* Decorative Large Number Watermark */}
@@ -55,9 +65,28 @@ export default function Contact() {
               <span className="text-[11px] font-mono uppercase tracking-wider text-neutral-500 block mb-1">
                 Direct Inquiries & Project Briefs
               </span>
-              <h3 className="text-lg sm:text-2xl font-bold text-offWhite group-hover:text-amber-300 transition-colors break-all">
-                eltonjohndmello@gmail.com
-              </h3>
+              <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-3">
+                <h3 className="text-lg sm:text-2xl font-bold text-offWhite group-hover:text-amber-300 transition-colors break-all">
+                  eltonjohndmello@gmail.com
+                </h3>
+                <button
+                  onClick={handleCopyEmail}
+                  className="inline-flex items-center gap-1.5 px-3 py-1.5 rounded-full bg-white/[0.06] hover:bg-white/[0.12] border border-white/10 text-xs font-mono text-neutral-300 hover:text-white transition-all w-fit"
+                  title="Copy email to clipboard"
+                >
+                  {copiedEmail ? (
+                    <>
+                      <Check className="w-3.5 h-3.5 text-emerald-400" />
+                      <span className="text-emerald-400 font-semibold">COPIED</span>
+                    </>
+                  ) : (
+                    <>
+                      <Copy className="w-3.5 h-3.5 text-amber-400" />
+                      <span>COPY</span>
+                    </>
+                  )}
+                </button>
+              </div>
             </div>
 
             <div className="mt-6 pt-4 border-t border-white/[0.06] flex items-center justify-between text-xs text-neutral-400">

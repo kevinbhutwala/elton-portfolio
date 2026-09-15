@@ -18,7 +18,7 @@ import MarqueeTrust from '@/components/MarqueeTrust';
 import Stats from '@/components/Stats';
 import Contact from '@/components/Contact';
 import Footer from '@/components/Footer';
-import AmbientNeonGlow from '@/components/AmbientNeonGlow';
+import InteractiveCanvas from '@/components/InteractiveCanvas';
 
 export default function Home() {
   const [loading, setLoading] = useState(true);
@@ -27,13 +27,13 @@ export default function Home() {
   // Initialize smooth scrolling with Lenis
   useEffect(() => {
     const lenis = new Lenis({
-      duration: 1.2,
+      duration: 1.0,
       easing: (t) => Math.min(1, 1.001 - Math.pow(2, -10 * t)),
       orientation: 'vertical',
       gestureOrientation: 'vertical',
       smoothWheel: true,
-      wheelMultiplier: 1.0,
-      touchMultiplier: 2.0,
+      wheelMultiplier: 0.95,
+      touchMultiplier: 1.5,
     });
 
     (window as unknown as { __lenis?: Lenis }).__lenis = lenis;
@@ -72,8 +72,8 @@ export default function Home() {
 
   return (
     <main className="relative min-h-screen bg-transparent text-offWhite selection:bg-crimson selection:text-white">
-      {/* Background Ambient Neon Glow (Black + Light Neon Atmosphere) */}
-      <AmbientNeonGlow />
+      {/* Background Interactive Canvas & Fluid Neon Spotlight */}
+      <InteractiveCanvas />
 
       {/* Opening Preloader Film Clapper */}
       {loading && <Preloader onComplete={() => setLoading(false)} />}

@@ -11,15 +11,15 @@ export default function Stats() {
           {statsData.map((stat, idx) => (
             <div
               key={idx}
-              className="flex flex-col border-l border-white/[0.1] pl-4 sm:pl-6 group hover:border-amber-400 transition-colors"
+              className="flex flex-col p-5 sm:p-7 rounded-2xl bg-white/[0.02] border border-white/[0.06] hover:border-amber-400/40 transition-all duration-300 hover:shadow-[0_15px_35px_rgba(0,0,0,0.8)] hover:-translate-y-1 group backdrop-blur-sm"
             >
-              <div className="text-3xl sm:text-5xl md:text-6xl font-display font-bold text-offWhite tracking-tight mb-2 group-hover:text-amber-400 transition-colors">
+              <div className="text-3xl sm:text-5xl md:text-6xl font-display font-black text-offWhite tracking-tight mb-2 group-hover:text-amber-400 transition-colors">
                 {stat.value < 10 && stat.value > 0 && !stat.suffix.toUpperCase().includes('M')
                   ? `0${stat.value}`
                   : stat.value}
                 <span className="text-crimson font-light ml-0.5">{stat.suffix}</span>
               </div>
-              <div className="text-xs sm:text-sm font-semibold text-offWhite tracking-wide mb-1">
+              <div className="text-xs sm:text-sm font-semibold text-offWhite tracking-wider uppercase mb-1.5 font-mono">
                 {stat.label}
               </div>
               <div className="text-xs text-neutral-400 leading-relaxed font-normal">
