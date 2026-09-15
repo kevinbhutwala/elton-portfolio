@@ -109,7 +109,7 @@ export default function VerticalReels({ onSelectProject }: VerticalReelsProps) {
                   loop
                   muted={!isSoundOn}
                   preload="metadata"
-                  className="absolute inset-0 w-full h-full object-cover transition-transform duration-500 group-hover:scale-105"
+                  className="absolute inset-0 w-full h-full object-cover filter contrast-[1.12] brightness-[1.02] saturate-[1.05] transition-transform duration-500 group-hover:scale-105"
                 />
 
                 {/* Dark Vignette Overlay for Readability */}

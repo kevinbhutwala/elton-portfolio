@@ -18,9 +18,20 @@ export default function Header({ onOpenContact }: HeaderProps) {
     const handleScroll = () => {
       setIsScrolled(window.scrollY > 30);
     };
-    window.addEventListener('scroll', handleScroll);
+    window.addEventListener('scroll', handleScroll, { passive: true });
     return () => window.removeEventListener('scroll', handleScroll);
   }, []);
+
+  // Lock body scroll only when mobile menu drawer is actually open
+  useEffect(() => {
+    if (isMobileMenuOpen) {
+      const originalOverflow = document.body.style.overflow;
+      document.body.style.overflow = 'hidden';
+      return () => {
+        document.body.style.overflow = originalOverflow;
+      };
+    }
+  }, [isMobileMenuOpen]);
 
   const handleAudioToggle = () => {
     const muted = audioEngine.toggleMute();
@@ -166,8 +177,10 @@ export default function Header({ onOpenContact }: HeaderProps) {
 
       {/* Drawer Panel */}
       <aside
-        className={`fixed top-0 right-0 bottom-0 z-[130] w-[88vw] max-w-sm bg-[#0a0a0d] border-l border-white/10 shadow-[-20px_0_60px_rgba(0,0,0,0.95)] flex flex-col justify-between p-6 transition-transform duration-300 ease-out md:hidden ${
-          isMobileMenuOpen ? 'translate-x-0' : 'translate-x-full'
+        className={`fixed top-0 right-0 bottom-0 z-[130] w-[88vw] max-w-sm bg-[#0a0a0d] border-l border-white/10 shadow-[-20px_0_60px_rgba(0,0,0,0.95)] flex flex-col justify-between p-6 transition-all duration-300 ease-out md:hidden ${
+          isMobileMenuOpen
+            ? 'translate-x-0 opacity-100 visible pointer-events-auto'
+            : 'translate-x-full opacity-0 invisible pointer-events-none'
         }`}
       >
         {/* Drawer Header */}

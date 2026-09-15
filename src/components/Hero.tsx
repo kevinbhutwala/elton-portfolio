@@ -25,7 +25,7 @@ export default function Hero({ onPlayReel }: HeroProps) {
       id="hero"
       className="relative min-h-[94vh] w-full flex items-center justify-center overflow-hidden bg-transparent pt-28 pb-20"
     >
-      {/* Background Cinematic Video Loop with Multi-Stop Vignette */}
+      {/* Background Cinematic Video Loop with Sharp Crystal Clarity */}
       <div className="absolute inset-0 z-0 pointer-events-none overflow-hidden">
         <video
           ref={videoRef}
@@ -34,11 +34,11 @@ export default function Hero({ onPlayReel }: HeroProps) {
           loop
           muted={isVideoMuted}
           playsInline
-          className="w-full h-full object-cover opacity-35 filter contrast-115 brightness-90 scale-105 transition-all duration-1000"
+          className="w-full h-full object-cover opacity-60 filter contrast-125 brightness-100 transition-all duration-1000"
         />
-        {/* Soft Multi-Layered Gradients */}
-        <div className="absolute inset-0 bg-gradient-to-t from-[#050507] via-[#050507]/25 to-[#050507]/80" />
-        <div className="absolute inset-0 bg-[radial-gradient(circle_at_50%_40%,transparent_30%,#050507_90%)] opacity-70" />
+        {/* Balanced Vignette: Maintains Dark UI Contrast While Leaving Center Video Crystal Clear */}
+        <div className="absolute inset-0 bg-gradient-to-t from-[#050507] via-transparent to-[#050507]/60" />
+        <div className="absolute inset-0 bg-[radial-gradient(ellipse_at_center,transparent_45%,#050507_95%)] opacity-80" />
       </div>
 
       {/* Main Hero Content */}

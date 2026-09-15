@@ -35,6 +35,7 @@ export default function FeaturedWork({ onSelectProject }: FeaturedWorkProps) {
     'All',
     'Vertical Reels',
     'Commercial',
+    'Fashion',
     'Documentary',
     'Music Video',
     'Campaign',
@@ -173,6 +174,17 @@ export default function FeaturedWork({ onSelectProject }: FeaturedWorkProps) {
           glowShadow: 'hover:shadow-[0_25px_60px_rgba(0,0,0,0.9),0_0_40px_rgba(168,85,247,0.2)]',
           reelType: 'LIFESTYLE LOOKBOOK',
         };
+      case 'hair-salon-work':
+        return {
+          sticker: '✂ LUXE SALON // 60 FPS GLOSS',
+          tagColor: 'from-rose-400 via-pink-400 to-amber-300 text-obsidian shadow-[0_4px_20px_rgba(251,113,133,0.4)]',
+          rotation: 'rotate-2',
+          badgeCorner: 'top-right',
+          timecode: 'TC 00:00:40:00',
+          accentBorder: 'hover:border-rose-400/80',
+          glowShadow: 'hover:shadow-[0_25px_60px_rgba(0,0,0,0.9),0_0_40px_rgba(251,113,133,0.2)]',
+          reelType: 'BEAUTY EDITORIAL',
+        };
       default:
         return {
           sticker: isEven ? '⚡ RHYTHM CUT // 24 FPS' : '✦ A-ROLL CINEMA // DCI',
@@ -238,6 +250,7 @@ export default function FeaturedWork({ onSelectProject }: FeaturedWorkProps) {
                 >
                   {cat === 'Vertical Reels' && <Smartphone className="w-3 h-3" />}
                   {cat === 'Commercial' && <Film className="w-3 h-3" />}
+                  {cat === 'Fashion' && <Sparkles className="w-3 h-3 text-pink-400" />}
                   {cat === 'Music Video' && <Disc className="w-3 h-3" />}
                   {cat === 'Documentary' && <Sparkles className="w-3 h-3" />}
                   {cat === 'Campaign' && <Zap className="w-3 h-3" />}
@@ -258,9 +271,9 @@ export default function FeaturedWork({ onSelectProject }: FeaturedWorkProps) {
         </div>
 
         {/* ------------------------------------------------------------------ */}
-        {/* FUNKY ASYMMETRICAL EDITORIAL COLLAGE (Odd/Even Stagger, Small & Big) */}
+        {/* CLEAN LUXURY EDITORIAL GRID (Balanced Alignment & High Visual Fidelity) */}
         {/* ------------------------------------------------------------------ */}
-        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-12 gap-6 sm:gap-8 items-start">
+        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 sm:gap-8 items-stretch">
           {filteredProjects.map((project, index) => {
             const isHovered = hoveredProjectId === project.id;
             const isPlaying = playingVideoId === project.id;
@@ -268,52 +281,11 @@ export default function FeaturedWork({ onSelectProject }: FeaturedWorkProps) {
             const meta = getOddEvenMeta(index, project);
             const isEven = index % 2 === 0;
 
-            // Determine Responsive Column Span & Height Styles based on layout hierarchy
-            let colSpanClasses = 'lg:col-span-6';
-            let cardHeightClasses = 'aspect-[4/5] sm:aspect-[3/4]';
-            let staggerClass = '';
-
-            if (!project.isVertical) {
-              // Master Widescreen Banner (BIG - 12 cols)
-              colSpanClasses = 'md:col-span-2 lg:col-span-12';
-              cardHeightClasses = '';
-              staggerClass = 'mb-2';
-            } else if (project.id === 'supercars-dubai') {
-              // Featured Lead Vertical Reel (BIG - 7 cols)
-              colSpanClasses = 'lg:col-span-7';
-              cardHeightClasses = 'aspect-[9/14] sm:aspect-[9/13]';
-              staggerClass = 'lg:translate-y-0';
-            } else if (project.id === 'goa-auto-expo') {
-              // Staggered Downward Even Card (MEDIUM/COMPACT - 5 cols)
-              colSpanClasses = 'lg:col-span-5';
-              cardHeightClasses = 'aspect-[9/15] sm:aspect-[9/14]';
-              staggerClass = 'lg:translate-y-12';
-            } else if (project.id === 'dj-doel-blr') {
-              // High-Energy Club Strobe (COMPACT/PUNCHY - 4 cols)
-              colSpanClasses = 'lg:col-span-4';
-              cardHeightClasses = 'aspect-[9/16]';
-              staggerClass = 'lg:-translate-y-4';
-            } else if (project.id === 'goa-cinematics') {
-              // Poetic Vintage Frame (MEDIUM - 4 cols)
-              colSpanClasses = 'lg:col-span-4';
-              cardHeightClasses = 'aspect-[9/16]';
-              staggerClass = 'lg:translate-y-8';
-            } else if (project.id === 'turtle-matcha-cafe') {
-              // Sensory Food ASMR (COMPACT/PUNCHY - 4 cols)
-              colSpanClasses = 'lg:col-span-4';
-              cardHeightClasses = 'aspect-[9/16]';
-              staggerClass = 'lg:translate-y-2';
-            } else if (project.id === 'flake-house') {
-              // Editorial Fashion Reel (EXPANSIVE - 12 cols or 8 cols depending on filter)
-              colSpanClasses = filteredProjects.length > 5 ? 'md:col-span-2 lg:col-span-12' : 'lg:col-span-6';
-              cardHeightClasses = filteredProjects.length > 5 ? 'aspect-[16/9] sm:aspect-[21/9]' : 'aspect-[9/15]';
-              staggerClass = 'lg:mt-4';
-            } else {
-              // Fallback Odd / Even Alternating Stagger
-              colSpanClasses = isEven ? 'lg:col-span-5' : 'lg:col-span-7';
-              cardHeightClasses = isEven ? 'aspect-[9/15]' : 'aspect-[9/14]';
-              staggerClass = isEven ? 'lg:translate-y-8' : 'lg:translate-y-0';
-            }
+            // Determine Grid Column Spanning:
+            // Horizontal Master Cut spans full width across all 3 columns.
+            // All vertical reel cards share identical, clean 1-column span and uniform 9:16 aspect ratio.
+            const isHeroBanner = !project.isVertical;
+            const colSpanClasses = isHeroBanner ? 'col-span-1 md:col-span-2 lg:col-span-3' : 'col-span-1';
 
             // -------------------------------------------------------------
             // CASE A: Master Widescreen Card Layout (!isVertical)
@@ -328,7 +300,7 @@ export default function FeaturedWork({ onSelectProject }: FeaturedWorkProps) {
                   }}
                   onMouseEnter={() => handleCardMouseEnter(project.id)}
                   onMouseLeave={() => handleCardMouseLeave(project.id)}
-                  className={`group relative ${colSpanClasses} ${staggerClass} bg-carbon/95 backdrop-blur-xl border border-white/[0.08] ${meta.accentBorder} rounded-2xl sm:rounded-3xl overflow-hidden cursor-pointer transition-all duration-300 shadow-2xl ${meta.glowShadow}`}
+                  className={`group relative ${colSpanClasses} bg-carbon/95 backdrop-blur-xl border border-white/[0.08] ${meta.accentBorder} rounded-2xl sm:rounded-3xl overflow-hidden cursor-pointer transition-all duration-300 shadow-2xl ${meta.glowShadow}`}
                 >
                   {/* Overlapping Sticker */}
                   <div
@@ -362,7 +334,7 @@ export default function FeaturedWork({ onSelectProject }: FeaturedWorkProps) {
                         loop
                         muted={!isSoundOn}
                         preload="metadata"
-                        className={`absolute inset-0 w-full h-full object-cover transition-opacity duration-300 ${
+                        className={`absolute inset-0 w-full h-full object-cover filter contrast-[1.12] brightness-[1.02] saturate-[1.05] transition-opacity duration-300 ${
                           isPlaying ? 'opacity-100' : 'opacity-0 pointer-events-none'
                         }`}
                       />
@@ -429,7 +401,7 @@ export default function FeaturedWork({ onSelectProject }: FeaturedWorkProps) {
             }
 
             // -------------------------------------------------------------
-            // CASE C: Funky Asymmetrical Vertical Reels Cards (Odd / Even Styles)
+            // CASE C: Symmetrical Luxury Vertical Reels Cards (Uniform 9:16 Aspect Ratio)
             // -------------------------------------------------------------
             return (
               <div
@@ -441,7 +413,7 @@ export default function FeaturedWork({ onSelectProject }: FeaturedWorkProps) {
                 onMouseEnter={() => handleCardMouseEnter(project.id)}
                 onMouseLeave={() => handleCardMouseLeave(project.id)}
                 style={{ imageRendering: '-webkit-optimize-contrast' }}
-                className={`group relative ${colSpanClasses} ${cardHeightClasses} ${staggerClass} w-full bg-carbon/95 backdrop-blur-xl border border-white/[0.08] ${meta.accentBorder} rounded-2xl sm:rounded-3xl overflow-hidden cursor-pointer transition-all duration-300 hover:-translate-y-1.5 shadow-2xl ${meta.glowShadow} flex flex-col justify-between`}
+                className={`group relative ${colSpanClasses} aspect-[9/16] w-full bg-carbon/95 backdrop-blur-xl border border-white/[0.08] ${meta.accentBorder} rounded-2xl sm:rounded-3xl overflow-hidden cursor-pointer transition-all duration-300 hover:-translate-y-1.5 shadow-2xl ${meta.glowShadow} flex flex-col justify-between`}
               >
                 {/* Overlapping Gaffer Tape Sticker (Hangs over corner) */}
                 <div
@@ -490,7 +462,7 @@ export default function FeaturedWork({ onSelectProject }: FeaturedWorkProps) {
                     loop
                     muted={!isSoundOn}
                     preload="metadata"
-                    className={`absolute inset-0 w-full h-full object-cover transition-opacity duration-300 ${
+                    className={`absolute inset-0 w-full h-full object-cover filter contrast-[1.12] brightness-[1.02] saturate-[1.05] transition-opacity duration-300 ${
                       isPlaying ? 'opacity-100' : 'opacity-0 pointer-events-none'
                     }`}
                   />

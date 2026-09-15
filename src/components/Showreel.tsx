@@ -137,7 +137,7 @@ export default function Showreel() {
             playsInline
             muted={isMuted}
             onClick={togglePlay}
-            className="w-full h-full object-cover cursor-pointer"
+            className="w-full h-full object-cover cursor-pointer filter contrast-[1.12] brightness-[1.03] saturate-[1.05]"
           />
 
           {/* High-DPI Poster Overlay (Visible when not playing) */}
@@ -154,10 +154,10 @@ export default function Showreel() {
               quality={100}
               unoptimized
               style={{ imageRendering: '-webkit-optimize-contrast' }}
-              className="object-cover"
+              className="object-cover filter contrast-[1.08] brightness-[1.02]"
             />
-            {/* Subtle Vignette */}
-            <div className="absolute inset-0 bg-gradient-to-t from-black/70 via-transparent to-black/40 pointer-events-none" />
+            {/* Minimal Clean Vignette */}
+            <div className="absolute inset-0 bg-gradient-to-t from-black/60 via-transparent to-black/30 pointer-events-none" />
           </div>
 
           {/* Letterbox Bars */}

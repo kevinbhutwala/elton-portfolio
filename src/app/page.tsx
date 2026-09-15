@@ -23,8 +23,21 @@ export default function Home() {
   const [loading, setLoading] = useState(true);
   const [selectedProject, setSelectedProject] = useState<Project | null>(null);
 
-  // Initialize smooth scrolling with Lenis
+  // Initialize smooth scrolling with Lenis (Desktop / Pointer fine devices only)
   useEffect(() => {
+    // On mobile and touch devices, native touch scrolling is 120Hz fluid and responsive.
+    // Lenis should not hijack or block touch gestures on mobile devices.
+    const isTouchDevice =
+      typeof window !== 'undefined' &&
+      (window.matchMedia('(pointer: coarse)').matches ||
+        'ontouchstart' in window ||
+        navigator.maxTouchPoints > 0);
+
+    if (isTouchDevice) {
+      // Let mobile use native momentum scrolling without Lenis interference
+      return;
+    }
+
     const lenis = new Lenis({
       duration: 1.0,
       easing: (t) => Math.min(1, 1.001 - Math.pow(2, -10 * t)),
@@ -32,7 +45,7 @@ export default function Home() {
       gestureOrientation: 'vertical',
       smoothWheel: true,
       wheelMultiplier: 0.95,
-      touchMultiplier: 1.5,
+      syncTouch: false,
     });
 
     (window as unknown as { __lenis?: Lenis }).__lenis = lenis;
@@ -41,9 +54,10 @@ export default function Home() {
       lenis.raf(time);
       requestAnimationFrame(raf);
     }
-    requestAnimationFrame(raf);
+    const reqId = requestAnimationFrame(raf);
 
     return () => {
+      cancelAnimationFrame(reqId);
       delete (window as unknown as { __lenis?: Lenis }).__lenis;
       lenis.destroy();
     };

@@ -132,7 +132,7 @@ export default function TheEditTimeline() {
                   loop
                   muted
                   playsInline
-                  className="w-full h-full object-cover filter contrast-105"
+                  className="w-full h-full object-cover filter contrast-[1.12] brightness-[1.02] saturate-[1.05]"
                 />
 
                 {/* Program Monitor Badges */}

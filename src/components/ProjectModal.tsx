@@ -220,7 +220,7 @@ export default function ProjectModal({ project, onClose }: ProjectModalProps) {
                   loop
                   muted={isAudioMuted}
                   onClick={togglePlay}
-                  className="w-full h-full object-cover cursor-pointer"
+                  className="w-full h-full object-cover cursor-pointer filter contrast-[1.12] brightness-[1.02] saturate-[1.05]"
                 />
 
                 {/* Vertical Play Overlay */}
@@ -325,7 +325,7 @@ export default function ProjectModal({ project, onClose }: ProjectModalProps) {
               loop
               muted={isAudioMuted}
               onClick={togglePlay}
-              className="w-full h-full object-cover cursor-pointer"
+              className="w-full h-full object-cover cursor-pointer filter contrast-[1.12] brightness-[1.02] saturate-[1.05]"
             />
 
             {!isPlaying && (
