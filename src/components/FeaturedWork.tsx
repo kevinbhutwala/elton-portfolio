@@ -92,111 +92,53 @@ export default function FeaturedWork({ onSelectProject }: FeaturedWorkProps) {
     return p.category.toLowerCase() === activeCategory.toLowerCase();
   });
 
-  // Funky sticker badges and styling for odd/even variety
+  // Accent borders and glow styling
   const getOddEvenMeta = (index: number, project: Project) => {
-    const isEven = index % 2 === 0;
-
     switch (project.id) {
       case 'wayanad-cinematics':
         return {
-          sticker: '🎬 DCI MASTER // 4K SCOPE',
-          tagColor: 'from-amber-400 to-amber-500 text-obsidian shadow-[0_4px_20px_rgba(245,158,11,0.4)]',
-          rotation: '-rotate-2',
-          badgeCorner: 'top-right',
-          timecode: 'TC 00:01:28:12',
           accentBorder: 'hover:border-amber-400/80',
           glowShadow: 'hover:shadow-[0_25px_60px_rgba(0,0,0,0.9),0_0_40px_rgba(245,158,11,0.18)]',
-          reelType: 'MASTER WIDESCREEN CUT',
         };
       case 'supercars-dubai':
         return {
-          sticker: '⚡ 60 FPS // HYPERCAR RHYTHM',
-          tagColor: 'from-cyan-400 to-teal-400 text-obsidian shadow-[0_4px_20px_rgba(0,240,255,0.4)]',
-          rotation: 'rotate-2',
-          badgeCorner: 'top-right',
-          timecode: 'TC 00:00:38:22',
           accentBorder: 'hover:border-cyan-400/80',
           glowShadow: 'hover:shadow-[0_25px_60px_rgba(0,0,0,0.9),0_0_40px_rgba(0,240,255,0.2)]',
-          reelType: 'HIGH-VELOCITY REEL',
         };
       case 'goa-auto-expo':
         return {
-          sticker: '🏁 EXPO // B-ROLL SPEED-RAMP',
-          tagColor: 'from-amber-400 via-orange-400 to-amber-500 text-obsidian shadow-[0_4px_20px_rgba(245,158,11,0.4)]',
-          rotation: '-rotate-3',
-          badgeCorner: 'top-left',
-          timecode: 'TC 00:00:52:14',
           accentBorder: 'hover:border-amber-400/80',
           glowShadow: 'hover:shadow-[0_25px_60px_rgba(0,0,0,0.9),0_0_40px_rgba(245,158,11,0.18)]',
-          reelType: 'CAMPAIGN EXHIBITION',
         };
       case 'dj-doel-blr':
         return {
-          sticker: '🔊 128 BPM // BASS-DROP CUT',
-          tagColor: 'from-fuchsia-400 via-pink-500 to-rose-500 text-white shadow-[0_4px_20px_rgba(236,72,153,0.4)]',
-          rotation: 'rotate-3',
-          badgeCorner: 'top-right',
-          timecode: 'TC 00:00:44:06',
           accentBorder: 'hover:border-pink-500/80',
           glowShadow: 'hover:shadow-[0_25px_60px_rgba(0,0,0,0.9),0_0_40px_rgba(236,72,153,0.22)]',
-          reelType: 'CLUB STROBE CUT',
         };
       case 'goa-cinematics':
         return {
-          sticker: '🌅 35MM GOLDEN HOUR EMULATION',
-          tagColor: 'from-amber-300 via-yellow-400 to-amber-500 text-obsidian shadow-[0_4px_20px_rgba(234,179,8,0.4)]',
-          rotation: '-rotate-2',
-          badgeCorner: 'top-left',
-          timecode: 'TC 00:01:05:00',
           accentBorder: 'hover:border-amber-400/80',
           glowShadow: 'hover:shadow-[0_25px_60px_rgba(0,0,0,0.9),0_0_40px_rgba(245,158,11,0.18)]',
-          reelType: 'POETIC VISUAL ESSAY',
         };
       case 'turtle-matcha-cafe':
         return {
-          sticker: '🍵 ASMR MACRO // 120 FPS FOLEY',
-          tagColor: 'from-emerald-400 via-teal-400 to-cyan-400 text-obsidian shadow-[0_4px_20px_rgba(52,211,153,0.4)]',
-          rotation: 'rotate-2',
-          badgeCorner: 'top-right',
-          timecode: 'TC 00:00:30:18',
           accentBorder: 'hover:border-emerald-400/80',
           glowShadow: 'hover:shadow-[0_25px_60px_rgba(0,0,0,0.9),0_0_40px_rgba(52,211,153,0.2)]',
-          reelType: 'ARTISANAL COMMERCIAL',
         };
       case 'flake-house':
         return {
-          sticker: '✦ HIGH-FASHION EDITORIAL',
-          tagColor: 'from-purple-400 via-indigo-400 to-cyan-400 text-white shadow-[0_4px_20px_rgba(168,85,247,0.4)]',
-          rotation: '-rotate-2',
-          badgeCorner: 'top-left',
-          timecode: 'TC 00:00:45:00',
           accentBorder: 'hover:border-purple-400/80',
           glowShadow: 'hover:shadow-[0_25px_60px_rgba(0,0,0,0.9),0_0_40px_rgba(168,85,247,0.2)]',
-          reelType: 'LIFESTYLE LOOKBOOK',
         };
       case 'hair-salon-work':
         return {
-          sticker: '✂ LUXE SALON // 60 FPS GLOSS',
-          tagColor: 'from-rose-400 via-pink-400 to-amber-300 text-obsidian shadow-[0_4px_20px_rgba(251,113,133,0.4)]',
-          rotation: 'rotate-2',
-          badgeCorner: 'top-right',
-          timecode: 'TC 00:00:40:00',
           accentBorder: 'hover:border-rose-400/80',
           glowShadow: 'hover:shadow-[0_25px_60px_rgba(0,0,0,0.9),0_0_40px_rgba(251,113,133,0.2)]',
-          reelType: 'BEAUTY EDITORIAL',
         };
       default:
         return {
-          sticker: isEven ? '⚡ RHYTHM CUT // 24 FPS' : '✦ A-ROLL CINEMA // DCI',
-          tagColor: isEven
-            ? 'from-amber-400 to-amber-500 text-obsidian'
-            : 'from-cyan-400 to-teal-400 text-obsidian',
-          rotation: isEven ? '-rotate-2' : 'rotate-2',
-          badgeCorner: isEven ? 'top-right' : 'top-left',
-          timecode: 'TC 00:00:48:12',
-          accentBorder: isEven ? 'hover:border-amber-400/80' : 'hover:border-cyan-400/80',
+          accentBorder: index % 2 === 0 ? 'hover:border-amber-400/80' : 'hover:border-cyan-400/80',
           glowShadow: 'hover:shadow-[0_25px_60px_rgba(0,0,0,0.9),0_0_35px_rgba(245,158,11,0.15)]',
-          reelType: 'SELECTED CUT',
         };
     }
   };
@@ -302,13 +244,6 @@ export default function FeaturedWork({ onSelectProject }: FeaturedWorkProps) {
                   onMouseLeave={() => handleCardMouseLeave(project.id)}
                   className={`group relative ${colSpanClasses} bg-carbon/95 backdrop-blur-xl border border-white/[0.08] ${meta.accentBorder} rounded-2xl sm:rounded-3xl overflow-hidden cursor-pointer transition-all duration-300 shadow-2xl ${meta.glowShadow}`}
                 >
-                  {/* Overlapping Sticker */}
-                  <div
-                    className={`absolute -top-3.5 right-6 z-30 px-3.5 py-1 rounded-sm bg-gradient-to-r ${meta.tagColor} font-mono font-bold text-[10px] sm:text-xs uppercase tracking-widest ${meta.rotation} shadow-lg pointer-events-none transition-transform group-hover:scale-105`}
-                  >
-                    {meta.sticker}
-                  </div>
-
                   {/* Full-Bleed Widescreen Video Frame */}
                   <div className="relative aspect-video sm:aspect-[2.39/1] w-full bg-neutral-950 overflow-hidden">
                     <Image
@@ -340,23 +275,24 @@ export default function FeaturedWork({ onSelectProject }: FeaturedWorkProps) {
                       />
                     )}
 
-                    {/* Vignette & Gradients */}
-                    <div className="absolute inset-0 bg-gradient-to-t from-black/90 via-black/20 to-black/40 pointer-events-none" />
+                    {/* Clean Top & Bottom Scrims: Center remains clear, text remains 100% visible */}
+                    <div className="absolute inset-x-0 top-0 h-28 bg-gradient-to-b from-black/80 via-black/40 to-transparent pointer-events-none" />
+                    <div className="absolute inset-x-0 bottom-0 h-44 bg-gradient-to-t from-black via-black/85 to-transparent pointer-events-none" />
 
-                    {/* Badges & Sound Toggle */}
-                    <div className="absolute top-4 left-4 right-4 flex items-center justify-between z-20">
+                    {/* Top Badges & Sound Toggle */}
+                    <div className="absolute top-4 sm:top-6 left-4 sm:left-6 right-4 sm:right-6 flex items-center justify-between z-20">
                       <div className="flex items-center gap-2">
-                        <span className="px-3 py-1 rounded-full bg-black/75 backdrop-blur-md border border-white/10 text-xs font-semibold text-amber-400">
+                        <span className="px-3 py-1 rounded-full bg-black/85 backdrop-blur-md border border-white/15 text-xs font-semibold text-amber-400 shadow-md">
                           {project.category}
                         </span>
-                        <span className="px-3 py-1 rounded-full bg-black/75 backdrop-blur-md border border-white/10 text-xs font-mono text-neutral-200">
+                        <span className="px-3 py-1 rounded-full bg-black/85 backdrop-blur-md border border-white/15 text-xs font-mono text-neutral-200 shadow-md">
                           {project.fps}
                         </span>
                       </div>
 
                       <button
                         onClick={(e) => toggleCardAudio(e, project.id)}
-                        className="p-2.5 rounded-full bg-black/80 backdrop-blur-md border border-white/15 text-offWhite hover:text-amber-400 transition-colors shadow-xl"
+                        className="p-2.5 rounded-full bg-black/85 backdrop-blur-md border border-white/20 text-offWhite hover:text-amber-400 transition-colors shadow-xl"
                         title={isSoundOn ? 'Mute' : 'Preview Audio'}
                         aria-label="Toggle audio"
                       >
@@ -380,17 +316,18 @@ export default function FeaturedWork({ onSelectProject }: FeaturedWorkProps) {
                       </div>
                     </div>
 
-                    {/* Bottom Clean Minimal Overlay: Title & Duration */}
-                    <div className="absolute bottom-4 left-4 right-4 z-20 flex items-end justify-between">
+                    {/* Bottom Ultra-Visible Title, Client & Duration Overlay */}
+                    <div className="absolute bottom-4 sm:bottom-6 left-4 sm:left-6 right-4 sm:right-6 z-20 flex items-end justify-between gap-4">
                       <div>
-                        <div className="text-xs font-mono font-bold text-amber-400 mb-1">
-                          FEATURE CUT {project.number} · {project.client}
+                        <div className="text-xs font-mono font-bold text-amber-400 mb-1.5 tracking-wider uppercase flex items-center gap-2">
+                          <span className="w-1.5 h-1.5 rounded-full bg-amber-400" />
+                          <span>FEATURE CUT {project.number} · {project.client}</span>
                         </div>
-                        <h3 className="text-2xl sm:text-4xl font-display font-black text-offWhite tracking-tight drop-shadow-lg">
+                        <h3 className="text-2xl sm:text-4xl font-display font-black text-white tracking-tight drop-shadow-[0_2px_12px_rgba(0,0,0,0.9)]">
                           {project.title}
                         </h3>
                       </div>
-                      <div className="flex items-center gap-2 text-xs font-mono text-neutral-300 bg-black/70 backdrop-blur-md px-3 py-1.5 rounded-full border border-white/10">
+                      <div className="flex items-center gap-2 text-xs font-mono text-neutral-200 bg-black/85 backdrop-blur-md px-3.5 py-1.5 rounded-full border border-white/20 shrink-0 shadow-lg">
                         <Clock className="w-3.5 h-3.5 text-amber-400" />
                         <span className="text-amber-400 font-bold">{project.duration}</span>
                       </div>
@@ -415,29 +352,6 @@ export default function FeaturedWork({ onSelectProject }: FeaturedWorkProps) {
                 style={{ imageRendering: '-webkit-optimize-contrast' }}
                 className={`group relative ${colSpanClasses} aspect-[9/16] w-full bg-carbon/95 backdrop-blur-xl border border-white/[0.08] ${meta.accentBorder} rounded-2xl sm:rounded-3xl overflow-hidden cursor-pointer transition-all duration-300 hover:-translate-y-1.5 shadow-2xl ${meta.glowShadow} flex flex-col justify-between`}
               >
-                {/* Overlapping Gaffer Tape Sticker (Hangs over corner) */}
-                <div
-                  className={`absolute z-30 ${
-                    meta.badgeCorner === 'top-left' ? '-top-3 sm:-top-3.5 left-4 sm:left-6' : '-top-3 sm:-top-3.5 right-4 sm:right-6'
-                  } px-3 py-1 rounded-sm bg-gradient-to-r ${meta.tagColor} font-mono font-bold text-[10px] sm:text-xs uppercase tracking-wider ${meta.rotation} shadow-lg pointer-events-none transition-transform group-hover:scale-105`}
-                >
-                  {meta.sticker}
-                </div>
-
-                {/* Film Perforation Sprockets on Odd Cards (Left Border) / Even Cards (Right Border) */}
-                <div
-                  className={`absolute top-0 bottom-0 ${
-                    isEven ? 'right-1 sm:right-1.5' : 'left-1 sm:left-1.5'
-                  } z-20 flex flex-col justify-between py-6 pointer-events-none select-none opacity-40 group-hover:opacity-80 transition-opacity`}
-                >
-                  {[...Array(6)].map((_, i) => (
-                    <div
-                      key={i}
-                      className="w-1.5 h-2.5 rounded-[1px] bg-black/80 border border-white/20"
-                    />
-                  ))}
-                </div>
-
                 {/* Poster / Hero Image */}
                 <Image
                   src={project.heroImage}
@@ -468,24 +382,19 @@ export default function FeaturedWork({ onSelectProject }: FeaturedWorkProps) {
                   />
                 )}
 
-                {/* Dark Contrast Gradients for maximum text readability */}
-                <div className="absolute inset-0 bg-gradient-to-t from-black/95 via-black/35 to-black/60 pointer-events-none group-hover:opacity-85 transition-opacity" />
+                {/* Clean Top & Bottom Scrims: Center video stays clear, text & badges 100% visible */}
+                <div className="absolute inset-x-0 top-0 h-24 bg-gradient-to-b from-black/80 via-black/30 to-transparent pointer-events-none" />
 
-                {/* Top Info Bar: Category, Frame Rate & Audio Toggle */}
-                <div className="relative z-20 p-3.5 sm:p-5 flex items-center justify-between gap-2">
-                  <div className="flex items-center gap-1.5">
-                    <span className="px-2.5 py-1 rounded-full bg-black/80 backdrop-blur-md border border-white/10 text-[10px] sm:text-xs font-semibold text-neutral-200">
-                      {project.category}
-                    </span>
-                    <span className="hidden sm:inline-block px-2 py-0.5 rounded-full bg-white/[0.06] backdrop-blur-md text-[10px] font-mono text-neutral-300">
-                      {project.fps}
-                    </span>
-                  </div>
+                {/* Top Info Bar: Category Badge & Audio Toggle */}
+                <div className="relative z-20 p-3.5 sm:p-4 flex items-center justify-between gap-2">
+                  <span className="px-3 py-1 rounded-full bg-black/85 backdrop-blur-md border border-white/15 text-[11px] font-semibold text-amber-400 shadow-md">
+                    {project.category}
+                  </span>
 
                   {/* Interactive Audio Toggle */}
                   <button
                     onClick={(e) => toggleCardAudio(e, project.id)}
-                    className="p-2 sm:p-2.5 rounded-full bg-black/80 backdrop-blur-md border border-white/15 text-offWhite hover:text-amber-400 transition-colors shrink-0 shadow-lg"
+                    className="p-2 sm:p-2.5 rounded-full bg-black/85 backdrop-blur-md border border-white/20 text-white hover:text-amber-400 transition-colors shrink-0 shadow-lg"
                     title={isSoundOn ? 'Mute' : 'Listen'}
                     aria-label="Toggle sound"
                   >
@@ -509,27 +418,27 @@ export default function FeaturedWork({ onSelectProject }: FeaturedWorkProps) {
                   </div>
                 </div>
 
-                {/* Bottom Overlay Info */}
-                <div className="relative z-20 p-3.5 sm:p-5 pointer-events-none">
-                  {/* Project Number & Duration */}
-                  <div className="flex items-center justify-between text-[11px] font-mono mb-1">
-                    <span className="font-bold text-amber-400 flex items-center gap-1.5">
-                      <span className="w-1 h-1 rounded-full bg-amber-400" />
+                {/* Bottom Scrim & Ultra High-Contrast Typography */}
+                <div className="relative z-20 p-4 sm:p-5 bg-gradient-to-t from-black via-black/85 to-transparent pt-20 pointer-events-none">
+                  {/* Category & Duration */}
+                  <div className="flex items-center justify-between text-[11px] font-mono mb-1.5">
+                    <span className="font-bold text-amber-400 tracking-wider uppercase flex items-center gap-1.5">
+                      <span className="w-1.5 h-1.5 rounded-full bg-amber-400" />
                       CUT {project.number}
                     </span>
-                    <span className="text-neutral-300 font-normal flex items-center gap-1.5">
+                    <span className="text-neutral-200 font-medium flex items-center gap-1 bg-black/75 backdrop-blur-md px-2.5 py-0.5 rounded-full border border-white/15">
                       <Clock className="w-3 h-3 text-amber-400" />
                       {project.duration}
                     </span>
                   </div>
 
                   {/* Project Title */}
-                  <h3 className="text-base sm:text-lg md:text-xl font-display font-extrabold text-offWhite tracking-tight group-hover:text-amber-300 transition-colors line-clamp-1">
+                  <h3 className="text-lg sm:text-xl md:text-2xl font-display font-extrabold text-white tracking-tight leading-snug drop-shadow-[0_2px_8px_rgba(0,0,0,0.9)] group-hover:text-amber-300 transition-colors line-clamp-1">
                     {project.title}
                   </h3>
 
                   {/* Client */}
-                  <p className="text-xs text-neutral-400 line-clamp-1 mt-0.5">
+                  <p className="text-xs sm:text-sm text-neutral-300 line-clamp-1 mt-1 font-medium">
                     {project.client}
                   </p>
                 </div>
