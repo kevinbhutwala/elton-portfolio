@@ -11,7 +11,7 @@ export default function Showreel() {
   const [isMuted, setIsMuted] = useState(false);
   const [progress, setProgress] = useState(0);
   const [currentTimeStr, setCurrentTimeStr] = useState('00:00');
-  const [durationStr, setDurationStr] = useState('01:28');
+  const [durationStr, setDurationStr] = useState('01:05');
 
   const videoRef = useRef<HTMLVideoElement>(null);
   const videoContainerRef = useRef<HTMLDivElement>(null);
@@ -113,8 +113,8 @@ export default function Showreel() {
           </div>
 
           <div className="flex items-center gap-2 text-xs font-mono text-neutral-400">
-            <span className="px-3 py-1 bg-white/[0.04] border border-white/10 rounded-full">4K DCI</span>
-            <span className="px-3 py-1 bg-white/[0.04] border border-white/10 rounded-full text-amber-400">2.39:1 SCOPE</span>
+            <span className="px-3 py-1 bg-white/[0.04] border border-white/10 rounded-full">35MM FILM LOOK</span>
+            <span className="px-3 py-1 bg-white/[0.04] border border-white/10 rounded-full text-amber-400">COASTAL CINEMA</span>
           </div>
         </div>
 
@@ -132,8 +132,8 @@ export default function Showreel() {
           {/* Actual Video Element */}
           <video
             ref={videoRef}
-            src="/videos/wayanad-cinematics.mov"
-            poster="/thumbnails/wayanad-cinematics.jpg"
+            src="/videos/goa-cinematics.mp4"
+            poster="/thumbnails/goa-cinematics.jpg"
             playsInline
             muted={isMuted}
             onClick={togglePlay}
@@ -147,7 +147,7 @@ export default function Showreel() {
             }`}
           >
             <Image
-              src="/thumbnails/wayanad-cinematics.jpg"
+              src="/thumbnails/goa-cinematics.jpg"
               alt="Elton D'Mello Master Showreel"
               fill
               priority

@@ -25,11 +25,12 @@ export default function Hero({ onPlayReel }: HeroProps) {
       id="hero"
       className="relative min-h-[94vh] w-full flex items-center justify-center overflow-hidden bg-transparent pt-28 pb-20"
     >
-      {/* Background Cinematic Video Loop with Sharp Crystal Clarity */}
+      {/* Background Cinematic Video Loop with Sharp Crystal Clarity (Wayanad 4K Widescreen Cinema) */}
       <div className="absolute inset-0 z-0 pointer-events-none overflow-hidden">
         <video
           ref={videoRef}
-          src="/videos/goa-cinematics.mp4"
+          src="/videos/wayanad-cinematics.mov"
+          poster="/thumbnails/wayanad-cinematics.jpg"
           autoPlay
           loop
           muted={isVideoMuted}
