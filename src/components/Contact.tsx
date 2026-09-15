@@ -210,7 +210,7 @@ export default function Contact() {
             <div className="max-w-2xl">
               <div className="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-amber-400/10 border border-amber-400/25 text-xs font-mono text-amber-400 mb-4">
                 <span className="w-2 h-2 rounded-full bg-emerald-400 animate-pulse" />
-                <span>NOW ACCEPTING COMMISSIONS · 2026 CALENDAR OPEN</span>
+                <span>AVAILABLE FOR PROJECTS · LET&apos;S COLLABORATE</span>
               </div>
               <h3 className="text-2xl sm:text-4xl md:text-5xl font-display font-bold text-offWhite tracking-tight mb-4">
                 Have a vision in mind? Let&apos;s craft something unforgettable.
