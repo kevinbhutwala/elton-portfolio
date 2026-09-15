@@ -368,7 +368,7 @@ export default function FeaturedWork({ onSelectProject }: FeaturedWorkProps) {
                   className="object-cover transition-transform duration-700 ease-out group-hover:scale-105"
                 />
 
-                {/* Smooth Video Loop in Full Master HD */}
+                {/* Smooth Video Loop in Full Master HD on Hover */}
                 {project.videoUrl && (
                   <video
                     ref={(el) => {
@@ -377,11 +377,12 @@ export default function FeaturedWork({ onSelectProject }: FeaturedWorkProps) {
                     src={project.videoUrl}
                     poster={project.heroImage}
                     playsInline
-                    autoPlay
                     loop
                     muted={!isSoundOn}
                     preload="auto"
-                    className="absolute inset-0 w-full h-full object-cover transition-opacity duration-300"
+                    className={`absolute inset-0 w-full h-full object-cover transition-opacity duration-500 ${
+                      isPlaying ? 'opacity-100' : 'opacity-0 pointer-events-none'
+                    }`}
                   />
                 )}
 
