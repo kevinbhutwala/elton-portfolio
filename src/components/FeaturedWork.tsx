@@ -250,7 +250,8 @@ export default function FeaturedWork({ onSelectProject }: FeaturedWorkProps) {
                   className={`group relative ${colSpanClasses} bg-carbon/95 backdrop-blur-xl border border-white/[0.08] ${meta.accentBorder} rounded-2xl sm:rounded-3xl overflow-hidden cursor-pointer transition-all duration-300 shadow-2xl ${meta.glowShadow}`}
                 >
                   {/* Full-Bleed Widescreen Video Frame */}
-                  <div className="relative aspect-video sm:aspect-[2.39/1] w-full bg-neutral-950 overflow-hidden">
+                  <div className="relative aspect-video w-full bg-black overflow-hidden">
+                    {/* Thumbnail: landscape object-cover fills the 16:9 frame perfectly */}
                     <Image
                       src={project.heroImage}
                       alt={project.title}
@@ -260,7 +261,7 @@ export default function FeaturedWork({ onSelectProject }: FeaturedWorkProps) {
                       unoptimized={true}
                       priority
                       style={{ imageRendering: '-webkit-optimize-contrast' }}
-                      className="object-cover transition-transform duration-700 ease-out group-hover:scale-105"
+                      className={`object-cover transition-all duration-700 ease-out group-hover:scale-105 ${isPlaying ? 'opacity-0' : 'opacity-100'}`}
                     />
 
                     {project.videoUrl && (
@@ -271,11 +272,10 @@ export default function FeaturedWork({ onSelectProject }: FeaturedWorkProps) {
                         src={project.videoUrl}
                         poster={project.heroImage}
                         playsInline
-                        autoPlay
                         loop
                         muted={!isSoundOn}
                         preload="auto"
-                        className="absolute inset-0 w-full h-full object-cover transition-opacity duration-300"
+                        className={`absolute inset-0 w-full h-full object-contain transition-opacity duration-500 ${isPlaying ? 'opacity-100' : 'opacity-0 pointer-events-none'}`}
                       />
                     )}
 
