@@ -1,15 +1,13 @@
 'use client';
 
 import React, { useState, useRef } from 'react';
-import Image from 'next/image';
 import { editTimelineStages } from '@/data/portfolioData';
 import { audioEngine } from '@/lib/audioEngine';
-import { Sliders, Activity, Film, Music, Eye, Play, Pause, Layers, HelpCircle, CheckCircle2, ChevronRight, Sparkles } from 'lucide-react';
+import { Activity, Film, Music, Play, Pause } from 'lucide-react';
 
 export default function TheEditTimeline() {
   const [activeStageIndex, setActiveStageIndex] = useState(2); // default to Rhythm & Pacing
   const [isPlayingPreview, setIsPlayingPreview] = useState(false);
-  const [showExplanationModal, setShowExplanationModal] = useState(false);
 
   const videoRef = useRef<HTMLVideoElement>(null);
   const currentStage = editTimelineStages[activeStageIndex];
@@ -43,83 +41,26 @@ export default function TheEditTimeline() {
   }, [activeStageIndex]);
 
   return (
-    <section id="timeline" className="relative py-20 sm:py-28 md:py-36 bg-transparent overflow-hidden border-t border-white/[0.06]">
+    <section id="timeline" className="relative py-16 sm:py-24 md:py-32 bg-transparent overflow-hidden border-t border-white/[0.06]">
       {/* Decorative Large Watermark */}
       <div className="absolute top-10 left-6 md:left-12 text-[10rem] md:text-[18rem] font-display font-black text-white/[0.012] leading-none pointer-events-none select-none tracking-tighter">
         04
       </div>
 
       <div className="relative z-10 max-w-7xl mx-auto px-4 sm:px-6 md:px-12">
-        {/* Section Tag Badge & Educational Explainer Toggle */}
-        <div className="flex flex-wrap items-center justify-between gap-3 mb-4">
-          <div className="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-white/[0.04] border border-white/10 text-xs font-medium text-amber-400">
-            <span className="w-1.5 h-1.5 rounded-full bg-amber-400" />
-            <span>Behind The Cuts · Editing Architecture</span>
-          </div>
-
-          <button
-            onClick={() => {
-              audioEngine.playHoverTick();
-              setShowExplanationModal(!showExplanationModal);
-            }}
-            className="inline-flex items-center gap-1.5 px-3 py-1 rounded-full bg-white/[0.03] hover:bg-white/[0.08] border border-white/10 text-xs text-neutral-300 hover:text-offWhite transition-all"
-          >
-            <HelpCircle className="w-3.5 h-3.5 text-amber-400" />
-            <span>What is an Edit Timeline?</span>
-          </button>
-        </div>
-
-        {/* Section Heading & Core Mission */}
-        <div className="flex flex-col md:flex-row md:items-end justify-between gap-6 mb-8 sm:mb-12">
+        {/* Section Heading */}
+        <div className="flex items-center justify-between gap-6 mb-6 sm:mb-8">
           <div>
             <h2 className="text-3xl sm:text-4xl md:text-5xl lg:text-6xl font-display font-bold text-offWhite tracking-tight">
               The Edit Timeline
             </h2>
-            <p className="mt-2 text-sm sm:text-base text-neutral-400 max-w-xl leading-relaxed font-sans">
-              An interactive simulation of Elton&apos;s non-linear editing (NLE) timeline. Slide the playhead below to trace footage from raw rushes through sound design to master export.
-            </p>
           </div>
 
-          <div className="flex items-center gap-2 text-xs font-medium text-neutral-300 bg-white/[0.03] px-3.5 py-1.5 rounded-full border border-white/10 w-fit">
+          <div className="flex items-center gap-2 text-xs font-mono text-neutral-400 bg-white/[0.03] px-3.5 py-1.5 rounded-full border border-white/10">
             <span className="w-2 h-2 rounded-full bg-crimson animate-pulse" />
-            <span>Interactive NLE Scrubber</span>
+            <span>INTERACTIVE NLE</span>
           </div>
         </div>
-
-        {/* Educational Explainer Banner (Collapsible / Informative) */}
-        {showExplanationModal && (
-          <div className="mb-8 p-5 sm:p-6 rounded-2xl bg-[#0f0f15] border border-amber-400/30 text-xs space-y-3 animate-fade-in shadow-2xl">
-            <div className="flex items-center justify-between">
-              <span className="font-semibold text-sm text-amber-300 flex items-center gap-2">
-                <Sparkles className="w-4 h-4 text-amber-400" />
-                <span>What Is An Edit Timeline & Why Does It Matter?</span>
-              </span>
-              <button
-                onClick={() => setShowExplanationModal(false)}
-                className="text-neutral-400 hover:text-white text-xs font-mono"
-              >
-                [Dismiss]
-              </button>
-            </div>
-            <p className="text-neutral-300 leading-relaxed font-sans sm:text-sm">
-              In professional video editing (using <strong>Adobe Premiere Pro</strong>, <strong>CapCut Pro</strong>, <strong>After Effects</strong>, and <strong>AI Enhancement Tools</strong>), the <strong>Timeline</strong> is the multi-layered canvas where raw takes are stacked, trimmed, sync-cut to music, stylized with <strong>custom Premiere Pro LUTs</strong> & <strong>CapCut Pro color grading</strong>, and polished with neural AI tools.
-            </p>
-            <div className="grid grid-cols-1 sm:grid-cols-3 gap-3 pt-2 text-[11px] text-neutral-400 border-t border-white/[0.06]">
-              <div>
-                <strong className="text-offWhite block">1. Video Tracks (V1, V2)</strong>
-                V1 holds primary story shots; V2 holds B-roll, VFX overlays, graphics, and kinetic titles.
-              </div>
-              <div>
-                <strong className="text-offWhite block">2. Audio Tracks (A1, A2, A3)</strong>
-                Separates dialogue/voiceovers from impact whooshes, riser foley, and orchestral sub-bass.
-              </div>
-              <div>
-                <strong className="text-offWhite block">3. Playhead (Timecode)</strong>
-                The cursor that travels across time, dictating pacing, match cuts, and emotional momentum.
-              </div>
-            </div>
-          </div>
-        )}
 
         {/* Interactive Timeline Stepper Header */}
         <div className="grid grid-cols-2 sm:grid-cols-3 lg:grid-cols-6 gap-2 sm:gap-2.5 mb-8">
@@ -221,19 +162,10 @@ export default function TheEditTimeline() {
                 <div className="absolute inset-0 border border-white/5 pointer-events-none" />
               </div>
 
-              {/* Stage Objective text */}
-              <div className="bg-obsidian/90 p-4 rounded-xl border border-white/[0.06] text-xs space-y-1.5">
-                <div className="flex items-center justify-between text-amber-400 font-semibold text-[11px]">
-                  <span>STAGE {currentStage.stage} OBJECTIVE</span>
-                  <span className="text-neutral-500 font-mono text-[10px]">{currentStage.lut}</span>
-                </div>
-                <p className="text-neutral-200 leading-relaxed font-sans text-xs">
-                  {currentStage.desc}
-                </p>
-                <div className="text-[11px] text-emerald-400 font-medium pt-1 flex items-center gap-1.5 border-t border-white/[0.04]">
-                  <CheckCircle2 className="w-3 h-3 shrink-0" />
-                  <span>{currentStage.actionNote}</span>
-                </div>
+              {/* Stage Info */}
+              <div className="bg-obsidian/90 px-4 py-2.5 rounded-xl border border-white/[0.06] flex items-center justify-between text-xs font-mono">
+                <span className="text-amber-400 font-semibold">STAGE {currentStage.stage} · {currentStage.name}</span>
+                <span className="text-neutral-400">{currentStage.software}</span>
               </div>
             </div>
 
@@ -329,17 +261,6 @@ export default function TheEditTimeline() {
                   <span className="text-amber-400 font-semibold">
                     Stage {currentStage.stage} of 06
                   </span>
-                </div>
-              </div>
-
-              {/* NLE Studio Hotkeys Ribbon */}
-              <div className="mt-3 pt-3 border-t border-white/[0.04] hidden sm:flex items-center justify-between text-[10px] font-mono text-neutral-500">
-                <span className="text-neutral-400">NLE HOTKEYS:</span>
-                <div className="flex items-center gap-3">
-                  <span><kbd className="px-1.5 py-0.5 rounded bg-white/[0.06] border border-white/10 text-neutral-300">C</kbd> Razor Cut</span>
-                  <span><kbd className="px-1.5 py-0.5 rounded bg-white/[0.06] border border-white/10 text-neutral-300">V</kbd> Selection</span>
-                  <span><kbd className="px-1.5 py-0.5 rounded bg-white/[0.06] border border-white/10 text-neutral-300">B</kbd> Ripple Edit</span>
-                  <span><kbd className="px-1.5 py-0.5 rounded bg-white/[0.06] border border-white/10 text-neutral-300">Space</kbd> Play/Pause</span>
                 </div>
               </div>
             </div>

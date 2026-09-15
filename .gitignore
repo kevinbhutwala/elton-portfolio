@@ -11,3 +11,4 @@ src/videos/**
 src/imgs
 src/imgs/
 src/imgs/**
+.env*

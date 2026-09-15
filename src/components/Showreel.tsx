@@ -105,19 +105,16 @@ export default function Showreel() {
         </div>
 
         {/* Section Heading */}
-        <div className="flex flex-col md:flex-row md:items-end justify-between gap-6 mb-8 sm:mb-12">
+        <div className="flex items-center justify-between gap-6 mb-6 sm:mb-8">
           <div>
             <h2 className="text-3xl sm:text-5xl md:text-6xl font-display font-bold text-offWhite tracking-tight">
               Showreel <span className="text-crimson font-light">2026</span>
             </h2>
-            <p className="mt-2 text-sm sm:text-base text-neutral-400 max-w-lg">
-              Horizontal landscape master cut featuring Elton’s cinematography, pacing, and color timing.
-            </p>
           </div>
 
-          <div className="flex items-center gap-2 text-xs font-medium text-neutral-300">
-            <span className="px-3 py-1 bg-white/[0.04] border border-white/10 rounded-full">4K DCI Widescreen</span>
-            <span className="px-3 py-1 bg-white/[0.04] border border-white/10 rounded-full text-amber-400">2.39:1 Scope</span>
+          <div className="flex items-center gap-2 text-xs font-mono text-neutral-400">
+            <span className="px-3 py-1 bg-white/[0.04] border border-white/10 rounded-full">4K DCI</span>
+            <span className="px-3 py-1 bg-white/[0.04] border border-white/10 rounded-full text-amber-400">2.39:1 SCOPE</span>
           </div>
         </div>
 
@@ -143,13 +140,12 @@ export default function Showreel() {
             className="w-full h-full object-cover cursor-pointer"
           />
 
-          {/* Crystal-Clear High-DPI Vector Poster Overlay (Visible when not playing) */}
+          {/* High-DPI Poster Overlay (Visible when not playing) */}
           <div
             className={`absolute inset-0 z-20 transition-opacity duration-500 pointer-events-none ${
               isPlaying ? 'opacity-0' : 'opacity-100'
             }`}
           >
-            {/* High-Resolution Razor-Sharp Backdrop */}
             <Image
               src="/thumbnails/wayanad-cinematics.jpg"
               alt="Elton D'Mello Master Showreel"
@@ -160,45 +156,8 @@ export default function Showreel() {
               style={{ imageRendering: '-webkit-optimize-contrast' }}
               className="object-cover"
             />
-
-            {/* Deep Dynamic Contrast Vignette */}
-            <div className="absolute inset-0 bg-gradient-to-t from-black/90 via-black/25 to-black/55 pointer-events-none" />
-
-            {/* Top Bar: Specs & Timecode */}
-            <div className="absolute top-4 left-4 right-4 sm:top-6 sm:left-6 sm:right-6 flex items-center justify-between text-xs font-mono">
-              <div className="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-black/80 backdrop-blur-md border border-white/15 text-amber-400">
-                <span className="w-2 h-2 rounded-full bg-amber-400 animate-pulse" />
-                <span className="font-bold tracking-wider uppercase text-[10px] sm:text-xs">
-                  MASTER SHOWREEL // 4K DCI
-                </span>
-              </div>
-
-              <div className="hidden sm:flex items-center gap-2 px-3 py-1 rounded-full bg-black/80 backdrop-blur-md border border-white/15 text-neutral-300 text-[11px]">
-                <span className="text-amber-400 font-bold">RAW LOG ➔ REC.709 GRADE</span>
-                <span className="text-neutral-500">|</span>
-                <span className="font-mono text-neutral-400">TC 00:01:28:12</span>
-              </div>
-            </div>
-
-            {/* Bottom-Left Vector Typography (100% Crisp Vector Sharpness) */}
-            <div className="absolute bottom-5 left-5 sm:bottom-8 sm:left-8 max-w-lg">
-              <div className="text-xs sm:text-sm font-mono font-bold text-amber-400/90 tracking-widest uppercase mb-1 flex items-center gap-1.5">
-                <Film className="w-3.5 h-3.5" />
-                <span>DIRECTOR'S CUT · 2026 EDITION</span>
-              </div>
-              <h3 className="text-2xl sm:text-4xl md:text-5xl font-display font-black text-offWhite tracking-tight drop-shadow-[0_4px_25px_rgba(0,0,0,0.9)]">
-                ELTON D'MELLO
-              </h3>
-              <p className="mt-1 text-xs sm:text-sm font-mono text-neutral-300 drop-shadow-md">
-                2.39:1 DCI SCOPE · SONY FX3 · CUSTOM PREMIERE LUTs & GRADE
-              </p>
-            </div>
-
-            {/* Bottom-Right Anamorphic Scope Badge */}
-            <div className="absolute bottom-5 right-5 sm:bottom-8 sm:right-8 hidden md:flex items-center gap-2 px-3 py-1.5 rounded-lg bg-black/80 backdrop-blur-md border border-white/10 text-[10px] font-mono text-neutral-400">
-              <Sliders className="w-3 h-3 text-amber-400" />
-              <span>35MM SENSOR PROFILE · 24.000 FPS</span>
-            </div>
+            {/* Subtle Vignette */}
+            <div className="absolute inset-0 bg-gradient-to-t from-black/70 via-transparent to-black/40 pointer-events-none" />
           </div>
 
           {/* Letterbox Bars */}
@@ -274,15 +233,6 @@ export default function Showreel() {
                 </button>
               </div>
             </div>
-          </div>
-        </div>
-
-        {/* Supporting Caption Line */}
-        <div className="mt-6 flex flex-wrap items-center justify-between gap-4 text-xs text-neutral-400 font-medium">
-          <div>Directed, edited, and finished by Elton D’Mello</div>
-          <div className="flex items-center gap-2">
-            <Sparkles className="w-3.5 h-3.5 text-amber-400" />
-            <span>Premiere Pro & CapCut Pro Workflow · AI Enhanced</span>
           </div>
         </div>
       </div>

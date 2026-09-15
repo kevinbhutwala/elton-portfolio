@@ -203,25 +203,12 @@ export default function FeaturedWork({ onSelectProject }: FeaturedWorkProps) {
       </div>
 
       <div className="relative z-10 max-w-7xl mx-auto px-4 sm:px-6 md:px-12">
-        {/* Editorial Top Badge Bar */}
-        <div className="flex items-center gap-3 mb-4">
-          <div className="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-white/[0.04] border border-white/10 text-xs font-mono text-amber-400">
-            <span className="w-2 h-2 rounded-full bg-amber-400 animate-pulse" />
-            <span className="tracking-wide">ASYMMETRICAL EDITORIAL COLLAGE · ZERO REPETITION</span>
-          </div>
-          <div className="flex-1 h-[1px] bg-gradient-to-r from-white/[0.08] via-amber-400/20 to-transparent" />
-        </div>
-
         {/* Section Heading & Category Filter Bar */}
-        <div className="flex flex-col md:flex-row md:items-end justify-between gap-6 mb-12 sm:mb-16">
+        <div className="flex flex-col md:flex-row md:items-end justify-between gap-6 mb-8 sm:mb-12">
           <div>
             <h2 className="text-3xl sm:text-5xl md:text-6xl font-display font-extrabold text-offWhite tracking-tight">
               Selected Works
             </h2>
-            <p className="mt-3 text-sm sm:text-base text-neutral-400 max-w-2xl leading-relaxed">
-              Every timeline is sculpted with asymmetrical pacing, dynamic motion ramps, and bespoke color grading.
-              Explore horizontal master cuts and high-retention 9:16 mobile cinema below.
-            </p>
           </div>
 
           {/* Filter Bar with Sound Feedback */}
@@ -343,295 +330,97 @@ export default function FeaturedWork({ onSelectProject }: FeaturedWorkProps) {
                   onMouseLeave={() => handleCardMouseLeave(project.id)}
                   className={`group relative ${colSpanClasses} ${staggerClass} bg-carbon/95 backdrop-blur-xl border border-white/[0.08] ${meta.accentBorder} rounded-2xl sm:rounded-3xl overflow-hidden cursor-pointer transition-all duration-300 shadow-2xl ${meta.glowShadow}`}
                 >
-                  {/* Funky Overlapping Gaffer Tape Sticker */}
+                  {/* Overlapping Sticker */}
                   <div
                     className={`absolute -top-3.5 right-6 z-30 px-3.5 py-1 rounded-sm bg-gradient-to-r ${meta.tagColor} font-mono font-bold text-[10px] sm:text-xs uppercase tracking-widest ${meta.rotation} shadow-lg pointer-events-none transition-transform group-hover:scale-105`}
                   >
                     {meta.sticker}
                   </div>
 
-                  {/* Negative Film Sprockets Bar along top edge */}
-                  <div className="w-full bg-black/80 px-4 py-1.5 flex items-center justify-between border-b border-white/[0.06] text-[9px] font-mono text-neutral-500 select-none">
-                    <span className="flex items-center gap-1.5">
-                      <span className="w-1.5 h-1.5 rounded-full bg-amber-400/80 animate-ping" />
-                      <span>KODAK VISION3 500T · 5219</span>
-                    </span>
-                    <span className="hidden sm:inline tracking-wider">FRAME 0024 // DCI SCOPE 2.39:1</span>
-                    <span className="text-amber-400 font-bold">{meta.timecode}</span>
-                  </div>
+                  {/* Full-Bleed Widescreen Video Frame */}
+                  <div className="relative aspect-video sm:aspect-[2.39/1] w-full bg-neutral-950 overflow-hidden">
+                    <Image
+                      src={project.heroImage}
+                      alt={project.title}
+                      fill
+                      sizes="100vw"
+                      quality={100}
+                      unoptimized={true}
+                      priority
+                      style={{ imageRendering: '-webkit-optimize-contrast' }}
+                      className="object-cover transition-transform duration-700 ease-out group-hover:scale-105"
+                    />
 
-                  <div className="grid grid-cols-1 lg:grid-cols-12 gap-0">
-                    {/* Widescreen Video Frame */}
-                    <div className="lg:col-span-8 relative aspect-video sm:aspect-[2.39/1] lg:aspect-auto w-full bg-neutral-950 overflow-hidden min-h-[260px] sm:min-h-[400px]">
-                      <Image
-                        src={project.heroImage}
-                        alt={project.title}
-                        fill
-                        sizes="(max-width: 1024px) 100vw, 1200px"
-                        quality={100}
-                        unoptimized={true}
-                        priority
-                        style={{ imageRendering: '-webkit-optimize-contrast' }}
-                        className="object-cover transition-transform duration-700 ease-out group-hover:scale-105"
-                      />
-
-                      {project.videoUrl && (
-                        <video
-                          ref={(el) => {
-                            videoRefs.current[project.id] = el;
-                          }}
-                          src={project.videoUrl}
-                          poster={project.heroImage}
-                          playsInline
-                          loop
-                          muted={!isSoundOn}
-                          preload="metadata"
-                          className={`absolute inset-0 w-full h-full object-cover transition-opacity duration-300 ${
-                            isPlaying ? 'opacity-100' : 'opacity-0 pointer-events-none'
-                          }`}
-                        />
-                      )}
-
-                      {/* Vignette & Gradients */}
-                      <div className="absolute inset-0 bg-gradient-to-t from-carbon via-transparent to-black/50 pointer-events-none" />
-
-                      {/* Badges & Sound Toggle */}
-                      <div className="absolute top-4 left-4 right-4 flex items-center justify-between z-20">
-                        <div className="flex items-center gap-2">
-                          <span className="px-3 py-1 rounded-full bg-black/75 backdrop-blur-md border border-white/10 text-xs font-semibold text-amber-400">
-                            {project.category}
-                          </span>
-                          <span className="px-3 py-1 rounded-full bg-black/75 backdrop-blur-md border border-white/10 text-xs font-mono text-neutral-200">
-                            {project.fps}
-                          </span>
-                        </div>
-
-                        <button
-                          onClick={(e) => toggleCardAudio(e, project.id)}
-                          className="p-2.5 rounded-full bg-black/80 backdrop-blur-md border border-white/15 text-offWhite hover:text-amber-400 transition-colors shadow-xl"
-                          title={isSoundOn ? 'Mute' : 'Preview Audio'}
-                          aria-label="Toggle audio"
-                        >
-                          {isSoundOn ? (
-                            <Volume2 className="w-4 h-4 text-amber-400 animate-pulse" />
-                          ) : (
-                            <VolumeX className="w-4 h-4 text-neutral-400" />
-                          )}
-                        </button>
-                      </div>
-
-                      {/* Hover Center Callout */}
-                      <div
-                        className={`absolute inset-0 flex items-center justify-center transition-all duration-200 pointer-events-none ${
-                          isHovered ? 'opacity-100 scale-100' : 'opacity-0 scale-95'
+                    {project.videoUrl && (
+                      <video
+                        ref={(el) => {
+                          videoRefs.current[project.id] = el;
+                        }}
+                        src={project.videoUrl}
+                        poster={project.heroImage}
+                        playsInline
+                        loop
+                        muted={!isSoundOn}
+                        preload="metadata"
+                        className={`absolute inset-0 w-full h-full object-cover transition-opacity duration-300 ${
+                          isPlaying ? 'opacity-100' : 'opacity-0 pointer-events-none'
                         }`}
-                      >
-                        <div className="px-6 py-3 rounded-full bg-offWhite text-obsidian text-xs font-extrabold tracking-wider uppercase flex items-center gap-2 shadow-2xl backdrop-blur-md">
-                          <Play className="w-4 h-4 fill-current text-obsidian" />
-                          <span>Inspect Master Timeline & Grade</span>
-                        </div>
-                      </div>
-
-                      {/* Bottom Image Meta & Sound Wave Indicator */}
-                      <div className="absolute bottom-4 left-4 right-4 z-20 flex items-center justify-between text-xs font-mono text-neutral-300">
-                        <div className="flex items-center gap-2">
-                          <span>{project.camera}</span>
-                          <span className="hidden sm:inline text-neutral-500">|</span>
-                          <span className="hidden sm:inline text-neutral-400">2.39:1 DCI SCOPE</span>
-                        </div>
-                        <div className="flex items-center gap-2">
-                          {/* Animated Soundwave EQ Bars */}
-                          <div className="flex items-end gap-1 h-3">
-                            <span className="w-0.5 bg-amber-400 rounded-full animate-[pulse_0.6s_ease-in-out_infinite] h-2" />
-                            <span className="w-0.5 bg-amber-400 rounded-full animate-[pulse_0.8s_ease-in-out_infinite] h-3" />
-                            <span className="w-0.5 bg-amber-400 rounded-full animate-[pulse_0.5s_ease-in-out_infinite] h-1.5" />
-                            <span className="w-0.5 bg-amber-400 rounded-full animate-[pulse_0.9s_ease-in-out_infinite] h-2.5" />
-                          </div>
-                          <span className="text-amber-400 font-bold flex items-center gap-1">
-                            <Clock className="w-3.5 h-3.5" />
-                            {project.duration}
-                          </span>
-                        </div>
-                      </div>
-                    </div>
-
-                    {/* Editorial Details Column */}
-                    <div className="lg:col-span-4 p-6 sm:p-8 flex flex-col justify-between border-t lg:border-t-0 lg:border-l border-white/[0.08] bg-carbon/90">
-                      <div>
-                        <div className="flex items-center justify-between mb-2.5">
-                          <span className="text-xs font-mono font-bold text-amber-400 flex items-center gap-1.5">
-                            <span className="w-1.5 h-1.5 rounded-full bg-amber-400" />
-                            FEATURE CUT {project.number}
-                          </span>
-                          <span className="text-xs text-neutral-400 font-mono">
-                            RELEASE {project.year}
-                          </span>
-                        </div>
-
-                        <h3 className="text-2xl sm:text-3xl font-display font-extrabold text-offWhite tracking-tight group-hover:text-amber-300 transition-colors">
-                          {project.title}
-                        </h3>
-
-                        <p className="text-xs sm:text-sm font-medium text-amber-400/90 mt-1">
-                          {project.subtitle}
-                        </p>
-
-                        <div className="mt-4 pt-3 border-t border-white/[0.06] text-xs space-y-2.5">
-                          <div>
-                            <span className="text-neutral-500 font-mono block text-[10px] uppercase">Client / Production</span>
-                            <span className="text-neutral-200 font-medium">{project.client}</span>
-                          </div>
-
-                          <div>
-                            <span className="text-neutral-500 font-mono block text-[10px] uppercase">Editorial Pacing & Rhythm</span>
-                            <p className="text-neutral-300 leading-relaxed text-xs line-clamp-3 mt-0.5">
-                              {project.synopsis}
-                            </p>
-                          </div>
-
-                          {project.editDecisions?.[0] && (
-                            <div className="p-3 rounded-lg bg-white/[0.02] border border-white/[0.06] text-[11px] text-neutral-300">
-                              <span className="text-amber-400 font-semibold block mb-0.5">Key Cut Decision:</span>
-                              {project.editDecisions[0]}
-                            </div>
-                          )}
-                        </div>
-                      </div>
-
-                      <div className="mt-6 pt-4 border-t border-white/[0.08]">
-                        <div className="flex flex-wrap gap-1.5 mb-4">
-                          {project.software.map((tool, idx) => (
-                            <span
-                              key={idx}
-                              className="px-2 py-0.5 rounded-md bg-white/[0.04] border border-white/[0.08] text-[11px] font-mono text-neutral-300"
-                            >
-                              {tool}
-                            </span>
-                          ))}
-                        </div>
-
-                        <div className="flex items-center justify-between text-xs font-semibold text-amber-400 group-hover:text-amber-300 transition-colors">
-                          <span>Explore Deep-Dive Breakdown</span>
-                          <ArrowUpRight className="w-4 h-4 transition-transform group-hover:translate-x-1 group-hover:-translate-y-1" />
-                        </div>
-                      </div>
-                    </div>
-                  </div>
-                </div>
-              );
-            }
-
-            // -------------------------------------------------------------
-            // CASE B: Flake House Editorial Lookbook Banner (Wide Banner Mode)
-            // -------------------------------------------------------------
-            if (project.id === 'flake-house' && filteredProjects.length > 5) {
-              return (
-                <div
-                  key={project.id}
-                  onClick={() => {
-                    audioEngine.playMechanicalClick();
-                    onSelectProject(project);
-                  }}
-                  onMouseEnter={() => handleCardMouseEnter(project.id)}
-                  onMouseLeave={() => handleCardMouseLeave(project.id)}
-                  className={`group relative ${colSpanClasses} ${staggerClass} bg-carbon/95 backdrop-blur-xl border border-white/[0.08] ${meta.accentBorder} rounded-2xl sm:rounded-3xl overflow-hidden cursor-pointer transition-all duration-300 shadow-2xl ${meta.glowShadow}`}
-                >
-                  {/* Overlapping Sticker */}
-                  <div
-                    className={`absolute -top-3.5 left-8 z-30 px-3.5 py-1 rounded-sm bg-gradient-to-r ${meta.tagColor} font-mono font-bold text-[10px] sm:text-xs uppercase tracking-widest ${meta.rotation} shadow-lg pointer-events-none transition-transform group-hover:scale-105`}
-                  >
-                    {meta.sticker}
-                  </div>
-
-                  <div className="grid grid-cols-1 md:grid-cols-12 gap-0 items-center">
-                    <div className="md:col-span-5 relative aspect-square sm:aspect-[4/3] md:aspect-auto md:h-[340px] bg-neutral-950 overflow-hidden">
-                      <Image
-                        src={project.heroImage}
-                        alt={project.title}
-                        fill
-                        sizes="(max-width: 768px) 100vw, 500px"
-                        quality={100}
-                        unoptimized={true}
-                        style={{ imageRendering: '-webkit-optimize-contrast' }}
-                        className="object-cover transition-transform duration-700 ease-out group-hover:scale-105"
                       />
+                    )}
 
-                      {project.videoUrl && (
-                        <video
-                          ref={(el) => {
-                            videoRefs.current[project.id] = el;
-                          }}
-                          src={project.videoUrl}
-                          poster={project.heroImage}
-                          playsInline
-                          loop
-                          muted={!isSoundOn}
-                          preload="metadata"
-                          className={`absolute inset-0 w-full h-full object-cover transition-opacity duration-300 ${
-                            isPlaying ? 'opacity-100' : 'opacity-0 pointer-events-none'
-                          }`}
-                        />
-                      )}
+                    {/* Vignette & Gradients */}
+                    <div className="absolute inset-0 bg-gradient-to-t from-black/90 via-black/20 to-black/40 pointer-events-none" />
 
-                      <div className="absolute inset-0 bg-gradient-to-t from-carbon via-transparent to-black/40 pointer-events-none" />
-
-                      <div className="absolute top-4 right-4 z-20">
-                        <button
-                          onClick={(e) => toggleCardAudio(e, project.id)}
-                          className="p-2 rounded-full bg-black/80 backdrop-blur-md border border-white/15 text-offWhite hover:text-purple-400 transition-colors shadow-xl"
-                          aria-label="Toggle audio"
-                        >
-                          {isSoundOn ? (
-                            <Volume2 className="w-3.5 h-3.5 text-purple-400 animate-pulse" />
-                          ) : (
-                            <VolumeX className="w-3.5 h-3.5 text-neutral-400" />
-                          )}
-                        </button>
+                    {/* Badges & Sound Toggle */}
+                    <div className="absolute top-4 left-4 right-4 flex items-center justify-between z-20">
+                      <div className="flex items-center gap-2">
+                        <span className="px-3 py-1 rounded-full bg-black/75 backdrop-blur-md border border-white/10 text-xs font-semibold text-amber-400">
+                          {project.category}
+                        </span>
+                        <span className="px-3 py-1 rounded-full bg-black/75 backdrop-blur-md border border-white/10 text-xs font-mono text-neutral-200">
+                          {project.fps}
+                        </span>
                       </div>
 
-                      <div className="absolute bottom-4 left-4 z-20 text-[10px] font-mono text-neutral-300">
-                        <span>{meta.timecode}</span>
+                      <button
+                        onClick={(e) => toggleCardAudio(e, project.id)}
+                        className="p-2.5 rounded-full bg-black/80 backdrop-blur-md border border-white/15 text-offWhite hover:text-amber-400 transition-colors shadow-xl"
+                        title={isSoundOn ? 'Mute' : 'Preview Audio'}
+                        aria-label="Toggle audio"
+                      >
+                        {isSoundOn ? (
+                          <Volume2 className="w-4 h-4 text-amber-400 animate-pulse" />
+                        ) : (
+                          <VolumeX className="w-4 h-4 text-neutral-400" />
+                        )}
+                      </button>
+                    </div>
+
+                    {/* Hover Center Callout */}
+                    <div
+                      className={`absolute inset-0 flex items-center justify-center transition-all duration-200 pointer-events-none ${
+                        isHovered ? 'opacity-100 scale-100' : 'opacity-0 scale-95'
+                      }`}
+                    >
+                      <div className="px-6 py-3 rounded-full bg-offWhite text-obsidian text-xs font-extrabold tracking-wider uppercase flex items-center gap-2 shadow-2xl backdrop-blur-md">
+                        <Play className="w-4 h-4 fill-current text-obsidian" />
+                        <span>Watch Master Cut</span>
                       </div>
                     </div>
 
-                    <div className="md:col-span-7 p-6 sm:p-8 flex flex-col justify-between h-full bg-carbon/90">
+                    {/* Bottom Clean Minimal Overlay: Title & Duration */}
+                    <div className="absolute bottom-4 left-4 right-4 z-20 flex items-end justify-between">
                       <div>
-                        <div className="flex items-center justify-between mb-2">
-                          <span className="text-xs font-mono font-bold text-purple-400">
-                            PROJECT {project.number} // LOOKBOOK
-                          </span>
-                          <span className="text-xs text-neutral-400 font-mono">{project.fps}</span>
+                        <div className="text-xs font-mono font-bold text-amber-400 mb-1">
+                          FEATURE CUT {project.number} · {project.client}
                         </div>
-
-                        <h3 className="text-2xl sm:text-3xl font-display font-extrabold text-offWhite tracking-tight group-hover:text-purple-300 transition-colors">
+                        <h3 className="text-2xl sm:text-4xl font-display font-black text-offWhite tracking-tight drop-shadow-lg">
                           {project.title}
                         </h3>
-
-                        <p className="text-xs sm:text-sm font-medium text-purple-300/90 mt-1">
-                          {project.subtitle} · {project.client}
-                        </p>
-
-                        <p className="text-xs text-neutral-300 mt-3 leading-relaxed max-w-xl">
-                          {project.synopsis}
-                        </p>
                       </div>
-
-                      <div className="mt-6 pt-4 border-t border-white/[0.08] flex items-center justify-between">
-                        <div className="flex items-center gap-2">
-                          {project.software.map((sw, i) => (
-                            <span
-                              key={i}
-                              className="px-2 py-0.5 rounded bg-white/[0.04] border border-white/[0.06] text-[10px] font-mono text-neutral-300"
-                            >
-                              {sw}
-                            </span>
-                          ))}
-                        </div>
-
-                        <div className="flex items-center gap-1 text-xs font-semibold text-purple-400 group-hover:text-purple-300">
-                          <span>View Fashion Cut</span>
-                          <ArrowUpRight className="w-4 h-4" />
-                        </div>
+                      <div className="flex items-center gap-2 text-xs font-mono text-neutral-300 bg-black/70 backdrop-blur-md px-3 py-1.5 rounded-full border border-white/10">
+                        <Clock className="w-3.5 h-3.5 text-amber-400" />
+                        <span className="text-amber-400 font-bold">{project.duration}</span>
                       </div>
                     </div>
                   </div>
@@ -748,10 +537,10 @@ export default function FeaturedWork({ onSelectProject }: FeaturedWorkProps) {
                   </div>
                 </div>
 
-                {/* Bottom Detailed Info Box with Odd/Even Accents */}
+                {/* Bottom Overlay Info */}
                 <div className="relative z-20 p-3.5 sm:p-5 pointer-events-none">
-                  {/* Project Number & Live Timecode */}
-                  <div className="flex items-center justify-between text-[11px] font-mono mb-1.5">
+                  {/* Project Number & Duration */}
+                  <div className="flex items-center justify-between text-[11px] font-mono mb-1">
                     <span className="font-bold text-amber-400 flex items-center gap-1.5">
                       <span className="w-1 h-1 rounded-full bg-amber-400" />
                       CUT {project.number}
@@ -767,38 +556,14 @@ export default function FeaturedWork({ onSelectProject }: FeaturedWorkProps) {
                     {project.title}
                   </h3>
 
-                  {/* Client / Subtitle */}
+                  {/* Client */}
                   <p className="text-xs text-neutral-400 line-clamp-1 mt-0.5">
-                    {project.client} · <span className="text-neutral-500">{project.camera}</span>
+                    {project.client}
                   </p>
-
-                  {/* Editorial Highlight / Footer */}
-                  <div className="mt-3 pt-2.5 border-t border-white/[0.08] flex items-center justify-between text-[10px] sm:text-[11px] text-neutral-400 font-mono">
-                    <span className="text-neutral-300 truncate max-w-[65%]">
-                      {project.editDecisions?.[0] || project.software[0]}
-                    </span>
-                    <span className="text-amber-400 font-bold flex items-center gap-0.5 shrink-0">
-                      <span>View Reel</span>
-                      <ArrowUpRight className="w-3 h-3" />
-                    </span>
-                  </div>
                 </div>
               </div>
             );
           })}
-        </div>
-
-        {/* Bottom Timeline Legend / Production Watermark */}
-        <div className="mt-14 sm:mt-18 pt-6 border-t border-white/[0.06] flex flex-col sm:flex-row items-center justify-between gap-4 text-xs font-mono text-neutral-500">
-          <div className="flex items-center gap-2">
-            <Radio className="w-3.5 h-3.5 text-amber-400 animate-pulse" />
-            <span>PREVIEWS SYNCED WITH 24.000 / 60.000 FPS AUDIO STEMS</span>
-          </div>
-          <div className="flex items-center gap-3">
-            <span>TOTAL ASSETS: {projectsData.length} CUTS</span>
-            <span className="text-neutral-600">|</span>
-            <span className="text-amber-400">NO DRIFT · ZERO LATENCY</span>
-          </div>
         </div>
       </div>
     </section>

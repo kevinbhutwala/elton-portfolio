@@ -2,7 +2,7 @@
 
 import React, { useState } from 'react';
 import { audioEngine } from '@/lib/audioEngine';
-import { Mail, Phone, MessageSquare, Instagram, Globe, ArrowUpRight, Sparkles, Clock, ShieldCheck, MapPin, Copy, Check } from 'lucide-react';
+import { Mail, Phone, MessageSquare, Instagram, ArrowUpRight, Clock, ShieldCheck, MapPin, Copy, Check } from 'lucide-react';
 
 export default function Contact() {
   const [copiedEmail, setCopiedEmail] = useState(false);
@@ -33,13 +33,10 @@ export default function Contact() {
         </div>
 
         {/* Section Headline */}
-        <div className="max-w-3xl mb-12 sm:mb-16">
+        <div className="max-w-3xl mb-10 sm:mb-14">
           <h2 className="text-3xl sm:text-5xl md:text-6xl lg:text-7xl font-display font-bold text-offWhite tracking-tight">
             Let&apos;s shape your next <span className="text-amber-400 font-normal">visual story</span>.
           </h2>
-          <p className="mt-4 text-base sm:text-lg text-neutral-400 max-w-2xl leading-relaxed font-sans">
-            Ready to cut your commercial film, music video, or high-velocity vertical reels. Direct communication with zero middlemen.
-          </p>
         </div>
 
         {/* High-Impact Contact Hero Cards */}
@@ -200,23 +197,6 @@ export default function Contact() {
                 Full NDA Protection
               </span>
             </div>
-          </div>
-        </div>
-
-        {/* Global Dispatch Strip */}
-        <div className="p-5 sm:p-6 rounded-2xl bg-gradient-to-r from-white/[0.03] via-carbon to-white/[0.02] border border-white/[0.08] flex flex-col sm:flex-row items-center justify-between gap-4 text-xs">
-          <div className="flex items-center gap-3 text-neutral-300 text-center sm:text-left">
-            <Sparkles className="w-4 h-4 text-amber-400 shrink-0" />
-            <span>Currently taking on commercial films, music projects, and vertical brand reels for global delivery.</span>
-          </div>
-          <div className="flex items-center gap-3 shrink-0">
-            <a
-              href="mailto:eltonjohndmello@gmail.com?subject=Project%20Inquiry%20-%20Video%20Editing"
-              className="px-5 py-2 rounded-full bg-offWhite text-obsidian hover:bg-amber-400 font-semibold transition-all duration-200 shadow-md text-xs"
-              onClick={() => audioEngine.playMechanicalClick()}
-            >
-              Start a Conversation
-            </a>
           </div>
         </div>
       </div>

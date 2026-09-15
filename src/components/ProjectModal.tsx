@@ -275,56 +275,39 @@ export default function ProjectModal({ project, onClose }: ProjectModalProps) {
               </div>
             </div>
 
-            {/* Vertical Video Specs & Narrative Breakdown */}
-            <div className="lg:col-span-7 space-y-6">
-              <div className="p-5 sm:p-6 bg-carbon border border-white/[0.08] rounded-xl space-y-4 text-xs font-medium">
-                <div className="flex items-center gap-2 text-amber-400 font-semibold text-sm">
-                  <Smartphone className="w-4 h-4" />
-                  <span>9:16 High-Velocity Reel Specifications</span>
-                </div>
-                <div className="grid grid-cols-2 gap-4 border-t border-white/[0.08] pt-4">
-                  <div>
-                    <span className="text-neutral-500 uppercase block text-[11px] mb-1">Camera Setup</span>
-                    <span className="text-neutral-200">{project.camera}</span>
+            {/* Vertical Video Production Stills & Specs */}
+            <div className="lg:col-span-7 flex flex-col justify-between gap-6">
+              <div className="grid grid-cols-2 gap-3">
+                {project.gallery.slice(0, 2).map((imgUrl, i) => (
+                  <div key={i} className="relative aspect-[4/3] rounded-xl border border-white/[0.08] overflow-hidden group shadow-lg">
+                    <Image
+                      src={imgUrl}
+                      alt={`Production Still ${i + 1}`}
+                      fill
+                      quality={95}
+                      className="object-cover transition-transform duration-500 group-hover:scale-105"
+                    />
                   </div>
-                  <div>
-                    <span className="text-neutral-500 uppercase block text-[11px] mb-1">Frame Rate</span>
-                    <span className="text-neutral-200">{project.fps}</span>
-                  </div>
-                  <div>
-                    <span className="text-neutral-500 uppercase block text-[11px] mb-1">Software Suite</span>
-                    <span className="text-amber-400">{project.software.join(' · ')}</span>
-                  </div>
-                  <div>
-                    <span className="text-neutral-500 uppercase block text-[11px] mb-1">Target Channels</span>
-                    <span className="text-neutral-200">Instagram Reels · TikTok · 4K</span>
-                  </div>
-                </div>
+                ))}
               </div>
 
-              <div>
-                <h4 className="text-xs font-semibold text-amber-400 uppercase tracking-wider mb-2">
-                  Editorial Concept
-                </h4>
-                <p className="text-neutral-300 text-sm sm:text-base leading-relaxed">
-                  {project.concept}
-                </p>
-              </div>
-
-              <div>
-                <h4 className="text-xs font-semibold text-crimson uppercase tracking-wider mb-2">
-                  Key Editorial Decisions
-                </h4>
-                <ul className="space-y-2.5">
-                  {project.editDecisions.map((decision, i) => (
-                    <li key={i} className="flex items-start gap-3 text-xs sm:text-sm text-neutral-300">
-                      <span className="w-5 h-5 rounded-full bg-white/[0.06] text-amber-400 text-xs font-semibold flex items-center justify-center shrink-0 mt-0.5">
-                        {i + 1}
-                      </span>
-                      <span className="leading-relaxed">{decision}</span>
-                    </li>
-                  ))}
-                </ul>
+              <div className="grid grid-cols-2 sm:grid-cols-4 gap-3 p-4 bg-carbon border border-white/[0.08] rounded-xl text-xs font-mono">
+                <div>
+                  <span className="text-neutral-500 uppercase block text-[10px]">Client</span>
+                  <span className="text-neutral-200 font-semibold truncate block">{project.client}</span>
+                </div>
+                <div>
+                  <span className="text-neutral-500 uppercase block text-[10px]">Camera</span>
+                  <span className="text-neutral-200 font-semibold truncate block">{project.camera}</span>
+                </div>
+                <div>
+                  <span className="text-neutral-500 uppercase block text-[10px]">FPS</span>
+                  <span className="text-neutral-200 font-semibold">{project.fps}</span>
+                </div>
+                <div>
+                  <span className="text-neutral-500 uppercase block text-[10px]">Suite</span>
+                  <span className="text-amber-400 font-semibold truncate block">{project.software[0]}</span>
+                </div>
               </div>
             </div>
           </div>
@@ -489,53 +472,16 @@ export default function ProjectModal({ project, onClose }: ProjectModalProps) {
           </div>
         </div>
 
-        {/* Narrative & Editorial Breakdown */}
-        <div className="grid grid-cols-1 lg:grid-cols-3 gap-8 sm:gap-12 mb-10 sm:mb-16">
-          <div className="lg:col-span-2 space-y-6 sm:space-y-8">
-            <div>
-              <h4 className="text-xs font-semibold text-amber-400 uppercase tracking-wider mb-2">
-                The Concept
-              </h4>
-              <p className="text-neutral-300 text-sm sm:text-base leading-relaxed">
-                {project.concept}
-              </p>
-            </div>
-
-            <div>
-              <h4 className="text-xs font-semibold text-crimson uppercase tracking-wider mb-2">
-                Key Editorial Decisions
-              </h4>
-              <ul className="space-y-2.5">
-                {project.editDecisions.map((decision, i) => (
-                  <li key={i} className="flex items-start gap-3 text-xs sm:text-sm text-neutral-300">
-                    <span className="w-5 h-5 rounded-full bg-white/[0.06] text-amber-400 text-xs font-semibold flex items-center justify-center shrink-0 mt-0.5">
-                      {i + 1}
-                    </span>
-                    <span className="leading-relaxed">{decision}</span>
-                  </li>
-                ))}
-              </ul>
-            </div>
-
-            <div>
-              <h4 className="text-xs font-semibold text-neutral-400 uppercase tracking-wider mb-2">
-                Sound Design & Sonic Architecture
-              </h4>
-              <p className="text-neutral-300 text-xs sm:text-sm leading-relaxed bg-carbon p-4 rounded-xl border border-white/[0.08]">
-                {project.soundDesignNotes}
-              </p>
-            </div>
-          </div>
-
-          {/* Stills Gallery Column */}
-          <div className="space-y-3 sm:space-y-4">
-            <h4 className="text-xs font-semibold text-offWhite uppercase tracking-wider mb-3 flex items-center gap-2">
+        {/* Production Stills Gallery */}
+        {project.gallery && project.gallery.length > 0 && (
+          <div className="mb-10 sm:mb-16">
+            <h4 className="text-xs font-semibold text-offWhite uppercase tracking-wider mb-4 flex items-center gap-2 font-mono">
               <Film className="w-4 h-4 text-amber-400" />
-              <span>Production Stills</span>
+              <span>Production Stills & Grading Frames</span>
             </h4>
-            <div className="grid grid-cols-2 sm:grid-cols-3 lg:grid-cols-1 gap-2.5 sm:gap-3">
+            <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-4">
               {project.gallery.map((imgUrl, i) => (
-                <div key={i} className="relative aspect-video rounded-lg border border-white/[0.08] overflow-hidden group">
+                <div key={i} className="relative aspect-video rounded-xl border border-white/[0.08] overflow-hidden group shadow-xl">
                   <Image
                     src={imgUrl}
                     alt={`Production Still ${i + 1}`}
@@ -547,7 +493,7 @@ export default function ProjectModal({ project, onClose }: ProjectModalProps) {
               ))}
             </div>
           </div>
-        </div>
+        )}
 
         {/* Bottom CTA within modal */}
         <div className="p-5 sm:p-8 bg-carbon border border-white/[0.08] rounded-2xl flex flex-col sm:flex-row items-start sm:items-center justify-between gap-4 sm:gap-5">

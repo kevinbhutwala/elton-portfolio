@@ -6,7 +6,6 @@ import { Project } from '@/types';
 import Preloader from '@/components/Preloader';
 import Header from '@/components/Header';
 import Hero from '@/components/Hero';
-import Manifesto from '@/components/Manifesto';
 import FeaturedWork from '@/components/FeaturedWork';
 import ProjectModal from '@/components/ProjectModal';
 import Showreel from '@/components/Showreel';
@@ -87,10 +86,7 @@ export default function Home() {
       {/* Dedicated Master Showreel 2026 */}
       <Showreel />
 
-      {/* Manifesto & Philosophy */}
-      <Manifesto />
-
-      {/* Selected Featured Work - Unified Multi-Format Showcase (Zero Repetition) */}
+      {/* Selected Featured Work - Unified Multi-Format Showcase */}
       <FeaturedWork onSelectProject={(p) => setSelectedProject(p)} />
 
       {/* Signature "THE EDIT" Interactive Timeline */}

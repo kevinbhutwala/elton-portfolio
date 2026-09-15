@@ -50,10 +50,8 @@ export default function Hero({ onPlayReel }: HeroProps) {
             <span className="relative inline-flex rounded-full h-2 w-2 bg-emerald-500" />
           </span>
           <span className="text-xs font-medium text-neutral-200 tracking-wide">
-            Available for Projects · Worldwide Remote
+            Available for Projects · Worldwide
           </span>
-          <span className="text-neutral-500 text-xs">•</span>
-          <span className="text-amber-400/90 text-xs font-mono font-medium">Q3/Q4</span>
         </div>
 
         {/* Hero Title with Subtle Neon Backlight & Directorial Tracking */}
@@ -75,22 +73,10 @@ export default function Hero({ onPlayReel }: HeroProps) {
           <span className="text-amber-400">Colorist</span>
         </div>
 
-        {/* Punchy Narrative Tagline */}
-        <p className="mt-4 text-sm sm:text-base md:text-lg text-neutral-400 max-w-2xl leading-relaxed font-normal">
-          Cutting moments. Shaping rhythm. Creating emotion through high-velocity editing, intentional pacing, and celluloid color grading.
+        {/* Punchy Concise Tagline */}
+        <p className="mt-4 text-base sm:text-xl md:text-2xl text-neutral-300 font-display font-light tracking-wide max-w-xl mx-auto">
+          Cutting rhythm. Shaping emotion.
         </p>
-
-        {/* Technical Directorial Metadata Ribbon */}
-        <div className="mt-6 hidden sm:flex items-center gap-2 text-[11px] font-mono tracking-widest text-neutral-400 uppercase bg-white/[0.03] border border-white/[0.08] px-4 py-1.5 rounded-full backdrop-blur-md">
-          <Sparkles className="w-3 h-3 text-amber-400" />
-          <span>4K DCI</span>
-          <span className="text-neutral-600">·</span>
-          <span>24.000 FPS</span>
-          <span className="text-neutral-600">·</span>
-          <span>2.39:1 ANAMORPHIC</span>
-          <span className="text-neutral-600">·</span>
-          <span>PRORES 422 HQ</span>
-        </div>
 
         {/* Magnetic Hero CTA Actions */}
         <div className="flex flex-wrap items-center justify-center gap-3.5 sm:gap-4 mt-8 sm:mt-10">

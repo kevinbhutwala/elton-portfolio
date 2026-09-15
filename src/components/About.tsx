@@ -61,78 +61,39 @@ export default function About() {
 
           {/* Biography & Skills (Right) */}
           <div className="lg:col-span-7 flex flex-col justify-center">
-            <div className="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-white/[0.04] border border-white/10 text-xs font-medium text-amber-400 mb-3 w-fit">
+            <div className="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-white/[0.04] border border-white/10 text-xs font-medium text-amber-400 mb-4 w-fit">
               <span className="w-1.5 h-1.5 rounded-full bg-amber-400" />
-              <span>About the Editor</span>
+              <span>Editor & Colorist</span>
             </div>
-            <h2 className="text-3xl sm:text-5xl font-display font-bold text-offWhite tracking-tight mb-5">
+
+            <h2 className="text-4xl sm:text-6xl font-display font-extrabold text-offWhite tracking-tight mb-4">
               Elton D&apos;Mello
             </h2>
 
-            {/* Main Bio Paragraph */}
-            <p className="text-base sm:text-lg text-neutral-200 leading-relaxed mb-6 font-sans">
-              {bioData.aboutBio}
+            {/* Concise Impact Statement */}
+            <p className="text-lg sm:text-xl text-neutral-200 leading-relaxed font-sans mb-6">
+              Shaping raw rushes into rhythmic, emotive cinema across commercial films, music visuals, and high-retention mobile reels.
             </p>
 
-            <div className="border-l-2 border-amber-400 pl-5 py-1 mb-8">
-              <p className="text-sm md:text-base text-neutral-400 font-normal italic">
+            <div className="border-l-2 border-amber-400 pl-4 py-1 mb-8">
+              <p className="text-sm sm:text-base text-neutral-400 italic">
                 “{bioData.quote}”
               </p>
             </div>
 
-            {/* Specialization Pills */}
-            <div className="mb-8">
-              <span className="text-xs font-semibold text-neutral-400 uppercase tracking-wider block mb-3">
-                Software Arsenal & Core Workflow
+            {/* Software Arsenal */}
+            <div>
+              <span className="text-[11px] font-mono text-neutral-400 uppercase tracking-widest block mb-3">
+                Core Suite
               </span>
-              <div className="flex flex-wrap gap-2 text-xs">
-                {[
-                  'CapCut Pro',
-                  'Adobe Premiere Pro',
-                  'After Effects',
-                  'LUTs in Premiere Pro',
-                  'Color Grading in CapCut Pro',
-                  'Topaz Video AI',
-                  'AI Speech & Voice Isolation',
-                  'DaVinci Resolve (In Progress)',
-                  'Sound Design',
-                  'High-Retention Reels',
-                ].map((spec) => (
+              <div className="flex flex-wrap gap-2 text-xs font-mono">
+                {['Premiere Pro', 'CapCut Pro', 'After Effects', 'Color LUTs', 'DaVinci Resolve'].map((tool) => (
                   <span
-                    key={spec}
-                    className={`px-3.5 py-1.5 border rounded-full font-medium transition-colors ${
-                      spec.includes('CapCut') ||
-                      spec.includes('Premiere') ||
-                      spec.includes('After Effects') ||
-                      spec.includes('LUTs') ||
-                      spec.includes('Color Grading') ||
-                      spec.includes('AI')
-                        ? 'bg-amber-400/10 border-amber-400/40 text-amber-300 font-semibold'
-                        : spec.includes('DaVinci')
-                        ? 'bg-white/[0.04] border-white/15 text-neutral-300'
-                        : 'bg-white/[0.03] border-white/10 text-neutral-300'
-                    }`}
+                    key={tool}
+                    className="px-3.5 py-1.5 rounded-full bg-white/[0.03] border border-white/10 text-neutral-200"
                   >
-                    {spec}
+                    {tool}
                   </span>
-                ))}
-              </div>
-            </div>
-
-            {/* Tech Specs Studio Rack */}
-            <div className="border-t border-white/[0.08] pt-6 space-y-2 text-xs">
-              <span className="text-[10px] font-mono text-neutral-500 uppercase tracking-widest block mb-2">
-                Studio Workstation & Calibration
-              </span>
-              <div className="grid grid-cols-1 sm:grid-cols-2 gap-2">
-                {bioData.specs.map((item, idx) => (
-                  <div
-                    key={idx}
-                    className="p-3 rounded-xl bg-white/[0.02] border border-white/[0.06] hover:border-white/15 transition-colors flex flex-col justify-between"
-                  >
-                    <span className="text-neutral-500 font-mono text-[10px] uppercase">{item.label}</span>
-                    <span className="text-offWhite font-semibold mt-1 text-xs">{item.value}</span>
-                  </div>
                 ))}
               </div>
             </div>

@@ -4,7 +4,7 @@ import React, { useState } from 'react';
 import Image from 'next/image';
 import { servicesData } from '@/data/portfolioData';
 import { audioEngine } from '@/lib/audioEngine';
-import { ArrowUpRight, CheckCircle2 } from 'lucide-react';
+import { ArrowUpRight } from 'lucide-react';
 
 interface ServicesProps {
   onOpenContact: () => void;
@@ -33,14 +33,11 @@ export default function Services({ onOpenContact }: ServicesProps) {
         </div>
 
         {/* Section Heading */}
-        <div className="flex flex-col md:flex-row md:items-end justify-between gap-6 mb-8 sm:mb-12">
+        <div className="flex items-center justify-between gap-6 mb-8 sm:mb-12">
           <div>
             <h2 className="text-3xl sm:text-4xl md:text-5xl lg:text-6xl font-display font-bold text-offWhite tracking-tight">
               Services
             </h2>
-            <p className="mt-2 text-sm sm:text-base text-neutral-400 max-w-lg">
-              End-to-end video editing, pacing, color grading, and sound design tailored for high-end results.
-            </p>
           </div>
 
           <button
@@ -98,19 +95,17 @@ export default function Services({ onOpenContact }: ServicesProps) {
                     />
                   </div>
 
-                  {/* Mobile expanded details */}
+                  {/* Mobile photo preview */}
                   {isSelected && (
-                    <div className="mt-4 pt-4 border-t border-white/[0.08] lg:hidden">
-                      <p className="text-xs sm:text-sm text-neutral-300 leading-relaxed mb-4 font-normal">
-                        {service.description}
-                      </p>
-                      <div className="space-y-2 text-xs text-neutral-300 font-medium">
-                        {service.deliverables.map((item, i) => (
-                          <div key={i} className="flex items-center gap-2">
-                            <CheckCircle2 className="w-3.5 h-3.5 text-amber-400 shrink-0" />
-                            <span>{item}</span>
-                          </div>
-                        ))}
+                    <div className="mt-4 relative aspect-video w-full rounded-xl overflow-hidden border border-white/10 lg:hidden">
+                      <Image
+                        src={service.previewImage}
+                        alt={service.title}
+                        fill
+                        className="object-cover"
+                      />
+                      <div className="absolute top-2.5 left-2.5 bg-black/75 backdrop-blur-md px-2.5 py-0.5 rounded-full text-[10px] font-medium text-amber-400 border border-white/10">
+                        {service.tag}
                       </div>
                     </div>
                   )}
@@ -121,38 +116,25 @@ export default function Services({ onOpenContact }: ServicesProps) {
 
           {/* Desktop Preview Panel (Right) */}
           <div className="hidden lg:block lg:col-span-5 sticky top-28">
-            <div className="bg-carbon border border-white/[0.08] rounded-2xl p-6 shadow-2xl relative">
-              <div className="relative aspect-[16/10] w-full overflow-hidden rounded-xl bg-obsidian border border-white/[0.08] mb-6">
+            <div className="bg-carbon border border-white/[0.08] rounded-2xl p-4 shadow-2xl relative overflow-hidden group">
+              <div className="relative aspect-[16/10] w-full overflow-hidden rounded-xl bg-obsidian border border-white/[0.08]">
                 <Image
                   src={activeService.previewImage}
                   alt={activeService.title}
                   fill
-                  className="object-cover transition-all duration-700 filter contrast-110"
+                  className="object-cover transition-all duration-700 filter contrast-110 group-hover:scale-105"
                 />
-                <div className="absolute inset-0 bg-gradient-to-t from-carbon via-transparent to-transparent opacity-80" />
+                <div className="absolute inset-0 bg-gradient-to-t from-black/80 via-transparent to-transparent opacity-80" />
 
                 <div className="absolute top-3 left-3 bg-black/75 backdrop-blur-md px-3 py-1 rounded-full text-xs font-medium text-amber-400 border border-white/10">
                   {activeService.tag}
                 </div>
-              </div>
 
-              <h4 className="font-display text-xl sm:text-2xl text-offWhite font-bold mb-2 tracking-tight">
-                {activeService.title}
-              </h4>
-              <p className="text-xs sm:text-sm text-neutral-400 leading-relaxed mb-6 font-normal">
-                {activeService.description}
-              </p>
-
-              <div className="border-t border-white/[0.08] pt-4 space-y-2.5">
-                <span className="text-xs font-semibold text-neutral-400 uppercase tracking-wider block mb-2">
-                  Key Deliverables
-                </span>
-                {activeService.deliverables.map((d, i) => (
-                  <div key={i} className="flex items-start gap-2.5 text-xs text-neutral-300 font-medium">
-                    <CheckCircle2 className="w-3.5 h-3.5 text-amber-400 shrink-0 mt-0.5" />
-                    <span>{d}</span>
-                  </div>
-                ))}
+                <div className="absolute bottom-4 left-4 right-4">
+                  <h4 className="font-display text-xl text-offWhite font-bold tracking-tight">
+                    {activeService.title}
+                  </h4>
+                </div>
               </div>
             </div>
           </div>

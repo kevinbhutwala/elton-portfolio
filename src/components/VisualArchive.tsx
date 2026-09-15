@@ -319,24 +319,12 @@ export default function VisualArchive() {
       </div>
 
       <div className="relative z-10 max-w-7xl mx-auto px-4 sm:px-6 md:px-12">
-        {/* Header Badge */}
-        <div className="flex items-center gap-3 mb-4">
-          <div className="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-white/[0.04] border border-white/10 text-xs font-medium text-amber-400">
-            <Camera className="w-3.5 h-3.5 text-crimson" />
-            <span>Behind The Lens · Visual Lab</span>
-          </div>
-          <div className="flex-1 h-[1px] bg-white/[0.06]" />
-        </div>
-
-        {/* Section Heading with Editorial Narrative */}
-        <div className="flex flex-col lg:flex-row lg:items-end justify-between gap-6 mb-10 sm:mb-14">
+        {/* Section Heading */}
+        <div className="flex items-center justify-between gap-6 mb-6 sm:mb-8">
           <div>
             <h2 className="text-3xl sm:text-5xl md:text-6xl font-display font-bold text-offWhite tracking-tight">
               The Visual Archive <span className="text-crimson font-light">· Stills</span>
             </h2>
-            <p className="mt-2 text-sm sm:text-base text-neutral-400 max-w-xl leading-relaxed">
-              Every cinematic cut begins with light, frame composition, and optical texture. A curated contact sheet of raw captures, framing studies, and lighting textures by Elton.
-            </p>
           </div>
         </div>
 
@@ -433,15 +421,6 @@ export default function VisualArchive() {
               </div>
             </div>
           ))}
-        </div>
-
-        {/* Footer Note */}
-        <div className="mt-8 sm:mt-12 p-4 sm:p-5 rounded-xl bg-white/[0.02] border border-white/[0.06] flex flex-col sm:flex-row items-start sm:items-center justify-between gap-3 text-xs text-neutral-400">
-          <div className="flex items-center gap-2 text-neutral-300">
-            <Film className="w-4 h-4 text-amber-400" />
-            <span>Click any still frame to open high-precision inspector with 2.5x Loupe and color profile controls.</span>
-          </div>
-          <span className="text-[11px] text-neutral-500 font-mono">15 FRAMES IN LAB ARCHIVE</span>
         </div>
       </div>
 
