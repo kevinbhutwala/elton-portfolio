@@ -100,6 +100,11 @@ export default function FeaturedWork({ onSelectProject }: FeaturedWorkProps) {
           accentBorder: 'hover:border-amber-400/80',
           glowShadow: 'hover:shadow-[0_25px_60px_rgba(0,0,0,0.9),0_0_40px_rgba(245,158,11,0.18)]',
         };
+      case 'gulf-of-mannar':
+        return {
+          accentBorder: 'hover:border-emerald-400/80',
+          glowShadow: 'hover:shadow-[0_25px_60px_rgba(0,0,0,0.9),0_0_40px_rgba(52,211,153,0.2)]',
+        };
       case 'supercars-dubai':
         return {
           accentBorder: 'hover:border-cyan-400/80',

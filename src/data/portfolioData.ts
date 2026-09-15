@@ -65,8 +65,43 @@ export const projectsData: Project[] = [
       'Binaural forest recordings, wind rustling through tea estate foliage, deep sub-ambient pulses.',
   },
   {
-    id: 'supercars-dubai',
+    id: 'gulf-of-mannar',
     number: '02',
+    title: 'GULF OF MANNAR',
+    subtitle: 'Coastal Heritage & Turquoise Waters Odyssey',
+    client: 'Dhanushkodi & Coastal Explorers',
+    year: '2025',
+    category: 'Documentary',
+    duration: '00:25',
+    aspect: '9:16 Vertical',
+    fps: '60.000 / 24.000 FPS',
+    camera: 'Sony FX3 + Cine Primes',
+    software: ['Premiere Pro', 'CapCut Pro'],
+    videoUrl: '/videos/gulf-of-mannar.mp4',
+    isVertical: true,
+    synopsis:
+      'A multi-perspective vertical triptych capturing the leaning palms, submerged Dhanushkodi church ruins, and emerald fishing lagoons of the Gulf of Mannar.',
+    concept:
+      'Harmonious 3-tier vertical split frame combining serene coastline landscapes, historic stone ruins under golden coastal light, and vibrant turquoise marine life.',
+    editDecisions: [
+      'Synchronized multi-tier framing balancing sky, historical ruins, and aqua waters',
+      'Gentle wave rhythm and atmospheric drone perspective over anchored fishing fleets',
+      'Rich coastal color grade accentuating tropical aquas and warm terracotta stone textures',
+    ],
+    rawImage: '/thumbnails/gulf-of-mannar.jpg',
+    gradeImage: '/thumbnails/gulf-of-mannar.jpg',
+    heroImage: '/thumbnails/gulf-of-mannar.jpg',
+    gallery: [
+      '/thumbnails/gulf-of-mannar.jpg',
+      '/thumbnails/goa-cinematics.jpg',
+      '/thumbnails/wayanad-cinematics.jpg',
+    ],
+    soundDesignNotes:
+      'Gentle coastal surf wash, coastal breeze through palm canopies, acoustic string resonances, and spatial marine atmosphere.',
+  },
+  {
+    id: 'supercars-dubai',
+    number: '03',
     title: 'SUPERCARS DUBAI',
     subtitle: 'High-Octane Luxury Automotive Reel',
     client: 'Exotic Motors Dubai',
@@ -100,7 +135,7 @@ export const projectsData: Project[] = [
   },
   {
     id: 'goa-auto-expo',
-    number: '03',
+    number: '04',
     title: 'GOA AUTO EXPO',
     subtitle: 'Event & Exhibition Reel',
     client: 'Goa Automotive Showcase',
@@ -134,7 +169,7 @@ export const projectsData: Project[] = [
   },
   {
     id: 'dj-doel-blr',
-    number: '04',
+    number: '05',
     title: 'DJ DOEL 21A BLR',
     subtitle: 'High-Energy Music & Nightclub Visual',
     client: '21A Club Bangalore',
@@ -168,7 +203,7 @@ export const projectsData: Project[] = [
   },
   {
     id: 'goa-cinematics',
-    number: '05',
+    number: '06',
     title: 'GOA CINEMATICS',
     subtitle: 'Coastal Mood & Travel Visual Story',
     client: 'Coastal Explorers & Travel Media',
@@ -203,7 +238,7 @@ export const projectsData: Project[] = [
   },
   {
     id: 'turtle-matcha-cafe',
-    number: '06',
+    number: '07',
     title: 'TURTLE MATCHA CAFE',
     subtitle: 'Artisanal Beverage & Cafe Commercial',
     client: 'Turtle Matcha Cafe',
@@ -237,7 +272,7 @@ export const projectsData: Project[] = [
   },
   {
     id: 'flake-house',
-    number: '07',
+    number: '08',
     title: 'FLAKE HOUSE',
     subtitle: 'Fashion & Urban Lifestyle Reel',
     client: 'Flake House Collective',
@@ -271,7 +306,7 @@ export const projectsData: Project[] = [
   },
   {
     id: 'hair-salon-work',
-    number: '08',
+    number: '09',
     title: 'LUXE HAIR SALON',
     subtitle: 'Beauty & Hair Transformation Campaign',
     client: 'Luxe Salon & Academy',
