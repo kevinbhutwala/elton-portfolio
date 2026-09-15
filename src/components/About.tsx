@@ -92,7 +92,7 @@ export default function About() {
                 Core Suite
               </span>
               <div className="flex flex-wrap gap-2 text-xs font-mono">
-                {['Premiere Pro', 'CapCut Pro', 'After Effects', 'Color LUTs', 'DaVinci Resolve'].map((tool) => (
+                {['Premiere Pro', 'CapCut Pro', 'After Effects', 'Color LUTs', 'Topaz Video AI'].map((tool) => (
                   <span
                     key={tool}
                     className="px-3.5 py-1.5 rounded-full bg-white/[0.03] border border-white/10 text-neutral-200"

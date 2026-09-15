@@ -228,7 +228,7 @@ export default function Contact() {
                   ✦ 9:16 Vertical High-Retention
                 </span>
                 <span className="px-2.5 py-1 rounded-md bg-white/[0.04] border border-white/[0.08]">
-                  ✦ DaVinci Color Mastery
+                  ✦ After Effects & Motion Graphics
                 </span>
                 <span className="px-2.5 py-1 rounded-md bg-white/[0.04] border border-white/[0.08]">
                   ✦ Fast 48-Hour Turnaround

@@ -140,7 +140,7 @@ export default function Footer() {
               </li>
               <li className="flex items-center gap-1.5">
                 <span className="w-1 h-1 rounded-full bg-amber-400/60" />
-                <span>DaVinci Color Grading</span>
+                <span>After Effects & Motion Design</span>
               </li>
               <li className="flex items-center gap-1.5">
                 <span className="w-1 h-1 rounded-full bg-amber-400/60" />
