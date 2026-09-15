@@ -79,13 +79,18 @@ export default function Header({ onOpenContact }: HeaderProps) {
             onMouseEnter={() => audioEngine.playHoverTick()}
             onClick={() => audioEngine.playMechanicalClick()}
           >
-            {/* Prominent E Logo Mark */}
-            <div className="relative w-8 h-8 rounded-lg bg-gradient-to-br from-[#1c1c22] to-[#0d0d10] border border-white/15 flex items-center justify-center shadow-lg group-hover:border-amber-400/60 group-hover:shadow-[0_0_15px_rgba(229,168,83,0.2)] transition-all">
-              <span className="font-display text-sm font-black bg-gradient-to-r from-amber-400 via-amber-200 to-amber-500 bg-clip-text text-transparent">
-                E
-              </span>
-              {/* Subtle Red Cut / Playhead Accent */}
-              <span className="absolute -top-0.5 -right-0.5 w-1.5 h-1.5 rounded-full bg-crimson shadow-[0_0_6px_#E5383B]" />
+            {/* Elton DP Avatar */}
+            <div className="relative w-9 h-9 rounded-full overflow-hidden border-2 border-white/20 group-hover:border-amber-400/80 group-hover:shadow-[0_0_15px_rgba(229,168,83,0.3)] transition-all shrink-0">
+              <Image
+                src="/images/elton-dmello-avatar.jpg"
+                alt="Elton D'Mello"
+                fill
+                sizes="36px"
+                quality={95}
+                unoptimized
+                className="object-cover object-center"
+              />
+              <span className="absolute bottom-0 right-0 w-2 h-2 rounded-full bg-emerald-500 border border-obsidian" />
             </div>
 
             {/* Name & Title */}
@@ -185,11 +190,17 @@ export default function Header({ onOpenContact }: HeaderProps) {
         {/* Drawer Header */}
         <div className="flex items-center justify-between pb-5 border-b border-white/[0.08]">
           <div className="flex items-center gap-3">
-            <div className="relative w-9 h-9 rounded-lg bg-gradient-to-br from-[#1c1c22] to-[#0d0d10] border border-amber-400/40 flex items-center justify-center shadow-lg">
-              <span className="font-display text-sm font-black text-amber-400">
-                E
-              </span>
-              <span className="absolute -top-0.5 -right-0.5 w-1.5 h-1.5 rounded-full bg-crimson" />
+            <div className="relative w-10 h-10 rounded-full overflow-hidden border-2 border-amber-400/60 shadow-lg shrink-0">
+              <Image
+                src="/images/elton-dmello-avatar.jpg"
+                alt="Elton D'Mello"
+                fill
+                sizes="40px"
+                quality={95}
+                unoptimized
+                className="object-cover object-center"
+              />
+              <span className="absolute bottom-0 right-0 w-2.5 h-2.5 rounded-full bg-emerald-500 border border-obsidian" />
             </div>
             <div>
               <div className="text-sm font-semibold text-offWhite tracking-tight">

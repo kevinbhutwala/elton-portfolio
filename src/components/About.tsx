@@ -12,24 +12,29 @@ export default function About() {
         <div className="grid grid-cols-1 lg:grid-cols-12 gap-12 lg:gap-16 items-center">
           {/* Portrait Column (Left) */}
           <div className="lg:col-span-5 flex flex-col items-center">
-            <div className="relative aspect-[3/4] w-full max-w-[340px] bg-obsidian border border-borderDark hover:border-amber-400/50 rounded-xl overflow-hidden shadow-[0_20px_50px_rgba(0,0,0,0.8),0_0_30px_rgba(245,158,11,0.08)] transition-all duration-500 p-2 group">
-              <div className="relative w-full h-full rounded-lg overflow-hidden">
+            <div className="relative aspect-[9/16] w-full max-w-[340px] bg-obsidian border border-borderDark hover:border-amber-400/50 rounded-2xl overflow-hidden shadow-[0_25px_60px_rgba(0,0,0,0.85),0_0_35px_rgba(245,158,11,0.12)] transition-all duration-500 p-2 group">
+              <div className="relative w-full h-full rounded-xl overflow-hidden">
                 <Image
                   src={bioData.photo}
-                  alt="Elton D'Mello - Video Editor"
+                  alt="Elton D'Mello - Video Editor & Visual Storyteller"
                   fill
-                  quality={95}
+                  quality={98}
                   priority
-                  className="object-cover object-center"
+                  unoptimized={true}
+                  style={{ imageRendering: '-webkit-optimize-contrast' }}
+                  className="object-cover object-center transition-transform duration-700 ease-out group-hover:scale-105"
                 />
-                <div className="absolute inset-0 bg-gradient-to-t from-obsidian/80 via-transparent to-transparent" />
+                <div className="absolute inset-0 bg-gradient-to-t from-obsidian/90 via-transparent to-transparent pointer-events-none" />
 
-                <div className="absolute bottom-3 left-3 right-3 bg-obsidian/90 backdrop-blur-md p-3 rounded border border-borderDark/80 flex items-center justify-between">
+                <div className="absolute bottom-3 left-3 right-3 bg-obsidian/90 backdrop-blur-md p-3.5 rounded-xl border border-white/10 flex items-center justify-between shadow-xl">
                   <div>
-                    <span className="text-xs font-semibold text-offWhite block">{bioData.name}</span>
-                    <span className="text-[11px] text-muted">Video Editor & Visual Storyteller</span>
+                    <span className="text-sm font-semibold text-offWhite block">{bioData.name}</span>
+                    <span className="text-[11px] text-neutral-400">Video Editor & Visual Storyteller</span>
                   </div>
-                  <span className="w-2 h-2 rounded-full bg-emerald-500" />
+                  <span className="flex h-2.5 w-2.5 relative">
+                    <span className="animate-ping absolute inline-flex h-full w-full rounded-full bg-emerald-400 opacity-75" />
+                    <span className="relative inline-flex rounded-full h-2.5 w-2.5 bg-emerald-500" />
+                  </span>
                 </div>
               </div>
             </div>
